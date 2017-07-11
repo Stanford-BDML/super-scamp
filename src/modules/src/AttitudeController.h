@@ -213,6 +213,8 @@ struct AttitudeController
 	float tau_Motor[3];
 	float Pole[3];
 	float FREQ;
+	float Length;
+	float FMotorMax;
 
 	bool isInit;
 	float SAT;
@@ -224,7 +226,10 @@ struct AttitudeController
 void set_AC(struct AttitudeController* AC)
 {
 
-	AC->SAT=0.0093*0.5*1;
+	AC->Length = 0.1; // Kg
+	AC->FMotorMax = 0.980665; // N
+
+	AC->SAT=(2*AC->Length*AC->FMotorMax)/(float)4.0; // Nm
 
 	AC->KP[0]=300;
 	AC->KP[1]=300;
@@ -404,8 +409,7 @@ void set_HC(struct HeightController* HC)
 	HC->SAT=10000;
 
 	HC->G=9.80665;
-	//HC->Mass=45*0.001;
-	HC->Mass=30*0.001;
+	HC->Mass=207*0.001;
 	HC->ForceHeight=0.0;
 	HC->isInit=true;
 	HC->Landed=true;
@@ -456,7 +460,6 @@ void motorSafe(struct HeightController* HC)
 void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,float eulerRollActual,float eulerPitchActual,control_t* CONTROL)
 {
 	float app,val;
-	float Length,FMax;
 	int32_t app_roll,app_pitch,satRP,apptrust,app_yaw;
 	int32_t M1,M2,M3,M4;
 	bool sat;
@@ -464,21 +467,17 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 
 
 	sat=false;
-	//Volt=pmGetBatteryVoltage();
-	Length=0.0651;
-	FMax=0.14709975; //0.015*g
-
 	val = M_PI_F / 180.0f;
 	eulerRollActual=eulerRollActual*val;
 	eulerPitchActual=eulerPitchActual*val;
 
-	app=(AC->tau_Motor[0]/(2.0f*Length*FMax))*65535.0f;
+	app=(AC->tau_Motor[0]/(2.0f*AC->Length*AC->FMotorMax))*65535.0f;
 	app_roll=(int32_t)(app);
-	app=(AC->tau_Motor[1]/(2.0f*Length*FMax))*65535.0f;
+	app=(AC->tau_Motor[1]/(2.0f*AC->Length*AC->FMotorMax))*65535.0f;
 	app_pitch=(int32_t)(app);
 
 	app=HC->ForceHeight/(4.0f*cosf(eulerRollActual)*cosf(eulerPitchActual));
-	app=(app/FMax)*65535.0f;
+	app=(app/AC->FMotorMax)*65535.0f;
 	apptrust=(int32_t)(app);
 
 
@@ -552,11 +551,16 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 	motorPowerM2 = limitThrust(M2);
 	motorPowerM3 = limitThrust(M3);
 	motorPowerM4 = limitThrust(M4);
-
+/*
 	motorsSetRatio(MOTOR_M1, motorPowerM1);
 	motorsSetRatio(MOTOR_M2, motorPowerM2);
 	motorsSetRatio(MOTOR_M3, motorPowerM3);
 	motorsSetRatio(MOTOR_M4, motorPowerM4);
+	*/
+	motorsSetRatio(MOTOR_M1, 10000);
+	motorsSetRatio(MOTOR_M2, 10000);
+	motorsSetRatio(MOTOR_M3, 10000);
+	motorsSetRatio(MOTOR_M4, 10000);
 
 	// update
 	CONTROL->thrust= apptrust;

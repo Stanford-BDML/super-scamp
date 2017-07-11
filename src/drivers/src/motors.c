@@ -207,7 +207,7 @@ bool motorsTest(void)
   return isInit;
 }
 
-#define ENABLE_THRUST_BAT_COMPENSATED
+//#define ENABLE_THRUST_BAT_COMPENSATED
 // Ithrust is thrust mapped for 65536 <==> 60 grams
 void motorsSetRatio(uint32_t id, uint16_t ithrust)
 {
