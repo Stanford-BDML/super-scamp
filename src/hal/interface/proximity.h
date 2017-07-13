@@ -33,6 +33,7 @@
  * \def PROXIMITY_ENABLED
  * Enable the proximity measurement subsystem.
  */
+
 #define PROXIMITY_ENABLED
 
 /**

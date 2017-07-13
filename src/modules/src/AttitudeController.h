@@ -557,10 +557,10 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 	motorsSetRatio(MOTOR_M3, motorPowerM3);
 	motorsSetRatio(MOTOR_M4, motorPowerM4);
 	*/
-	motorsSetRatio(MOTOR_M1, 10000);
-	motorsSetRatio(MOTOR_M2, 10000);
-	motorsSetRatio(MOTOR_M3, 10000);
-	motorsSetRatio(MOTOR_M4, 10000);
+	motorsSetRatio(MOTOR_M1, 0*10000);
+	motorsSetRatio(MOTOR_M2, 0*10000);
+	motorsSetRatio(MOTOR_M3, 0*10000);
+	motorsSetRatio(MOTOR_M4, 0*10000);
 
 	// update
 	CONTROL->thrust= apptrust;

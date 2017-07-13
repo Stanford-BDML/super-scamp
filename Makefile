@@ -33,8 +33,8 @@ CONTROLLER         ?= pid
 POWER_DISTRIBUTION ?= stock
 SENSORS 					 ?= cf2
  CFLAGS += -DENABLE_BQ_DECK
- CFLAGS += -DBQ_DECK_ENABLE_PM
- CFLAGS += -DBQ_DECK_ENABLE_OSD
+ #CFLAGS += -DBQ_DECK_ENABLE_PM
+ #CFLAGS += -DBQ_DECK_ENABLE_OSD
 
 ######### Test activation ##########
 FATFS_DISKIO_TESTS  ?= 0	# Set to 1 to enable FatFS diskio function tests. Erases card.
