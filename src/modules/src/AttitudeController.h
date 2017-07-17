@@ -141,7 +141,7 @@ void setFilter(struct Filter* F,float f,float p)
 	// Cambio di function
 	//F->coeff_den=exp(-p/f);
 	F->coeff_den=fastPow(Nepero_inv,p/f);
-	F->coeff_den=0.999;
+	F->coeff_den=0.99;
 	F->coeff_num=1-F->coeff_den;
 }
 
@@ -231,16 +231,17 @@ void set_AC(struct AttitudeController* AC)
 
 	AC->SAT=(2*AC->Length*AC->FMotorMax)/(float)4.0; // Nm
 
-	AC->KP[0]=300;
-	AC->KP[1]=300;
+	AC->KP[0]=200;
+	AC->KP[1]=200;
 	AC->KP[2]=2000;
 
-	AC->KV[0]=50;
-	AC->KV[1]=50;
+	AC->KV[0]=25;
+	AC->KV[1]=25;
 	AC->KV[2]=30000;
 
-	AC->Inertia[0]=0.00002;
-	AC->Inertia[1]=0.00002;
+	AC->Inertia[0]=0.0006;
+	AC->Inertia[1]=0.0006;
+	// 0.001247717
 	AC->Inertia[2]=0.0000323;
 
 	AC->FREQ=RATE_500_HZ;
@@ -445,7 +446,7 @@ void compute_HC(struct HeightController* HC,float HeigthActual,float HeigthDesir
 	//HC->IntErr=HC->IntErr+(error*coeff);
 
 
-	HC->ForceHeight=(HC->KP*error*HC->Mass)-(HC->KV*dHeigth*HC->Mass)+(HC->Mass*HC->G*1.0f);
+	HC->ForceHeight=(HC->KP*error*HC->Mass)-(HC->KV*dHeigth*HC->Mass)+(HC->Mass*HC->G);
 	if (HC->ForceHeight<0)
 		HC->ForceHeight=0;
 
@@ -454,7 +455,7 @@ void compute_HC(struct HeightController* HC,float HeigthActual,float HeigthDesir
 
 void motorSafe(struct HeightController* HC)
 {
-	HC->ForceHeight=HC->Mass*HC->G*0.9f;
+	HC->ForceHeight=HC->Mass*HC->G*0.8f;
 }
 
 void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,float eulerRollActual,float eulerPitchActual,control_t* CONTROL)
@@ -551,16 +552,12 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 	motorPowerM2 = limitThrust(M2);
 	motorPowerM3 = limitThrust(M3);
 	motorPowerM4 = limitThrust(M4);
-/*
+
 	motorsSetRatio(MOTOR_M1, motorPowerM1);
 	motorsSetRatio(MOTOR_M2, motorPowerM2);
 	motorsSetRatio(MOTOR_M3, motorPowerM3);
 	motorsSetRatio(MOTOR_M4, motorPowerM4);
-	*/
-	motorsSetRatio(MOTOR_M1, 0*10000);
-	motorsSetRatio(MOTOR_M2, 0*10000);
-	motorsSetRatio(MOTOR_M3, 0*10000);
-	motorsSetRatio(MOTOR_M4, 0*10000);
+
 
 	// update
 	CONTROL->thrust= apptrust;
