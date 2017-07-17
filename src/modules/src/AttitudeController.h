@@ -454,7 +454,7 @@ void compute_HC(struct HeightController* HC,float HeigthActual,float HeigthDesir
 
 void motorSafe(struct HeightController* HC)
 {
-	HC->ForceHeight=HC->Mass*HC->G*0.9f;
+	HC->ForceHeight=HC->Mass*HC->G*0.8f;
 }
 
 void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,float eulerRollActual,float eulerPitchActual,control_t* CONTROL)
@@ -551,16 +551,11 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 	motorPowerM2 = limitThrust(M2);
 	motorPowerM3 = limitThrust(M3);
 	motorPowerM4 = limitThrust(M4);
-/*
+
 	motorsSetRatio(MOTOR_M1, motorPowerM1);
 	motorsSetRatio(MOTOR_M2, motorPowerM2);
 	motorsSetRatio(MOTOR_M3, motorPowerM3);
 	motorsSetRatio(MOTOR_M4, motorPowerM4);
-	*/
-	motorsSetRatio(MOTOR_M1, 0*10000);
-	motorsSetRatio(MOTOR_M2, 0*10000);
-	motorsSetRatio(MOTOR_M3, 0*10000);
-	motorsSetRatio(MOTOR_M4, 0*10000);
 
 	// update
 	CONTROL->thrust= apptrust;

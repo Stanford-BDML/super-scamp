@@ -306,10 +306,14 @@ void processJoy()
 			yawRateDesired=-25;
 			eulerYawDesired=eulerYawActual;
 		}
+		if (State_Joy & 16)
+		{
+			//STATE_MACHINE=FLYING;
+		}
 
-		//float Yawrad = 0*eulerYawActual*(M_PI_F / 180.0f);
-		//eulerRollDesired=10*(cosf(Yawrad)*ERD+sinf(Yawrad)*EPD);
-		//eulerPitchDesired=10*(-sinf(Yawrad)*ERD+cosf(Yawrad)*EPD);
+		float Yawrad = 0*eulerYawActual*(M_PI_F / 180.0f);
+		eulerRollDesired=cosf(Yawrad)*ERD+sinf(Yawrad)*EPD;
+		eulerPitchDesired=-sinf(Yawrad)*ERD+cosf(Yawrad)*EPD;
 
 	}
 
