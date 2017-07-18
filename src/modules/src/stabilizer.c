@@ -201,7 +201,7 @@ void stabilizerInit(void)
     return;
 
 
-  motorsInit(motorMapDefaultBrushed);
+  motorsInit(motorMapDefaltConBrushless);
   sensorsInit();
   stateEstimatorInit();
   //imu6Init();
