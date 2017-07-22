@@ -91,7 +91,7 @@ static float rollRateDesired;
 static float pitchRateDesired;
 static float yawRateDesired;
 static float AltitudeDesired;
-static float ERD,EPD;
+static float ERD_app,EPD_app;
 
 // stateMachine variables
 
@@ -303,7 +303,8 @@ void processJoy()
 		}
 		if (State_Joy & 8)
 		{
-			yawRateDesired=-25;
+			// correction disturbance
+			yawRateDesired=-35;//-25*1.5;
 			eulerYawDesired=eulerYawActual;
 		}
 		if (State_Joy & 16)
@@ -311,12 +312,10 @@ void processJoy()
 			//STATE_MACHINE=FLYING;
 		}
 
-		float Yawrad = 0*eulerYawActual*(M_PI_F / 180.0f);
-		float appED=cosf(Yawrad)*eulerRollDesired-sinf(Yawrad)*eulerPitchDesired;
-		float appEP=sinf(Yawrad)*eulerRollDesired+cosf(Yawrad)*eulerPitchDesired;
+		float Yawrad = eulerYawActual*(M_PI_F / 180.0f);
+		ERD_app=cosf(Yawrad)*eulerRollDesired-sinf(Yawrad)*eulerPitchDesired;
+		EPD_app=+sinf(Yawrad)*eulerRollDesired+cosf(Yawrad)*eulerPitchDesired;
 
-		eulerRollDesired=appED;
-		eulerPitchDesired = appEP;
 	}
 
 }
@@ -392,7 +391,7 @@ static void stabilizerTask(void* param)
 
 			//start_dist_obs(&AC);
       compute_AC(&AC,eulerRollActual,eulerPitchActual,eulerYawActual,
-                        eulerRollDesired,eulerPitchDesired,eulerYawDesired,yawRateDesired,
+    		  ERD_app,EPD_app,eulerYawDesired,yawRateDesired,
 						SENSORS.gyro.x, SENSORS.gyro.y, SENSORS.gyro.z);
 
 			if (crtpIsConnected())

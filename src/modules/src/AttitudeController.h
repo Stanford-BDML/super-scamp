@@ -233,7 +233,7 @@ void set_AC(struct AttitudeController* AC)
 
 	AC->KP[0]=300;
 	AC->KP[1]=300;
-	AC->KP[2]=10001;
+	AC->KP[2]=60000;
 
 	AC->KV[0]=50;
 	AC->KV[1]=50;
