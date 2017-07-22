@@ -226,22 +226,28 @@ struct AttitudeController
 void set_AC(struct AttitudeController* AC)
 {
 
-	AC->Length = 0.1; // Kg
+	AC->Length = 0.145*0.5; // Kg
 	AC->FMotorMax = 0.980665; // N
 
 	AC->SAT=(2*AC->Length*AC->FMotorMax)/(float)4.0; // Nm
 
 	AC->KP[0]=300;
 	AC->KP[1]=300;
-	AC->KP[2]=2000;
+	AC->KP[2]=10001;
 
 	AC->KV[0]=50;
 	AC->KV[1]=50;
 	AC->KV[2]=30000;
 
+	// Inertia crazyflie
 	AC->Inertia[0]=0.00002;
 	AC->Inertia[1]=0.00002;
 	AC->Inertia[2]=0.0000323;
+
+	AC->Inertia[0]=0.0002;
+	AC->Inertia[1]=0.0002;
+	AC->Inertia[2]=0.0001;
+
 
 	AC->FREQ=RATE_500_HZ;
 	AC->Pole[0]=3;
@@ -409,7 +415,7 @@ void set_HC(struct HeightController* HC)
 	HC->SAT=10000;
 
 	HC->G=9.80665;
-	HC->Mass=207*0.001;
+	HC->Mass=150*0.001;
 	HC->ForceHeight=0.0;
 	HC->isInit=true;
 	HC->Landed=true;
@@ -425,8 +431,8 @@ void compute_HC(struct HeightController* HC,float HeigthActual,float HeigthDesir
 	float error,sigma,coeff;
 
 	//sigma=0.05;
-	HC->KP=8;
-	HC->KV=4;
+	HC->KP=10;
+	HC->KV=6;
 	uint64_t TimeZ;
 	float appT;
 
@@ -556,6 +562,12 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 	motorsSetRatio(MOTOR_M2, motorPowerM2);
 	motorsSetRatio(MOTOR_M3, motorPowerM3);
 	motorsSetRatio(MOTOR_M4, motorPowerM4);
+
+	/*motorsSetRatio(MOTOR_M1, 10000);
+	motorsSetRatio(MOTOR_M2, 10000);
+	motorsSetRatio(MOTOR_M3, 10000);
+	motorsSetRatio(MOTOR_M4, 10000);*/
+
 
 	// update
 	CONTROL->thrust= apptrust;

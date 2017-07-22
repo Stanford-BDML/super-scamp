@@ -29,9 +29,10 @@ stabilizer.o: src/modules/src/stabilizer.c \
  src/lib/FreeRTOS/include/list.h src/modules/interface/estimator_kalman.h \
  src/modules/interface/stabilizer_types.h src/hal/interface/imu_types.h \
  src/config/config.h src/modules/interface/system.h \
- src/modules/interface/stabilizer.h src/modules/interface/commander.h \
- src/modules/interface/sensfusion6.h src/hal/interface/sensors.h \
- src/modules/interface/stabilizer_types.h src/modules/interface/crtp.h \
+ src/modules/interface/stabilizer.h src/deck/drivers/interface/vl53l0x.h \
+ src/modules/interface/stabilizer_types.h src/deck/interface/deck_core.h \
+ src/modules/interface/commander.h src/modules/interface/sensfusion6.h \
+ src/hal/interface/sensors.h src/modules/interface/crtp.h \
  src/modules/interface/position_estimator.h src/modules/interface/log.h \
  src/hal/interface/ledseq.h src/drivers/interface/led.h \
  src/modules/interface/param.h src/utils/interface/debug.h \
@@ -162,13 +163,17 @@ src/modules/interface/system.h:
 
 src/modules/interface/stabilizer.h:
 
+src/deck/drivers/interface/vl53l0x.h:
+
+src/modules/interface/stabilizer_types.h:
+
+src/deck/interface/deck_core.h:
+
 src/modules/interface/commander.h:
 
 src/modules/interface/sensfusion6.h:
 
 src/hal/interface/sensors.h:
-
-src/modules/interface/stabilizer_types.h:
 
 src/modules/interface/crtp.h:
 

@@ -33,7 +33,7 @@
 #include "system.h"
 
 #include "stabilizer.h"
-//#include "vl53l0x.h"
+#include "vl53l0x.h"
 #include "commander.h"
 //#include "controller.h"
 #include "sensfusion6.h"
@@ -312,9 +312,11 @@ void processJoy()
 		}
 
 		float Yawrad = 0*eulerYawActual*(M_PI_F / 180.0f);
-		eulerRollDesired=cosf(Yawrad)*ERD+sinf(Yawrad)*EPD;
-		eulerPitchDesired=-sinf(Yawrad)*ERD+cosf(Yawrad)*EPD;
+		float appED=cosf(Yawrad)*eulerRollDesired-sinf(Yawrad)*eulerPitchDesired;
+		float appEP=sinf(Yawrad)*eulerRollDesired+cosf(Yawrad)*eulerPitchDesired;
 
+		eulerRollDesired=appED;
+		eulerPitchDesired = appEP;
 	}
 
 }
@@ -380,14 +382,14 @@ static void stabilizerTask(void* param)
 
 		if (Controller)
 		{
-			/*if(!vl53l0xTestConnection())
+			if(!vl53l0xTestConnection())
 				motorSafe(&HC);
 			else
 			{
 				Zsensor=vl53l0xReadRange2(&ZRANGE_STAB);
 				compute_HC(&HC,ZRANGE_STAB.distance,AltitudeDesired,getVelocityPE(),Zsensor);
 			}
-			*/
+
 			//start_dist_obs(&AC);
       compute_AC(&AC,eulerRollActual,eulerPitchActual,eulerYawActual,
                         eulerRollDesired,eulerPitchDesired,eulerYawDesired,yawRateDesired,
