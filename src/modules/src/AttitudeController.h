@@ -141,7 +141,7 @@ void setFilter(struct Filter* F,float f,float p)
 	// Cambio di function
 	//F->coeff_den=exp(-p/f);
 	F->coeff_den=fastPow(Nepero_inv,p/f);
-	F->coeff_den=0.999;
+	F->coeff_den=0.9985;
 	F->coeff_num=1-F->coeff_den;
 }
 
@@ -240,12 +240,12 @@ void set_AC(struct AttitudeController* AC)
 	AC->KV[2]=30000;
 
 	// Inertia crazyflie
-	AC->Inertia[0]=0.00002;
+	/*AC->Inertia[0]=0.00002;
 	AC->Inertia[1]=0.00002;
-	AC->Inertia[2]=0.0000323;
+	AC->Inertia[2]=0.0000323;*/
 
-	AC->Inertia[0]=0.0002;
-	AC->Inertia[1]=0.0002;
+	AC->Inertia[0]=0.00019;
+	AC->Inertia[1]=0.00019;
 	AC->Inertia[2]=0.0001;
 
 
@@ -460,7 +460,7 @@ void compute_HC(struct HeightController* HC,float HeigthActual,float HeigthDesir
 
 void motorSafe(struct HeightController* HC)
 {
-	HC->ForceHeight=HC->Mass*HC->G*0.8f;
+	HC->ForceHeight=HC->Mass*HC->G*0.2f;
 }
 
 void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,float eulerRollActual,float eulerPitchActual,control_t* CONTROL)
@@ -586,6 +586,21 @@ void turnOFFMotor()
 	motorsSetRatio(MOTOR_M4, 0);
 }
 
+void setRatioMotor(float ratioM,float T)
+{
+	uint32_t Ratio;
+	uint32_t Torque;
+	Ratio=(int)ratioM*65535;
+	Torque=(int)T*65535;
+
+	Ratio=30000;
+	Torque=0;
+
+	motorsSetRatio(MOTOR_M1, (Ratio+Torque));
+	motorsSetRatio(MOTOR_M2, (Ratio-Torque));
+	motorsSetRatio(MOTOR_M3, (Ratio-Torque));
+	motorsSetRatio(MOTOR_M4, (Ratio+Torque));
+}
 
 
 
