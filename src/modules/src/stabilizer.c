@@ -326,7 +326,20 @@ void processJoy()
 			STATE_MACHINE=FLYING;
 		}
 
+	}
+	if (STATE_MACHINE==CLIMBING)
+	{
 
+		if (State_Joy & 32)
+		{
+			STATE_MACHINE=LANDED;
+		}
+
+	}
+
+	if (State_Joy & 64)
+	{
+		STATE_MACHINE=LANDED;
 	}
 
 
@@ -381,6 +394,8 @@ static void stabilizerTask(void* param)
 				Controller=false;
 				reset_dist_obs(&AC);
 				turnOFFMotor();
+				AltitudeDesired=0;
+
 
 				if (State_Joy & 16)
 					STATE_MACHINE=FLYING;
@@ -410,7 +425,7 @@ static void stabilizerTask(void* param)
 				reset_dist_obs(&AC);
 
 
-				if (perching_timer<750)
+				if (perching_timer<1250)
 				{
 					ERD_app=0;
 					EPD_app=-35;
@@ -432,7 +447,7 @@ static void stabilizerTask(void* param)
 				Controller=false;
 				reset_dist_obs(&AC);
 
-				if(SENSORS.acc.x > -0.5f)
+				if(SENSORS.acc.x > -0.9f)
 					setRatioMotor(0.1,0);
 				else
 					turnOFFMotor();

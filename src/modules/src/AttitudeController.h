@@ -141,7 +141,7 @@ void setFilter(struct Filter* F,float f,float p)
 	// Cambio di function
 	//F->coeff_den=exp(-p/f);
 	F->coeff_den=fastPow(Nepero_inv,p/f);
-	F->coeff_den=0.9985;
+	F->coeff_den=0.998;
 	F->coeff_num=1-F->coeff_den;
 }
 
@@ -244,8 +244,8 @@ void set_AC(struct AttitudeController* AC)
 	AC->Inertia[1]=0.00002;
 	AC->Inertia[2]=0.0000323;*/
 
-	AC->Inertia[0]=0.00019;
-	AC->Inertia[1]=0.00019;
+	AC->Inertia[0]=0.0002;
+	AC->Inertia[1]=0.0002;
 	AC->Inertia[2]=0.0001;
 
 
@@ -593,7 +593,7 @@ void setRatioMotor(float ratioM,float T)
 	Ratio=(int)ratioM*65535;
 	Torque=(int)T*65535;
 
-	Ratio=30000;
+	Ratio=50000;
 	Torque=0;
 
 	motorsSetRatio(MOTOR_M1, (Ratio+Torque));
