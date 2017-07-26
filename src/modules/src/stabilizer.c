@@ -232,27 +232,6 @@ void stabilizerInit(void)
   pitchRateDesired = 0;
   yawRateDesired = 0;
 
-  float appOC[SIZE_DF];
-  float appIC[SIZE_DF];
-
-  // Tuning of the roll
-
-  appIC[0]= 0.992207063708049;
-  appIC[1]= -1.98049833943193;
-  appIC[2]= 0.992207063708049;
-
-  appOC[0]=0;
-  appOC[1]= 1.98049833943193;
-  appOC[2]= -0.984414127416097;
-
-
-
-  for (int j=0;j<2;j++)
-  {
-    reset_DF(&FilGyro[j]);
-    set_coeff_DF(&FilGyro[j],appIC,appOC);
-  }
-
 
   xTaskCreate(stabilizerTask, STABILIZER_TASK_NAME,
                 STABILIZER_TASK_STACKSIZE, NULL, STABILIZER_TASK_PRI, NULL);
@@ -313,7 +292,7 @@ void processJoy()
 			STATE_MACHINE=TOWARDS_WALL;
 		}
 
-		float Yawrad = eulerYawActual*(M_PI_F / 180.0f);
+		float Yawrad = 0*eulerYawActual*(M_PI_F / 180.0f);
 		ERD_app=cosf(Yawrad)*eulerRollDesired-sinf(Yawrad)*eulerPitchDesired;
 		EPD_app=+sinf(Yawrad)*eulerRollDesired+cosf(Yawrad)*eulerPitchDesired;
 

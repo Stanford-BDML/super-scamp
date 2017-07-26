@@ -26,6 +26,27 @@
 #define SIZE_DF 3
 
 
+uint32_t motorPowerM4;
+uint32_t motorPowerM2;
+uint32_t motorPowerM1;
+uint32_t motorPowerM3;
+
+
+static uint16_t limitThrust(int32_t value)
+{
+  if(value > UINT16_MAX)
+  {
+    value = UINT16_MAX;
+  }
+  else if(value < 0)
+  {
+    value = 0;
+  }
+
+  return (uint16_t)value;
+}
+
+
 struct DigitalFilter
 {
 	float INdelays[SIZE_DF];
@@ -90,89 +111,27 @@ float compute_DF(struct DigitalFilter* DF,float IN)
 }
 
 
-uint32_t motorPowerM4;
-uint32_t motorPowerM2;
-uint32_t motorPowerM1;
-uint32_t motorPowerM3;
-
-const float Nepero_inv = 0.367879441171;
-
-float fastPow(float a, float b) {
-  union {
-    float d;
-    int x[2];
-  } u = { a };
-  u.x[1] = (int)(b * (u.x[1] - 1072632447) + 1072632447);
-  u.x[0] = 0;
-  return u.d;
-}
-
-static uint16_t limitThrust(int32_t value)
-{
-  if(value > UINT16_MAX)
-  {
-    value = UINT16_MAX;
-  }
-  else if(value < 0)
-  {
-    value = 0;
-  }
-
-  return (uint16_t)value;
-}
-
-struct Filter_new
-{
-	float X;
-	float coeff_den;
-	float coeff_num;
-};
-
-struct Filter
-{
-	float X;
-	float coeff_den;
-	float coeff_num;
-};
-
-void setFilter(struct Filter* F,float f,float p)
-{
-	F->X=0;
-	// Cambio di function
-	//F->coeff_den=exp(-p/f);
-	F->coeff_den=fastPow(Nepero_inv,p/f);
-	F->coeff_den=0.998;
-	F->coeff_num=1-F->coeff_den;
-}
-
-float computeFilter(struct Filter* F,float Inp)
-{
-	F->X=F->coeff_den*F->X+F->coeff_num*Inp;
-	return F->X;
-}
-
-
-
 struct DistanceObserver
 {
 	float prev_act_T;
 	float prevw;
 	float SAT;
 	float Inertia;
-	struct Filter FIL;
+	struct DigitalFilter DFIL;
 	float FREQ;
 
 };
 
 
-void set_DO(struct DistanceObserver* DO,float I,float S,float p,float f)
+void set_DO(struct DistanceObserver* DO,float I,float S,float f,float* IC,float* OC)
 {
 		DO->SAT=S;
 		DO->Inertia=I*1.0f;
 		DO->prev_act_T=0;
 		DO->prevw=0;
 		DO->FREQ=f;
-		setFilter(&DO->FIL,p,DO->FREQ);
+		reset_DF(&DO->DFIL);
+		set_coeff_DF(&DO->DFIL,IC,OC);
 
 }
 
@@ -183,7 +142,7 @@ float compute_DO(struct DistanceObserver* DO,float w,float tau_c)
 
 		appT=0.05f*DO->Inertia*w+(DO->Inertia*((w-DO->prevw)*DO->FREQ))-DO->prev_act_T;
 		//appT=(DO->Inertia*((w-DO->prevw)*DO->FREQ))-DO->prev_act_T;
-		appT=computeFilter(&(DO->FIL),appT);
+		appT=compute_DF(&(DO->DFIL),appT);
 
 		DO->prevw=w;
 
@@ -231,12 +190,17 @@ void set_AC(struct AttitudeController* AC)
 
 	AC->SAT=(2*AC->Length*AC->FMotorMax)/(float)4.0; // Nm
 
-	AC->KP[0]=300;
+	AC->KP[0]=250;
 	AC->KP[1]=300;
+
+	AC->KP[1]=120;
+
+
 	AC->KP[2]=60000;
 
 	AC->KV[0]=50;
 	AC->KV[1]=50;
+
 	AC->KV[2]=30000;
 
 	// Inertia crazyflie
@@ -244,15 +208,12 @@ void set_AC(struct AttitudeController* AC)
 	AC->Inertia[1]=0.00002;
 	AC->Inertia[2]=0.0000323;*/
 
-	AC->Inertia[0]=0.0002;
+	AC->Inertia[0]=0.00008;
 	AC->Inertia[1]=0.0002;
 	AC->Inertia[2]=0.0001;
 
 
 	AC->FREQ=RATE_500_HZ;
-	AC->Pole[0]=3;
-	AC->Pole[1]=3;
-	AC->Pole[2]=30;
 
 	AC->isInit=true;
 
@@ -262,9 +223,33 @@ void set_AC(struct AttitudeController* AC)
 	AC->PrevRPY[1]=0;
 	AC->PrevRPY[2]=0;
 
-	set_DO(&(AC->DO[0]),AC->Inertia[0],AC->SAT,AC->Pole[0],AC->FREQ);
-	set_DO(&(AC->DO[1]),AC->Inertia[1],AC->SAT,AC->Pole[1],AC->FREQ);
-	set_DO(&(AC->DO[2]),AC->Inertia[2],AC->SAT,AC->Pole[2],AC->FREQ);
+
+	float appOC[SIZE_DF];
+	float appIC[SIZE_DF];
+
+
+	appIC[0]= 0;
+	appIC[1]= 0*0.00114541764400166;
+	appIC[2]= 0*0.00110767017305206;
+
+	appOC[0]=0;
+	appOC[1]= 0*1.90210402082127;
+	appOC[2]= 0*-0.904357108638321;
+
+
+	set_DO(&(AC->DO[0]),AC->Inertia[0],AC->SAT,AC->FREQ,appIC,appOC);
+
+
+	appIC[0]= 0;
+	appIC[1]= 0.00114541764400166;
+	appIC[2]= 0.00110767017305206;
+
+	appOC[0]=0;
+	appOC[1]= 1.90210402082127;
+	appOC[2]= -0.904357108638321;
+
+	set_DO(&(AC->DO[1]),AC->Inertia[1],AC->SAT,AC->FREQ,appIC,appOC);
+
 
 }
 
@@ -277,9 +262,11 @@ void start_dist_obs(struct AttitudeController* AC)
 void reset_dist_obs(struct AttitudeController* AC)
 {
 	AC->Landed=true;
-	AC->DO[0].FIL.X=0;
+
+	// Valutare
+	/*AC->DO[0].FIL.X=0;
 	AC->DO[1].FIL.X=0;
-	AC->DO[2].FIL.X=0;
+	AC->DO[2].FIL.X=0;*/
 
 }
 
