@@ -141,7 +141,7 @@ void setFilter(struct Filter* F,float f,float p)
 	// Cambio di function
 	//F->coeff_den=exp(-p/f);
 	F->coeff_den=fastPow(Nepero_inv,p/f);
-	F->coeff_den=0.999;
+	F->coeff_den=0.99;
 	F->coeff_num=1-F->coeff_den;
 }
 
@@ -224,7 +224,7 @@ struct AttitudeController
 void set_AC(struct AttitudeController* AC)
 {
 
-	AC->SAT=0.0093*0.5*1;
+	AC->SAT=0.0093*0.5;
 
 	AC->KP[0]=300;
 	AC->KP[1]=300;
@@ -232,9 +232,9 @@ void set_AC(struct AttitudeController* AC)
 
 	AC->KV[0]=50;
 	AC->KV[1]=50;
-	AC->KV[2]=30000;
+	AC->KV[2]=3000;
 
-	AC->Inertia[0]=0.00002;
+	AC->Inertia[0]=0.000015;
 	AC->Inertia[1]=0.00002;
 	AC->Inertia[2]=0.0000323;
 
@@ -404,8 +404,8 @@ void set_HC(struct HeightController* HC)
 	HC->SAT=10000;
 
 	HC->G=9.80665;
-	//HC->Mass=45*0.001;
-	HC->Mass=30*0.001;
+	HC->Mass=42*0.001;
+	//HC->Mass=30*0.001;
 	HC->ForceHeight=0.0;
 	HC->isInit=true;
 	HC->Landed=true;
@@ -510,6 +510,7 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 	{
 		app_yaw=M1-65535;
 	}
+	
 	if(M1-app_yaw<0)
 	{
 		app_yaw=M1;
@@ -519,6 +520,7 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 	{
 		app_yaw=M3-65535;
 	}
+	
 	if(M3-app_yaw<0)
 	{
 		app_yaw=M3;
@@ -576,6 +578,21 @@ void turnOFFMotor()
 }
 
 
+void setRatioMotor(float ratioM,float T)
+{
+	uint32_t Ratio;
+	uint32_t Torque;
+	Ratio=(int)ratioM*65535;
+	Torque=(int)T*65535;
+
+	Ratio=50000;
+	Torque=0;
+
+	motorsSetRatio(MOTOR_M1, (Ratio+Torque));
+	motorsSetRatio(MOTOR_M2, (Ratio-Torque));
+	motorsSetRatio(MOTOR_M3, (Ratio-Torque));
+	motorsSetRatio(MOTOR_M4, (Ratio+Torque));
+}
 
 
 LOG_GROUP_START(motor)

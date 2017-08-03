@@ -91,12 +91,13 @@ static float rollRateDesired;
 static float pitchRateDesired;
 static float yawRateDesired;
 static float AltitudeDesired;
-static float ERD,EPD;
+static float ERD_app,EPD_app;
 
 // stateMachine variables
 
 static uint16_t STATE_MACHINE = LANDED; // FLYING; //
 static uint16_t perching_timer = 0;
+static uint16_t perching_attached_timer = 0;
 static uint16_t reattaching_timer = 0;
 static uint16_t recovering_timer = 0;
 static uint16_t returningtoflight_timer = 0;
@@ -281,6 +282,8 @@ static sensorData_t SENSORS;
 static control_t CONTROL;
 
 static uint8_t State_Joy;
+
+
 void processJoy()
 {
 	if (STATE_MACHINE==FLYING)
@@ -303,17 +306,48 @@ void processJoy()
 		}
 		if (State_Joy & 8)
 		{
-			yawRateDesired=-25;
+			// correction disturbance
+			yawRateDesired=-35;//-25*1.5;
 			eulerYawDesired=eulerYawActual;
 		}
+		if (State_Joy & 32)
+		{
+			STATE_MACHINE=TOWARDS_WALL;
+		}
 
-		//float Yawrad = 0*eulerYawActual*(M_PI_F / 180.0f);
-		//eulerRollDesired=10*(cosf(Yawrad)*ERD+sinf(Yawrad)*EPD);
-		//eulerPitchDesired=10*(-sinf(Yawrad)*ERD+cosf(Yawrad)*EPD);
+		float Yawrad = 0*eulerYawActual*(M_PI_F / 180.0f);
+		ERD_app=cosf(Yawrad)*eulerRollDesired-sinf(Yawrad)*eulerPitchDesired;
+		EPD_app=+sinf(Yawrad)*eulerRollDesired+cosf(Yawrad)*eulerPitchDesired;
+
+	}
+	if (STATE_MACHINE==TOWARDS_WALL)
+	{
+
+		if (State_Joy & 16)
+		{
+			STATE_MACHINE=FLYING;
+		}
+
+	}
+	if (STATE_MACHINE==CLIMBING)
+	{
+
+		if (State_Joy & 32)
+		{
+			STATE_MACHINE=LANDED;
+		}
 
 	}
 
+	if (State_Joy & 64)
+	{
+		STATE_MACHINE=LANDED;
+	}
+
+
 }
+
+
 
 static void stabilizerTask(void* param)
 {
@@ -321,6 +355,7 @@ static void stabilizerTask(void* param)
   uint32_t altHoldCounter = 0;
   uint32_t lastWakeTime;
   float dt_loop=1/(float)RATE_500_HZ;
+  float normG;
   bool Zsensor=false;
 
   eulerRollDesired = 0;
@@ -353,6 +388,8 @@ static void stabilizerTask(void* param)
 		accWZ = sensfusion6GetAccZWithoutGravity(SENSORS.acc.x, SENSORS.acc.y, SENSORS.acc.z);
 		positionUpdateVelocity(accWZ,dt_loop);
 
+		//normG = sqrt(SENSORS.acc.x*SENSORS.acc.x + SENSORS.acc.y*SENSORS.acc.y +SENSORS.acc.z*SENSORS.acc.z);
+
 		processJoy();
 
 		switch(STATE_MACHINE)
@@ -360,8 +397,13 @@ static void stabilizerTask(void* param)
 			case LANDED:
 				Controller=false;
 				reset_dist_obs(&AC);
+				turnOFFMotor();
+				AltitudeDesired=0;
+
+
 				if (State_Joy & 16)
 					STATE_MACHINE=FLYING;
+
 				break;
 
 			case FLYING:
@@ -369,6 +411,53 @@ static void stabilizerTask(void* param)
 				if (AltitudeDesired==-1)
 					STATE_MACHINE=LANDED;
 				break;
+			case TOWARDS_WALL:
+
+					if(SENSORS.acc.x<-1.5f)
+					{
+						STATE_MACHINE = PERCHING;
+						perching_timer = 0;
+						perching_attached_timer=0;
+					}
+					 ERD_app=0;
+					 EPD_app=6;
+					 Controller=true;
+			    	break;
+			case PERCHING:
+				perching_timer++;
+				Controller=true;
+				reset_dist_obs(&AC);
+
+
+				if (perching_timer<1250)
+				{
+					ERD_app=0;
+					EPD_app=35;
+				}
+				else
+					STATE_MACHINE=LANDED;
+
+
+				if (SENSORS.acc.x<-0.6f)
+					perching_attached_timer++;
+				else
+					perching_attached_timer=0;
+
+				if (perching_attached_timer>100)
+					STATE_MACHINE=CLIMBING;
+				break;
+
+			case CLIMBING:
+				Controller=false;
+				reset_dist_obs(&AC);
+
+				if(SENSORS.acc.x > -0.9f)
+					setRatioMotor(0.1,0);
+				else
+					turnOFFMotor();
+				break;
+
+
 
 			default:
 				break;
@@ -383,9 +472,10 @@ static void stabilizerTask(void* param)
 				Zsensor=vl53l0xReadRange2(&ZRANGE_STAB);
 				compute_HC(&HC,ZRANGE_STAB.distance,AltitudeDesired,getVelocityPE(),Zsensor);
 			}
+
 			start_dist_obs(&AC);
-      compute_AC(&AC,eulerRollActual,eulerPitchActual,eulerYawActual,
-                        eulerRollDesired,eulerPitchDesired,eulerYawDesired,yawRateDesired,
+			compute_AC(&AC,eulerRollActual,eulerPitchActual,eulerYawActual,
+    		  ERD_app,EPD_app,eulerYawDesired,yawRateDesired,
 						SENSORS.gyro.x, SENSORS.gyro.y, SENSORS.gyro.z);
 
 			if (crtpIsConnected())
@@ -396,9 +486,6 @@ static void stabilizerTask(void* param)
 				ActuateMotor(&AC,&HC,STATE.attitude.roll,STATE.attitude.pitch,&CONTROL);
 			}
 		}
-		else
-			turnOFFMotor();
-
 
 
 
@@ -618,6 +705,7 @@ static void stabilizerTask(void* param)
 
   }
 }
+
 
 /*
 LOG_GROUP_START(stabilizer)
