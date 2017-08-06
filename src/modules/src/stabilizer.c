@@ -315,7 +315,7 @@ void processJoy()
 			STATE_MACHINE=TOWARDS_WALL;
 		}
 
-		float Yawrad = 0*eulerYawActual*(M_PI_F / 180.0f);
+		float Yawrad = eulerYawActual*(M_PI_F / 180.0f);
 		ERD_app=cosf(Yawrad)*eulerRollDesired-sinf(Yawrad)*eulerPitchDesired;
 		EPD_app=+sinf(Yawrad)*eulerRollDesired+cosf(Yawrad)*eulerPitchDesired;
 
@@ -391,6 +391,7 @@ static void stabilizerTask(void* param)
 		//normG = sqrt(SENSORS.acc.x*SENSORS.acc.x + SENSORS.acc.y*SENSORS.acc.y +SENSORS.acc.z*SENSORS.acc.z);
 
 		processJoy();
+		
 
 		switch(STATE_MACHINE)
 		{
@@ -412,33 +413,35 @@ static void stabilizerTask(void* param)
 					STATE_MACHINE=LANDED;
 				break;
 			case TOWARDS_WALL:
-
-					if(SENSORS.acc.x<-1.5f)
+					//normG=SENSORS.acc.x*SENSORS.acc.x+SENSORS.acc.y*SENSORS.acc.y+SENSORS.acc.z*SENSORS.acc.z; 
+					if((SENSORS.acc.x>0.5f))//&&(normG>1.25f))
 					{
 						STATE_MACHINE = PERCHING;
 						perching_timer = 0;
 						perching_attached_timer=0;
 					}
 					 ERD_app=0;
-					 EPD_app=6;
+					 EPD_app=1;
 					 Controller=true;
 			    	break;
 			case PERCHING:
 				perching_timer++;
 				Controller=true;
 				reset_dist_obs(&AC);
-
+				
+				AC.KP[2]=50000*4;
+				
 
 				if (perching_timer<1250)
 				{
 					ERD_app=0;
-					EPD_app=35;
+					EPD_app=45;
 				}
 				else
 					STATE_MACHINE=LANDED;
 
 
-				if (SENSORS.acc.x<-0.6f)
+				if (SENSORS.acc.x>0.6f)
 					perching_attached_timer++;
 				else
 					perching_attached_timer=0;
@@ -451,7 +454,7 @@ static void stabilizerTask(void* param)
 				Controller=false;
 				reset_dist_obs(&AC);
 
-				if(SENSORS.acc.x > -0.9f)
+				if(SENSORS.acc.x < 0.85f)
 					setRatioMotor(0.1,0);
 				else
 					turnOFFMotor();

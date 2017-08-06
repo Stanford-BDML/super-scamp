@@ -141,7 +141,7 @@ void setFilter(struct Filter* F,float f,float p)
 	// Cambio di function
 	//F->coeff_den=exp(-p/f);
 	F->coeff_den=fastPow(Nepero_inv,p/f);
-	F->coeff_den=0.99;
+	F->coeff_den=p;
 	F->coeff_num=1-F->coeff_den;
 }
 
@@ -172,7 +172,7 @@ void set_DO(struct DistanceObserver* DO,float I,float S,float p,float f)
 		DO->prev_act_T=0;
 		DO->prevw=0;
 		DO->FREQ=f;
-		setFilter(&DO->FIL,p,DO->FREQ);
+		setFilter(&DO->FIL,DO->FREQ,p);
 
 }
 
@@ -224,24 +224,24 @@ struct AttitudeController
 void set_AC(struct AttitudeController* AC)
 {
 
-	AC->SAT=0.0093*0.5;
+	AC->SAT=0.0093*0.5*0.5;
 
-	AC->KP[0]=300;
-	AC->KP[1]=300;
-	AC->KP[2]=2000;
+	AC->KP[0]=15*20;
+	AC->KP[1]=15*20;
+	AC->KP[2]=50000;
 
-	AC->KV[0]=50;
-	AC->KV[1]=50;
-	AC->KV[2]=3000;
+	AC->KV[0]=35;
+	AC->KV[1]=35;
+	AC->KV[2]=10000;
 
-	AC->Inertia[0]=0.000015;
-	AC->Inertia[1]=0.00002;
+	AC->Inertia[0]=0.000025;
+	AC->Inertia[1]=0.00004;
 	AC->Inertia[2]=0.0000323;
 
 	AC->FREQ=RATE_500_HZ;
-	AC->Pole[0]=3;
-	AC->Pole[1]=3;
-	AC->Pole[2]=30;
+	AC->Pole[0]=0.999;
+	AC->Pole[1]=0.999;
+	AC->Pole[2]=0.999;
 
 	AC->isInit=true;
 
@@ -485,13 +485,13 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 	satRP=abs(app_roll)+abs(app_pitch);
 	if (apptrust<satRP)
 	{
-		apptrust=satRP;
+		//apptrust=satRP;
 		sat=true;
 	}
 
 	if (apptrust+satRP>(65535))
 	{
-		apptrust=(65535-satRP);
+		//apptrust=(65535-satRP);
 		sat=true;
 	}
 
@@ -543,11 +543,16 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 	{
 		app_yaw=-M4;
 	}
-
-		M1=(int32_t)(M1 - app_yaw);
-		M2=(int32_t)(M2 + app_yaw);
-		M3=(int32_t)(M3 - app_yaw);
-		M4=(int32_t)(M4 + app_yaw);
+	
+	if (app_yaw>12553)
+		app_yaw=12553;
+	if (app_yaw<-12553)
+		app_yaw=-12553;
+		
+	M1=(int32_t)(M1 - app_yaw);
+	M2=(int32_t)(M2 + app_yaw);
+	M3=(int32_t)(M3 - app_yaw);
+	M4=(int32_t)(M4 + app_yaw);
 	}
 
 	motorPowerM1 = limitThrust(M1);
