@@ -422,7 +422,7 @@ void compute_HC(struct HeightController* HC,float HeigthActual,float HeigthDesir
 
 	//sigma=0.05;
 	HC->KP=8;
-	HC->KV=4;
+	HC->KV=8;
 	uint64_t TimeZ;
 	float appT;
 
