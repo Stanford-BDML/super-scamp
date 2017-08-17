@@ -485,13 +485,13 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 	satRP=abs(app_roll)+abs(app_pitch);
 	if (apptrust<satRP)
 	{
-		//apptrust=satRP;
+		apptrust=satRP;
 		sat=true;
 	}
 
 	if (apptrust+satRP>(65535))
 	{
-		//apptrust=(65535-satRP);
+		apptrust=(65535-satRP);
 		sat=true;
 	}
 
@@ -590,13 +590,102 @@ void setRatioMotor(float ratioM,float T)
 	Ratio=(int)ratioM*65535;
 	Torque=(int)T*65535;
 
-	Ratio=50000;
+	Ratio=65535;
 	Torque=0;
 
 	motorsSetRatio(MOTOR_M1, (Ratio+Torque));
 	motorsSetRatio(MOTOR_M2, (Ratio-Torque));
 	motorsSetRatio(MOTOR_M3, (Ratio-Torque));
 	motorsSetRatio(MOTOR_M4, (Ratio+Torque));
+}
+
+static float prevRPYangle[2];
+void takingoff(float eulerRollActual,float eulerYawActual,float eulerYawDesired, float wx,float wy,float wz,float FREQ)
+{
+	float val,dRoll,dYaw;
+	val = M_PI_F / 180.0f;
+
+	eulerRollActual=eulerRollActual*val;
+	eulerYawActual=eulerYawActual*val;
+	eulerYawDesired=eulerYawDesired*val;
+
+	wx=wx*val;
+	wy=-wy*val;
+	wz=wz*val;
+
+
+	dRoll=(eulerRollActual-	prevRPYangle[0])*FREQ;
+	dYaw=(eulerYawActual - prevRPYangle[1])*FREQ;
+
+	
+	float tauRoll,tauYaw;
+	float KP=300;
+	float KV = 35;
+	float I = 0.000025;
+	float Length = 0.0651; 
+	float FMotorMax = 0.14709975;
+	float SAT=0.5f*Length*FMotorMax;
+
+	tauRoll=(-KP*eulerRollActual-KV*dRoll)*I;
+
+	float appSAT = 0.5f*SAT;
+	if (tauRoll>appSAT)
+		tauRoll=appSAT;
+	else
+		if (tauRoll<-appSAT)
+			tauRoll=-appSAT;
+
+	KP=100000;
+	KV = 10000;
+	I = 0.0000323;
+	tauYaw=(KP*(eulerYawDesired-eulerYawActual)-KV*dYaw)*I;
+
+	prevRPYangle[0]=eulerRollActual;
+	prevRPYangle[1]=eulerYawActual;
+
+	float FSR = 65535;
+	int32_t MPower[2];
+
+	float app,dutyYaw;
+	int32_t app_roll;
+
+	app=(tauRoll/(Length*FMotorMax))*FSR;
+	app_roll=(int32_t)(app);
+	
+	int32_t app_yaw;
+	dutyYaw=(tauYaw)*FSR;
+	app_yaw = (int32_t)(dutyYaw);
+
+	if (app_yaw>12553)
+		app_yaw=12553;
+	if (app_yaw<-12553)
+		app_yaw=-12553;
+
+   // New Configuration no priority
+   MPower[0]=(int32_t)(- app_roll + app_yaw);
+   MPower[1]=(int32_t)(+ app_roll - app_yaw);
+
+   int32_t Fz;
+
+   // find Minimum duty available
+   if (MPower[0]>=0)
+	   Fz = FSR - MPower[0];
+   else
+	   Fz = FSR - MPower[1];
+
+	MPower[0] = MPower[0] + Fz;
+	MPower[1] = MPower[1] + Fz;
+
+	motorPowerM1 = 30000;
+	motorPowerM2 = limitThrust(MPower[0]);
+	motorPowerM3 = limitThrust(MPower[1]);
+	motorPowerM4 = 30000;
+
+	motorsSetRatio(MOTOR_M1, motorPowerM1);
+	motorsSetRatio(MOTOR_M2, motorPowerM2);
+	motorsSetRatio(MOTOR_M3, motorPowerM3);
+	motorsSetRatio(MOTOR_M4, motorPowerM4);
+
 }
 
 

@@ -60,8 +60,9 @@ struct param_s {
 #define DECISION_STATE 0xA
 #define WIGGLE_SERVOS 0xB
 #define RETURNING_TO_FLIGHT 0xC
+#define PRE_CLIMBING 101
 #define LANDED 100
-
+#define TAKINGOFF 102
 
 
 #define PARAM_TYPE_INT   (0x00<<2)

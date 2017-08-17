@@ -172,11 +172,19 @@ static uint32_t next_takeoff_move = 0;
 static uint32_t wiggle_move;
 static uint32_t next_wiggle_move = 0;
 
-// limits
-static uint8_t left_foot_up = 60;
+// limits Monello 5 spine
+static uint8_t left_foot_up = 70;
 static uint8_t right_foot_up = 170;
-static uint8_t left_foot_in = 190;
+static uint8_t left_foot_in = 200;
+static uint8_t right_foot_in = 100;
+
+/*
+// Limits Monello 4 spine
+static uint8_t left_foot_up = 70;
+static uint8_t right_foot_up = 180;
+static uint8_t left_foot_in = 220;
 static uint8_t right_foot_in = 110;
+*/
 
 // takeoff limits
 static uint8_t mid_stroke;
@@ -229,8 +237,8 @@ static uint8_t gait_state = STAYING_NEUTRAL;
 static uint8_t next_gait_state = 0;
 
 // flying state variables
-uint8_t static_ratio1 = 0;
-uint8_t static_ratio2 = 0;
+uint8_t static_ratio1 = 200;
+uint8_t static_ratio2 = 200;
 static int state = FLYING;
 static int stateid;
 static int old_state = FLYING;
@@ -647,14 +655,23 @@ static void bypass(uint32_t counter)
 
 	switch (state)
 	{
+	case LANDED:
+		ratio_inout = 110;
+		ratio_updown = 140;
+		piezoSetRatio2(ratio_inout, ratio_updown);
+		break;
 	case FLYING:
-		ratio_inout = static_ratio1;
-		ratio_updown = static_ratio2;
+		ratio_inout = 110;
+		ratio_updown = 140;
 		piezoSetRatio2(ratio_inout, ratio_updown);
 		break;
 	case CLIMBING:
 		smart_gait(counter);
 		break;
+	case REATTACHING:
+		smart_gait(counter);
+		break;
+
 	case WIGGLE_SERVOS:
 		ratio_inout = left_foot_in;
 		ratio_updown = right_foot_up;
@@ -675,7 +692,8 @@ static void bypass(uint32_t counter)
 		static_ratio2 = ratio_updown;
 		break;
 	default:
-		piezoSetRatio2(0, 0);
+		break;
+		//piezoSetRatio2(0, 0);
 	}
 
 	old_state = state;

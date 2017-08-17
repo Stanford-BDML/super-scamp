@@ -329,21 +329,30 @@ void processJoy()
 		}
 
 	}
-	if (STATE_MACHINE==CLIMBING)
-	{
 
-		if (State_Joy & 32)
+	/*if (STATE_MACHINE==PRE_CLIMBING)
+	{
+		if (State_Joy & 128)
 		{
-			STATE_MACHINE=LANDED;
+			STATE_MACHINE=CLIMBING;
 		}
 
+	}*/
+
+	//if (STATE_MACHINE==CLIMBING)
+	//{
+	if (State_Joy & 128)
+	{
+		STATE_MACHINE=CLIMBING;
 	}
+		
+	//}
 
 	if (State_Joy & 64)
 	{
 		STATE_MACHINE=LANDED;
 	}
-
+	
 
 }
 
@@ -387,7 +396,7 @@ static void stabilizerTask(void* param)
 		sensfusion6GetEulerRPY(&eulerRollActual, &eulerPitchActual, &eulerYawActual);
 		accWZ = sensfusion6GetAccZWithoutGravity(SENSORS.acc.x, SENSORS.acc.y, SENSORS.acc.z);
 		positionUpdateVelocity(accWZ,dt_loop);
-
+		//float normG;
 		//normG = sqrt(SENSORS.acc.x*SENSORS.acc.x + SENSORS.acc.y*SENSORS.acc.y +SENSORS.acc.z*SENSORS.acc.z);
 
 		processJoy();
@@ -441,16 +450,16 @@ static void stabilizerTask(void* param)
 					STATE_MACHINE=LANDED;
 
 
-				if (SENSORS.acc.x>0.6f)
+				if (SENSORS.acc.x>0.7f)
 					perching_attached_timer++;
 				else
 					perching_attached_timer=0;
 
 				if (perching_attached_timer>100)
-					STATE_MACHINE=CLIMBING;
+					STATE_MACHINE=PRE_CLIMBING;
 				break;
 
-			case CLIMBING:
+			case PRE_CLIMBING:
 				Controller=false;
 				reset_dist_obs(&AC);
 
@@ -460,8 +469,47 @@ static void stabilizerTask(void* param)
 					turnOFFMotor();
 				break;
 
+			case CLIMBING:
+				Controller=false;
+				reset_dist_obs(&AC);
 
 
+				if((SENSORS.acc.x < 0.4f))
+				{
+					setRatioMotor(0.1,0);  // uncomment this line and disable the line below for recovery
+					//turnOFFMotor();
+				}
+				else
+					turnOFFMotor();
+					//STATE_MACHINE=REATTACHING;
+				break;
+
+			case REATTACHING:
+				Controller=false;
+				reset_dist_obs(&AC);
+				setRatioMotor(0.1,0);
+
+				if(SENSORS.acc.x > 0.7f)
+							STATE_MACHINE=CLIMBING;
+				break;
+
+
+
+			/*case TAKINGOFF:
+				Controller=false;
+				reset_dist_obs(&AC);
+				takingoff(eulerRollActual,eulerYawActual,eulerYawDesired,SENSORS.gyro.x, SENSORS.gyro.y, SENSORS.gyro.z,500);
+
+				if(eulerPitchActual < 0)
+				{	ERD_app=0;
+					EPD_app=-3;
+					eulerYawDesired = 0;
+					AltitudeDesired = 0.8;
+					reset_dist_obs(&AC);	
+					STATE_MACHINE=FLYING;
+				}
+				break;
+				*/
 			default:
 				break;
 		}
@@ -477,6 +525,7 @@ static void stabilizerTask(void* param)
 			}
 
 			start_dist_obs(&AC);
+			//reset_dist_obs(&AC);
 			compute_AC(&AC,eulerRollActual,eulerPitchActual,eulerYawActual,
     		  ERD_app,EPD_app,eulerYawDesired,yawRateDesired,
 						SENSORS.gyro.x, SENSORS.gyro.y, SENSORS.gyro.z);

@@ -44,14 +44,13 @@
  * \def MAXSONAR_ENABLED
  * Enable the MaxSonar driver (used by the proximity measurement subsystem).
  */
-#define MAXSONAR_ENABLED
+//#define MAXSONAR_ENABLED
 
 /**
  * \def MAXSONAR_DECK_GPIO
  * The GPIO pin to use if reading via the analog interface of a MaxSonar sensor.
  */
-#define MAXSONAR_DECK_GPIO DECK_GPIO_TX2
-
+#define MAXSONAR_DECK_GPIO DECK_GPIO_SCK
 /**
  * \def MAXSONAR_LOG_ENABLED
  * Uncomment to enable log variables for this driver.
