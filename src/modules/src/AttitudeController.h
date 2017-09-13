@@ -46,6 +46,38 @@ static uint16_t limitThrust(int32_t value)
   return (uint16_t)value;
 }
 
+static uint16_t limitThrust_2(int32_t value)
+{
+
+  int32_t FSR=32767;
+  if(value > UINT16_MAX)
+  {
+    value = UINT16_MAX;
+  }
+  else if(value < FSR)
+  {
+    value = FSR;
+  }
+
+  return (uint16_t)value;
+}
+
+static uint16_t limitThrust_3(int32_t value)
+{
+
+  int32_t FSR=32767;
+  if(value > FSR)
+  {
+    value = FSR;
+  }
+  else if(value < 0)
+  {
+    value = 0;
+  }
+
+  return (uint16_t)value;
+}
+
 
 struct DigitalFilter
 {
@@ -185,32 +217,33 @@ struct AttitudeController
 void set_AC(struct AttitudeController* AC)
 {
 
-	AC->Length = 0.145*0.5; // Kg
-	AC->FMotorMax = 0.980665; // N
+	AC->Length = 0.0605; // Kg
+	AC->FMotorMax = (0.980665)*0.95; // N
 
 	AC->SAT=(2*AC->Length*AC->FMotorMax)/(float)4.0; // Nm
+	AC->SAT=AC->SAT*0.4f; // Factor
 
-	AC->KP[0]=250;
-	AC->KP[1]=300;
+	AC->KP[0]=350;
+	//AC->KP[1]=300;
 
-	AC->KP[1]=120;
+	AC->KP[1]=350;
 
 
-	AC->KP[2]=60000;
+	AC->KP[2]=2400;
 
 	AC->KV[0]=50;
 	AC->KV[1]=50;
 
-	AC->KV[2]=30000;
+	AC->KV[2]=800;
 
 	// Inertia crazyflie
 	/*AC->Inertia[0]=0.00002;
 	AC->Inertia[1]=0.00002;
 	AC->Inertia[2]=0.0000323;*/
 
-	AC->Inertia[0]=0.00008;
-	AC->Inertia[1]=0.0002;
-	AC->Inertia[2]=0.0001;
+	AC->Inertia[0]=0.0002;
+	AC->Inertia[1]=0.00025;
+	AC->Inertia[2]=0.0002;
 
 
 	AC->FREQ=RATE_500_HZ;
@@ -241,12 +274,12 @@ void set_AC(struct AttitudeController* AC)
 
 
 	appIC[0]= 0;
-	appIC[1]= 0.00114541764400166;
-	appIC[2]= 0.00110767017305206;
+	appIC[1]= 0*0.00114541764400166;
+	appIC[2]= 0*0.00110767017305206;
 
 	appOC[0]=0;
-	appOC[1]= 1.90210402082127;
-	appOC[2]= -0.904357108638321;
+	appOC[1]= 0*1.90210402082127;
+	appOC[2]= 0*-0.904357108638321;
 
 	set_DO(&(AC->DO[1]),AC->Inertia[1],AC->SAT,AC->FREQ,appIC,appOC);
 
@@ -256,7 +289,7 @@ void set_AC(struct AttitudeController* AC)
 
 void start_dist_obs(struct AttitudeController* AC)
 {
-	AC->Landed=false;
+	AC->Landed=true;
 }
 
 void reset_dist_obs(struct AttitudeController* AC)
@@ -402,7 +435,7 @@ void set_HC(struct HeightController* HC)
 	HC->SAT=10000;
 
 	HC->G=9.80665;
-	HC->Mass=150*0.001;
+	HC->Mass=185*0.001;
 	HC->ForceHeight=0.0;
 	HC->isInit=true;
 	HC->Landed=true;
@@ -457,6 +490,7 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 	int32_t M1,M2,M3,M4;
 	bool sat;
 
+	float FSR=32767.0;
 
 
 	sat=false;
@@ -464,86 +498,94 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 	eulerRollActual=eulerRollActual*val;
 	eulerPitchActual=eulerPitchActual*val;
 
-	app=(AC->tau_Motor[0]/(2.0f*AC->Length*AC->FMotorMax))*65535.0f;
+	app=(AC->tau_Motor[0]/(2.0f*AC->Length*AC->FMotorMax))*FSR;
 	app_roll=(int32_t)(app);
-	app=(AC->tau_Motor[1]/(2.0f*AC->Length*AC->FMotorMax))*65535.0f;
+	app=(AC->tau_Motor[1]/(2.0f*AC->Length*AC->FMotorMax))*FSR;
 	app_pitch=(int32_t)(app);
 
 	app=HC->ForceHeight/(4.0f*cosf(eulerRollActual)*cosf(eulerPitchActual));
-	app=(app/AC->FMotorMax)*65535.0f;
+	app=(app/AC->FMotorMax)*FSR;
 	apptrust=(int32_t)(app);
 
 
 	satRP=abs(app_roll)+abs(app_pitch);
 	if (apptrust<satRP)
 	{
-		apptrust=satRP;
+		//apptrust=satRP;
 		sat=true;
 	}
 
-	if (apptrust+satRP>(65535))
+	if (apptrust+satRP>(FSR))
 	{
-		apptrust=(65535-satRP);
+		//apptrust=(FSR-satRP);
 		sat=true;
 	}
 
+	//apptrust = 10000;
 
-  M1=(int32_t)(apptrust - app_roll + app_pitch);
-  M2=(int32_t)(apptrust - app_roll - app_pitch);
-  M3=(int32_t)(apptrust + app_roll - app_pitch);
-  M4=(int32_t)(apptrust + app_roll + app_pitch);
+	 M1=(int32_t)(apptrust - app_roll + app_pitch);
+	 M2=(int32_t)(apptrust - app_roll - app_pitch);
+	 M3=(int32_t)(apptrust + app_roll - app_pitch);
+	 M4=(int32_t)(apptrust + app_roll + app_pitch);
+
 
   if (!sat)
   {
-	app=(AC->tau_Motor[2])*65535.0f;
+	app=(AC->tau_Motor[2])*FSR;
 	app_yaw = (int32_t)(app);
 
-	if(M1-app_yaw>65535)
+	/*if(M1-app_yaw>FSR)
 	{
-		app_yaw=M1-65535;
+		app_yaw=M1-FSR;
 	}
 	if(M1-app_yaw<0)
 	{
 		app_yaw=M1;
 	}
 
-	if(M3-app_yaw>65535)
+	if(M3-app_yaw>FSR)
 	{
-		app_yaw=M3-65535;
+		app_yaw=M3-FSR;
 	}
 	if(M3-app_yaw<0)
 	{
 		app_yaw=M3;
 	}
 
-	if(M2+app_yaw>65535)
+	if(M2+app_yaw>FSR)
 	{
-		app_yaw=65535-M2;
+		app_yaw=FSR-M2;
 	}
 	if(M2+app_yaw<0)
 	{
 		app_yaw=-M2;
 	}
 
-	if(M4+app_yaw>65535)
+	if(M4+app_yaw>FSR)
 	{
-		app_yaw=65535-M4;
+		app_yaw=FSR-M4;
 	}
 	if(M4+app_yaw<0)
 	{
 		app_yaw=-M4;
+	}*/
+
+	if (app_yaw>18000)
+			app_yaw=18000;
+		if (app_yaw<-18000)
+			app_yaw=-18000;
+
+	M1=(int32_t)(M1 - app_yaw);
+	M2=(int32_t)(M2 + app_yaw);
+	M3=(int32_t)(M3 - app_yaw);
+	M4=(int32_t)(M4 + app_yaw);
 	}
 
-		M1=(int32_t)(M1 - app_yaw);
-		M2=(int32_t)(M2 + app_yaw);
-		M3=(int32_t)(M3 - app_yaw);
-		M4=(int32_t)(M4 + app_yaw);
-	}
 
-	motorPowerM1 = limitThrust(M1);
-	motorPowerM2 = limitThrust(M2);
-	motorPowerM3 = limitThrust(M3);
-	motorPowerM4 = limitThrust(M4);
+  	motorPowerM1 = limitThrust_2(M1+FSR);
+	motorPowerM2 = limitThrust_2(M2+FSR);
+	motorPowerM3 = limitThrust_2(M3+FSR);
+	motorPowerM4 = limitThrust_2(M4+FSR);
 
 	motorsSetRatio(MOTOR_M1, motorPowerM1);
 	motorsSetRatio(MOTOR_M2, motorPowerM2);
@@ -560,17 +602,18 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 	CONTROL->thrust= apptrust;
 	CONTROL->roll=(int16_t)app_roll;
 	CONTROL->pitch=(int16_t)app_pitch;
-	CONTROL->yaw=(int16_t)app_yaw;
+	//CONTROL->yaw=(int16_t)app_yaw;
 
 
 }
 
 void turnOFFMotor()
 {
-	motorsSetRatio(MOTOR_M1, 0);
-	motorsSetRatio(MOTOR_M2, 0);
-	motorsSetRatio(MOTOR_M3, 0);
-	motorsSetRatio(MOTOR_M4, 0);
+	uint32_t FSR = 32767;
+	motorsSetRatio(MOTOR_M1, FSR);
+	motorsSetRatio(MOTOR_M2, FSR);
+	motorsSetRatio(MOTOR_M3, FSR);
+	motorsSetRatio(MOTOR_M4, FSR);
 }
 
 void setRatioMotor(float ratioM,float T)
@@ -587,6 +630,258 @@ void setRatioMotor(float ratioM,float T)
 	motorsSetRatio(MOTOR_M2, (Ratio-Torque));
 	motorsSetRatio(MOTOR_M3, (Ratio-Torque));
 	motorsSetRatio(MOTOR_M4, (Ratio+Torque));
+}
+
+/*
+static float prevRPYangle[3];
+void perching(float eulerRollActual,float eulerPitchActual,float eulerYawActual, float wx,float wy,float wz,float FREQ)
+{
+	float val,dRoll,dPitch,dYaw;
+	val = M_PI_F / 180.0f;
+
+	eulerRollActual=eulerRollActual*val;
+	eulerPitchActual=eulerPitchActual*val;
+	eulerYawActual=eulerYawActual*val;
+
+	wx=wx*val;
+	wy=-wy*val;
+	wz=wz*val;
+
+	// Compute dt of RPY
+	//dRoll=wx+sin(eulerRollActual)*tan(eulerPitchActual)*wy+cos(eulerRollActual)*tan(eulerPitchActual)*wz;
+	//dPitch=cos(eulerRollActual)*wy-sin(eulerRollActual)*wz;
+	//dYaw=(float)((sin(eulerRollActual)*wy+cos(eulerRollActual)*wz)/cos(eulerPitchActual));
+
+	dRoll=(eulerRollActual-	prevRPYangle[0])*FREQ;
+	dPitch=(eulerPitchActual - prevRPYangle[1])*FREQ;
+	dYaw=(eulerYawActual - prevRPYangle[2])*FREQ;
+
+
+
+
+
+	/*AC->KP[1]=300;
+	AC->KP[1]=180;
+	AC->KP[2]=60000;
+	AC->KV[1]=50;
+	AC->KV[2]=30000;
+	AC->Inertia[1]=0.0002;
+	AC->Inertia[2]=0.0001;*/
+
+	/*
+	// roll
+	float tauRoll,tauPitch,tauYaw;
+	float KP=250;
+	float KV = 50;
+	float I = 0.00008;
+	// Roll
+	tauRoll=(-KP*eulerRollActual-AC->KV[0]*dRoll)*AC->Inertia[0];
+	// pitch
+	tauPitch=(AC->KP[1]*(eulerPitchDesired-eulerPitchActual)-AC->KV[1]*dPitch)*AC->Inertia[1];
+	tauYaw=(AC->KP[2]*(eulerYawDesired-eulerYawActual)+AC->KV[2]*(yawRateDesired-dYaw))*AC->Inertia[2];
+
+	// Saturation
+
+
+
+
+	prevRPYangle[0]=eulerRollActual;
+	prevRPYangle[1]=eulerPitchActual;
+	prevRPYangle[2]=eulerYawActual;
+
+	float L,L0;
+	uint32_t MPower[4];
+	L = 10;
+	L0=10;
+	float FMotorMax1 = 0.980665;
+	float FMotorMax2 = 0.980665;
+	float rollForce,pitchForce,RollMotor,PitchMotor,RollMotorI,PitchMotorI;
+	float app;
+
+	int32_t app_roll,app_pitch,satRP,apptrust,app_yaw;
+	int32_t M1,M2,M3,M4;
+	bool sat;
+
+	float FSR=32767.0;
+
+
+	sat=false;
+
+
+
+	// saturare con criterio
+	rollForce=(tau_Roll/(2.0f*L);
+	RollMotor = (int32_t) (rollForce * (FSR / FMotorMax1));
+	RollMotorI = (int32_t)(rollForce * (FSR / FMotorMax2));
+
+	pitchForce=(tau_Pitch/(2.0f*L);
+	PitchMotor = (int32_t)(pitchForce * (FSR / FMotorMax1));
+	PitchMotorI = (int32_t)(pitchForce * (FSR / FMotorMax2));
+
+	dutyaw=(AC->tau_Motor[2])*FSR;
+	app_yaw = (int32_t)(app);
+
+   // New Configuration tutto importante
+   MPower[0]=(int32_t)(- RollMotor + PitchMotor - app_yaw);
+   MPower[1]=(int32_t)(+ RollMotorI - PitchMotorI - app_yaw);
+   MPower[2]=(int32_t)(- RollMotorI - PitchMotorI + app_yaw);
+   MPower[3]=(int32_t)(+ RollMotor + PitchMotor + app_yaw);
+
+   float MinM1,MinM2;
+
+   // find Minimum duty available
+   if (MPower[0]<MPower[3])
+	   MinM1 = MPower[0];
+   else
+	   MinM1 = MPower[3];
+
+   if (MPower[1]<MPower[2])
+   	   MinM2 = MPower[1];
+   else
+   	   MinM2 = MPower[2];
+
+   // Verificare
+   int32_t Fz;
+   if (MinM2<MinM1*(L+L0))
+
+   else
+
+
+   for (int i=0;i<4:i++)
+	   MPower[i] = MPower[0] + Fz;
+
+
+	motorPowerM1 = limitThrust_2(M1+FSR);
+	motorPowerM2 = limitThrust_3(M2);
+	motorPowerM3 = limitThrust_3(M3);
+	motorPowerM4 = limitThrust_2(M4+FSR);
+
+	motorsSetRatio(MOTOR_M1, motorPowerM1);
+	motorsSetRatio(MOTOR_M2, motorPowerM2);
+	motorsSetRatio(MOTOR_M3, motorPowerM3);
+	motorsSetRatio(MOTOR_M4, motorPowerM4);
+
+
+
+
+
+}
+*/
+
+
+
+static float prevPvelocity;
+
+void perch_takeoff_normal(float eulerRollActual,float eulerPitchActual,float eulerYawActual,float eulerYawDesired, float wx,float wy,float wz,float FREQ)
+{
+	float val,dRoll,dPitch,dYaw;
+	val = M_PI_F / 180.0f;
+
+	eulerRollActual=eulerRollActual*val;
+	eulerPitchActual=eulerPitchActual*val;
+	eulerYawActual=eulerYawActual*val;
+	eulerYawDesired=eulerYawDesired*val;
+
+	wx=wx*val;
+	wy=-wy*val;
+	wz=wz*val;
+
+	// Compute dt of RPY
+	dRoll=wx+sinf(eulerRollActual)*tanf(eulerPitchActual)*wy+cosf(eulerRollActual)*tanf(eulerPitchActual)*wz;
+	dPitch=cosf(eulerRollActual)*wy-sinf(eulerRollActual)*wz;
+	dYaw=(sinf(eulerRollActual)*wy+cosf(eulerRollActual)*wz)/cosf(eulerPitchActual);
+
+	//dRoll=(eulerRollActual-	prevRPYangle[0])*FREQ;
+	//dPitch=(eulerPitchActual - prevRPYangle[1])*FREQ;
+	//dYaw=(eulerYawActual - prevRPYangle[2])*FREQ;
+
+	/*AC->KP[1]=300;
+	AC->KP[1]=180;
+	AC->KP[2]=60000;
+	AC->KV[1]=50;
+	AC->KV[2]=30000;
+	AC->Inertia[1]=0.0002;
+	AC->Inertia[2]=0.0001;*/
+
+
+	// roll
+	float tauRoll,tauPitch,tauYaw;
+	float KP=250;
+	float KV = 50;
+	float I = 0.00008;
+	float Length = 0.0635; // Kg
+	float mass = 0.145;
+	float FMotorMax = 0.980665;
+	float FSR=32767.0;
+
+	tauRoll=(-KP*eulerRollActual-KV*dRoll)*I;
+
+	KP=60000;
+	KV = 30000;
+	I = 0.0001;
+	tauYaw=(KP*(eulerYawDesired-eulerYawActual)-KV*dYaw)*I;
+
+	float pole = 30;
+	KV=10;
+	KP=KV*pole;
+	I=0.0002;
+	float refPvelocity;
+	refPvelocity= (M_PI_F*0.5f-eulerPitchActual)*3;
+	float accP = (dPitch - prevPvelocity)*FREQ;
+	tauPitch=(KP*(refPvelocity-dPitch)-KV*dPitch)*I;
+	prevPvelocity=dPitch;
+
+
+
+	// Compute duty cycle
+	int32_t RollMotor,PitchMotor,dutyYaw;
+
+	RollMotor = (int32_t) ((tauRoll/(2.0f*Length)) * (FSR / FMotorMax));
+	PitchMotor =(int32_t) ((tauPitch/(2.0f*Length)) * (FSR / FMotorMax));
+	int32_t app_yaw;
+	dutyYaw=(tauYaw)*FSR;
+	app_yaw = (int32_t)(dutyYaw);
+	int32_t FZ=(int32_t)(0.25f*mass*9.81f*cosf(eulerPitchActual)*(FSR / FMotorMax)); // Nm
+
+	int32_t appSAT = (int32_t) 0.2f*FZ;
+	if (RollMotor>appSAT)
+		RollMotor=appSAT;
+	else
+		if (RollMotor<-appSAT)
+			RollMotor=-appSAT;
+
+	appSAT = (int32_t) 0.6f*FZ;
+	if (PitchMotor>appSAT)
+		PitchMotor=appSAT;
+	else
+		if (PitchMotor<-appSAT)
+			PitchMotor=-appSAT;
+
+	appSAT = (int32_t) 0.2f*FZ;
+	if (app_yaw>appSAT)
+		app_yaw=appSAT;
+	else
+		if (app_yaw<-appSAT)
+			app_yaw=-appSAT;
+
+   int32_t MPower[4];
+   // New Configuration no priority
+   MPower[0]=(int32_t)(- RollMotor + PitchMotor - app_yaw + FZ);
+   MPower[1]=(int32_t)(- RollMotor - PitchMotor + app_yaw + FZ);
+   MPower[2]=(int32_t)(+ RollMotor - PitchMotor - app_yaw + FZ);
+   MPower[3]=(int32_t)(+ RollMotor + PitchMotor + app_yaw + FZ);
+
+
+   motorPowerM1 = limitThrust_2(MPower[0]+FSR);
+   motorPowerM2 = limitThrust_2(MPower[1]+FSR);
+   motorPowerM3 = limitThrust_2(MPower[2]+FSR);
+   motorPowerM4 = limitThrust_2(MPower[3]+FSR);
+
+   motorsSetRatio(MOTOR_M1, motorPowerM1);
+   motorsSetRatio(MOTOR_M2, motorPowerM2);
+   motorsSetRatio(MOTOR_M3, motorPowerM3);
+   motorsSetRatio(MOTOR_M4, motorPowerM4);
+
 }
 
 

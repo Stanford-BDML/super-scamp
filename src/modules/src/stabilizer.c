@@ -292,7 +292,7 @@ void processJoy()
 			STATE_MACHINE=TOWARDS_WALL;
 		}
 
-		float Yawrad = 0*eulerYawActual*(M_PI_F / 180.0f);
+		float Yawrad = eulerYawActual*(M_PI_F / 180.0f);
 		ERD_app=cosf(Yawrad)*eulerRollDesired-sinf(Yawrad)*eulerPitchDesired;
 		EPD_app=+sinf(Yawrad)*eulerRollDesired+cosf(Yawrad)*eulerPitchDesired;
 
@@ -375,7 +375,6 @@ static void stabilizerTask(void* param)
 				turnOFFMotor();
 				AltitudeDesired=0;
 
-
 				if (State_Joy & 16)
 					STATE_MACHINE=FLYING;
 
@@ -426,10 +425,10 @@ static void stabilizerTask(void* param)
 				Controller=false;
 				reset_dist_obs(&AC);
 
-				if(SENSORS.acc.x > -0.9f)
+				/*if(SENSORS.acc.x > -0.9f)
 					setRatioMotor(0.1,0);
 				else
-					turnOFFMotor();
+					turnOFFMotor();*/
 				break;
 
 
@@ -441,16 +440,16 @@ static void stabilizerTask(void* param)
 		if (Controller)
 		{
 			if(!vl53l0xTestConnection())
-				motorSafe(&HC);
+				turnOFFMotor();
 			else
 			{
 				Zsensor=vl53l0xReadRange2(&ZRANGE_STAB);
 				compute_HC(&HC,ZRANGE_STAB.distance,AltitudeDesired,getVelocityPE(),Zsensor);
 			}
 
-			start_dist_obs(&AC);
+			//start_dist_obs(&AC);
 			compute_AC(&AC,eulerRollActual,eulerPitchActual,eulerYawActual,
-    		  ERD_app,EPD_app,eulerYawDesired,yawRateDesired,
+    		  ERD_app-5,EPD_app-3,eulerYawDesired,yawRateDesired,
 						SENSORS.gyro.x, SENSORS.gyro.y, SENSORS.gyro.z);
 
 			if (crtpIsConnected())
@@ -461,6 +460,7 @@ static void stabilizerTask(void* param)
 				ActuateMotor(&AC,&HC,STATE.attitude.roll,STATE.attitude.pitch,&CONTROL);
 			}
 		}
+
 
 
 
