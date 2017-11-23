@@ -306,6 +306,15 @@ void processJoy()
 		}
 
 	}
+	if (STATE_MACHINE==PERCHING_1)
+	{
+
+		if (State_Joy & 128)
+		{
+			STATE_MACHINE=PERCHING_2;
+		}
+
+	}
 	if (STATE_MACHINE==CLIMBING)
 	{
 
@@ -377,6 +386,8 @@ static void stabilizerTask(void* param)
 
 				if (State_Joy & 16)
 					STATE_MACHINE=FLYING;
+				if (State_Joy & 128)
+					STATE_MACHINE=DETACHING;
 
 				break;
 
@@ -387,23 +398,58 @@ static void stabilizerTask(void* param)
 				break;
 			case TOWARDS_WALL:
 
-					if(SENSORS.acc.x<-1.5f)
+					if(SENSORS.acc.y>1.5f)
 					{
-						STATE_MACHINE = PERCHING;
+						STATE_MACHINE = PERCHING_1;
 						perching_timer = 0;
 						perching_attached_timer=0;
 					}
-					 ERD_app=0;
-					 EPD_app=-3;
+					 ERD_app=3;
+					 EPD_app=0;
 					 Controller=true;
 			    	break;
-			case PERCHING:
-				perching_timer++;
+			case PERCHING_1:
 				Controller=true;
 				reset_dist_obs(&AC);
+				ERD_app=8;
+				EPD_app=0;
+				//if (eulerRollActual>45)
+				//	STATE_MACHINE = PERCHING_2;
+				break;
+			case PERCHING_2:
+				Controller=false;
+				reset_dist_obs(&AC);
+				perch_takeoff_normal2(eulerRollActual,eulerPitchActual,eulerYawActual,eulerYawDesired, SENSORS.gyro.x, SENSORS.gyro.y, SENSORS.gyro.z, 500.0,90.0);
+				if (eulerRollActual>75.0f)
+				{
+					perching_attached_timer=0;
+					//STATE_MACHINE = ATTACHING;
+				}
+
+				if (!crtpIsConnected())
+					motorSafe(&HC);
+
+				/*if (SENSORS.acc.x>0.7f)
+					perching_attached_timer++;
+				else
+					perching_attached_timer=0;
+
+				if (perching_attached_timer>200)
+						STATE_MACHINE=CLIMBING;*/
+				break;
+			case DETACHING:
+				if (eulerRollActual<0)
+						eulerRollActual = eulerRollActual + 360;
+
+				perch_takeoff_normal3(eulerRollActual,eulerPitchActual, SENSORS.gyro.x, SENSORS.gyro.y, SENSORS.gyro.z, 500.0,85.0);
+				if (eulerRollActual<90.0f)
+				{
+					STATE_MACHINE = LANDED;
+				}
+				break;
 
 
-				if (perching_timer<1250)
+				/*if (perching_timer<1250)
 				{
 					ERD_app=0;
 					EPD_app=-35;
@@ -420,15 +466,27 @@ static void stabilizerTask(void* param)
 				if (perching_attached_timer>100)
 					STATE_MACHINE=CLIMBING;
 				break;
+				*/
+			case ATTACHING:
+				Controller=false;
+				setMotor(0.75);
+				perching_attached_timer++;
+				if (perching_attached_timer>250)
+				{
+					perching_attached_timer=0;
+					//STATE_MACHINE=CLIMBING;
+				}
 
+
+				break;
 			case CLIMBING:
 				Controller=false;
 				reset_dist_obs(&AC);
-
-				/*if(SENSORS.acc.x > -0.9f)
-					setRatioMotor(0.1,0);
+				if(SENSORS.acc.y > 0.8f)
+					turnOFFMotor();
 				else
-					turnOFFMotor();*/
+					setMotor(0.8);
+
 				break;
 
 
@@ -445,11 +503,13 @@ static void stabilizerTask(void* param)
 			{
 				Zsensor=vl53l0xReadRange2(&ZRANGE_STAB);
 				compute_HC(&HC,ZRANGE_STAB.distance,AltitudeDesired,getVelocityPE(),Zsensor);
+				//if (STATE_MACHINE==PERCHING_1)
+					//mgcostheta(&HC,STATE.attitude.pitch);
 			}
 
 			//start_dist_obs(&AC);
 			compute_AC(&AC,eulerRollActual,eulerPitchActual,eulerYawActual,
-    		  ERD_app-5,EPD_app-3,eulerYawDesired,yawRateDesired,
+    		  ERD_app-2,EPD_app-3,eulerYawDesired,yawRateDesired,
 						SENSORS.gyro.x, SENSORS.gyro.y, SENSORS.gyro.z);
 
 			if (crtpIsConnected())
@@ -460,6 +520,9 @@ static void stabilizerTask(void* param)
 				ActuateMotor(&AC,&HC,STATE.attitude.roll,STATE.attitude.pitch,&CONTROL);
 			}
 		}
+		//else
+		//	turnOFFMotor();
+
 
 
 
@@ -847,8 +910,8 @@ LOG_GROUP_STOP(ctrltarget)
 
 
 LOG_GROUP_START(stabilizer)
-LOG_ADD(LOG_FLOAT, roll, &STATE.attitude.roll)
-LOG_ADD(LOG_FLOAT, pitch, &STATE.attitude.pitch)
+LOG_ADD(LOG_FLOAT, roll, &eulerRollActual)
+LOG_ADD(LOG_FLOAT, pitch, &eulerPitchActual)
 LOG_ADD(LOG_FLOAT, yaw, &eulerYawActual)
 LOG_ADD(LOG_UINT16, thrust, &CONTROL.thrust)
 LOG_ADD(LOG_FLOAT, AltitudeDesired, &AltitudeDesired)

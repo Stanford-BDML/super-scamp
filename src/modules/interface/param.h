@@ -50,6 +50,10 @@ struct param_s {
 #define FLYING 0x00
 #define TOWARDS_WALL 0x01
 #define PERCHING 0x02
+#define PERCHING_1 150
+#define PERCHING_2 151
+#define ATTACHING 152
+#define DETACHING 153
 #define CLIMBING 0x03
 #define REATTACHING 0x04
 #define RECOVERING 0x05
