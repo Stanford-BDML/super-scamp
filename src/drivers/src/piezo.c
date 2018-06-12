@@ -37,7 +37,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-// HW defines
+// HW defines for PA2, PA3 PWM outputs using Timer 5
 #define PIEZO_TIM_PERIF       RCC_APB1Periph_TIM5
 #define PIEZO_TIM             TIM5
 #define PIEZO_TIM_DBG         DBGMCU_TIM2_STOP
@@ -46,13 +46,13 @@
 
 #define PIEZO_GPIO_POS_PERIF         RCC_AHB1Periph_GPIOA
 #define PIEZO_GPIO_POS_PORT          GPIOA
-#define PIEZO_GPIO_POS_PIN           GPIO_Pin_2 // TIM5_CH3
+#define PIEZO_GPIO_POS_PIN           GPIO_Pin_2 // TIM5_CH3 (PA2)
 #define PIEZO_GPIO_AF_POS_PIN        GPIO_PinSource2
 #define PIEZO_GPIO_AF_POS            GPIO_AF_TIM5
 
 #define PIEZO_GPIO_NEG_PERIF         RCC_AHB1Periph_GPIOA
 #define PIEZO_GPIO_NEG_PORT          GPIOA
-#define PIEZO_GPIO_NEG_PIN           GPIO_Pin_3 // TIM5_CH4
+#define PIEZO_GPIO_NEG_PIN           GPIO_Pin_3 // TIM5_CH4 (PA3)
 #define PIEZO_GPIO_AF_NEG_PIN        GPIO_PinSource3
 #define PIEZO_GPIO_AF_NEG            GPIO_AF_TIM5
 
@@ -64,6 +64,10 @@
 #define PIEZO_BASE_FREQ (329500)
 
 static bool isInit = false;
+
+
+// HW defines for PA5 PWM output using Timer X
+
 
 /* Public functions */
 
