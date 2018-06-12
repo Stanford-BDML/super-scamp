@@ -59,9 +59,10 @@ void motorsBeep(int id, bool enable, uint16_t frequency, uint16_t ratio);
 
 const MotorPerifDef** motorMap;  /* Current map configuration */
 
-const uint32_t MOTORS[] = { MOTOR_M1, MOTOR_M2, MOTOR_M3, MOTOR_M4 };
+const uint32_t QUAD_MOTORS[] = { MOTOR_M1, MOTOR_M2, MOTOR_M3, MOTOR_M4};
+const uint32_t ALL_MOTORS[] = { MOTOR_M1, MOTOR_M2, MOTOR_M3, MOTOR_M4, DECK_M5 };
 
-static const uint16_t testsound[NBR_OF_MOTORS] = {A4, A5, F5, D5 };
+static const uint16_t testsound[NBR_OF_QUAD_MOTORS] = {A4, A5, F5, D5};
 
 static bool isInit = false;
 
@@ -105,7 +106,7 @@ void motorsInit(const MotorPerifDef** motorMapSelect)
 
   motorMap = motorMapSelect;
 
-  for (i = 0; i < NBR_OF_MOTORS; i++)
+  for (i = 0; i < NBR_OF_QUAD_MOTORS; i++)
   {
     //Clock the gpio and the timers
     MOTORS_RCC_GPIO_CMD(motorMap[i]->gpioPerif, ENABLE);
@@ -149,7 +150,7 @@ void motorsInit(const MotorPerifDef** motorMapSelect)
   }
 
   // Start the timers
-  for (i = 0; i < NBR_OF_MOTORS; i++)
+  for (i = 0; i < NBR_OF_QUAD_MOTORS; i++)
   {
     TIM_Cmd(motorMap[i]->tim, ENABLE);
   }
@@ -162,7 +163,7 @@ void motorsDeInit(const MotorPerifDef** motorMapSelect)
   int i;
   GPIO_InitTypeDef GPIO_InitStructure;
 
-  for (i = 0; i < NBR_OF_MOTORS; i++)
+  for (i = 0; i < NBR_OF_QUAD_MOTORS; i++)
   {
     // Configure default
     GPIO_StructInit(&GPIO_InitStructure);
@@ -186,19 +187,19 @@ bool motorsTest(void)
 {
   int i;
 
-  for (i = 0; i < sizeof(MOTORS) / sizeof(*MOTORS); i++)
+  for (i = 0; i < sizeof(QUAD_MOTORS) / sizeof(*QUAD_MOTORS); i++)
   {
     if (motorMap[i]->drvType == BRUSHED)
     {
 #ifdef ACTIVATE_STARTUP_SOUND
-      motorsBeep(MOTORS[i], true, testsound[i], (uint16_t)(MOTORS_TIM_BEEP_CLK_FREQ / A4)/ 20);
+      motorsBeep(QUAD_MOTORS[i], true, testsound[i], (uint16_t)(MOTORS_TIM_BEEP_CLK_FREQ / A4)/ 20);
       vTaskDelay(M2T(MOTORS_TEST_ON_TIME_MS));
-      motorsBeep(MOTORS[i], false, 0, 0);
+      motorsBeep(QUAD_MOTORS[i], false, 0, 0);
       vTaskDelay(M2T(MOTORS_TEST_DELAY_TIME_MS));
 #else
-      motorsSetRatio(MOTORS[i], MOTORS_TEST_RATIO);
+      motorsSetRatio(QUAD_MOTORS[i], MOTORS_TEST_RATIO);
       vTaskDelay(M2T(MOTORS_TEST_ON_TIME_MS));
-      motorsSetRatio(MOTORS[i], 0);
+      motorsSetRatio(QUAD_MOTORS[i], 0);
       vTaskDelay(M2T(MOTORS_TEST_DELAY_TIME_MS));
 #endif
     }
@@ -214,7 +215,7 @@ void motorsSetRatio(uint32_t id, uint16_t ithrust)
   if (isInit) {
     uint16_t ratio;
 
-    ASSERT(id < NBR_OF_MOTORS);
+    ASSERT(id < NBR_OF_QUAD_MOTORS);
 
     ratio = ithrust;
 
@@ -246,7 +247,7 @@ int motorsGetRatio(uint32_t id)
 {
   int ratio;
 
-  ASSERT(id < NBR_OF_MOTORS);
+  ASSERT(id < NBR_OF_QUAD_MOTORS);
   if (motorMap[id]->drvType == BRUSHLESS)
   {
     ratio = motorsBLConvBitsTo16(motorMap[id]->getCompare(motorMap[id]->tim));
@@ -272,7 +273,7 @@ void motorsBeep(int id, bool enable, uint16_t frequency, uint16_t ratio)
 {
   TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
 
-  ASSERT(id < NBR_OF_MOTORS);
+  ASSERT(id < NBR_OF_QUAD_MOTORS);
 
   TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
 

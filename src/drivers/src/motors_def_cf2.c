@@ -444,7 +444,7 @@ static const MotorPerifDef DECK_IO3 =
 };
 
 // Deck SCK, PA5, TIM2_CH1
-static const MotorPerifDef DECK_SCK =
+static const MotorPerifDef DECK_CONN_M5 =
 {
     .drvType       = BRUSHLESS,
     .gpioPerif     = RCC_AHB1Periph_GPIOA,
@@ -512,12 +512,13 @@ static const MotorPerifDef DECK_MOSI =
 /**
  * Default brushed mapping to M1-M4 connectors.
  */
-const MotorPerifDef* motorMapDefaultBrushed[NBR_OF_MOTORS] =
+const MotorPerifDef* motorMapDefaultBrushed[NBR_OF_ALL_MOTORS] =
 {
   &CONN_M1,
   &CONN_M2,
   &CONN_M3,
-  &CONN_M4
+  &CONN_M4,
+  &DECK_CONN_M5
 };
 
 /**
@@ -526,34 +527,38 @@ const MotorPerifDef* motorMapDefaultBrushed[NBR_OF_MOTORS] =
  * M2 -> IO3
  * M3 -> IO2
  * M4 -> RX2
+ * M5 -> SCK (as desired)
  */
-const MotorPerifDef* motorMapBigQuadDeck[NBR_OF_MOTORS] =
+const MotorPerifDef* motorMapBigQuadDeck[NBR_OF_ALL_MOTORS] =
 {
   &DECK_TX2_TIM2,
   &DECK_IO3,
   &DECK_IO2,
-  &DECK_RX2_TIM2
+  &DECK_RX2_TIM2,
+  &DECK_CONN_M5
 };
 
 /**
  * Brushless motors mapped to the standard motor connectors with pull-ups (~1K) to VBAT soldered.
  */
-const MotorPerifDef* motorMapDefaltConBrushless[NBR_OF_MOTORS] =
+const MotorPerifDef* motorMapDefaltConBrushless[NBR_OF_ALL_MOTORS] =
 {
   &CONN_M1_BL_INV,
   &CONN_M2_BL_INV,
   &CONN_M3_BL_INV,
-  &CONN_M4_BL_INV
+  &CONN_M4_BL_INV,
+  &DECK_CONN_M5
 };
 
 /**
  * Brushless motors mapped to the RZR PWM outputs.
  */
-const MotorPerifDef* motorMapRZRBrushless[NBR_OF_MOTORS] =
+const MotorPerifDef* motorMapRZRBrushless[NBR_OF_ALL_MOTORS] =
 {
   &RZR_M1_BL,
   &RZR_M2_BL,
   &RZR_M3_BL,
-  &RZR_M4_BL
+  &RZR_M4_BL,
+  &DECK_CONN_M5
 };
 

@@ -2688,9 +2688,11 @@ Discarded input sections
  .text.motorsPlayMelody
                 0x00000000       0x16 bin/motors.o
  .data.motorMapBigQuadDeck
-                0x00000000       0x10 bin/motors.o
+                0x00000000       0x14 bin/motors.o
  .data.motorMapDefaultBrushed
-                0x00000000       0x10 bin/motors.o
+                0x00000000       0x14 bin/motors.o
+ .rodata.ALL_MOTORS
+                0x00000000       0x14 bin/motors.o
  .rodata.CONN_M1
                 0x00000000       0x44 bin/motors.o
  .rodata.CONN_M2
@@ -2750,7 +2752,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 bin/motors.o
  .debug_macro   0x00000000       0x52 bin/motors.o
  .debug_macro   0x00000000      0x1e5 bin/motors.o
- .debug_macro   0x00000000      0x219 bin/motors.o
+ .debug_macro   0x00000000      0x226 bin/motors.o
  .debug_macro   0x00000000      0x174 bin/motors.o
  .debug_macro   0x00000000       0x58 bin/motors.o
  .debug_macro   0x00000000       0x1c bin/motors.o
@@ -4559,7 +4561,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x149 bin/stabilizer.o
  .debug_macro   0x00000000      0x279 bin/stabilizer.o
  .debug_macro   0x00000000       0x35 bin/stabilizer.o
- .debug_macro   0x00000000      0x219 bin/stabilizer.o
+ .debug_macro   0x00000000      0x226 bin/stabilizer.o
  .debug_macro   0x00000000       0x16 bin/stabilizer.o
  .debug_macro   0x00000000       0x35 bin/stabilizer.o
  .debug_macro   0x00000000       0x16 bin/stabilizer.o
@@ -4854,7 +4856,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x149 bin/power_distribution_stock.o
  .debug_macro   0x00000000      0x279 bin/power_distribution_stock.o
  .debug_macro   0x00000000       0x35 bin/power_distribution_stock.o
- .debug_macro   0x00000000      0x219 bin/power_distribution_stock.o
+ .debug_macro   0x00000000      0x226 bin/power_distribution_stock.o
  .group         0x00000000        0xc bin/filter.o
  .group         0x00000000        0xc bin/filter.o
  .group         0x00000000        0xc bin/filter.o
@@ -5040,7 +5042,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x149 bin/cfassert.o
  .debug_macro   0x00000000      0x279 bin/cfassert.o
  .debug_macro   0x00000000       0x35 bin/cfassert.o
- .debug_macro   0x00000000      0x219 bin/cfassert.o
+ .debug_macro   0x00000000      0x226 bin/cfassert.o
  .debug_macro   0x00000000       0x2e bin/cfassert.o
  .group         0x00000000        0xc bin/eprintf.o
  .group         0x00000000        0xc bin/eprintf.o
@@ -12430,7 +12432,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 bin/bigquad.o
  .debug_macro   0x00000000       0x52 bin/bigquad.o
  .debug_macro   0x00000000      0x1e5 bin/bigquad.o
- .debug_macro   0x00000000      0x21f bin/bigquad.o
+ .debug_macro   0x00000000      0x22c bin/bigquad.o
  .debug_macro   0x00000000       0x58 bin/bigquad.o
  .debug_macro   0x00000000       0x2e bin/bigquad.o
  .debug_macro   0x00000000      0x10f bin/bigquad.o
@@ -12452,7 +12454,7 @@ Discarded input sections
  .debug_macro   0x00000000       0xc0 bin/bigquad.o
  .debug_macro   0x00000000       0x9a bin/bigquad.o
  .debug_line    0x00000000      0x75e bin/bigquad.o
- .debug_str     0x00000000    0x67e87 bin/bigquad.o
+ .debug_str     0x00000000    0x67eaa bin/bigquad.o
  .comment       0x00000000       0x7f bin/bigquad.o
  .ARM.attributes
                 0x00000000       0x39 bin/bigquad.o
@@ -12589,7 +12591,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 bin/rzr.o
  .debug_macro   0x00000000       0x52 bin/rzr.o
  .debug_macro   0x00000000      0x1e5 bin/rzr.o
- .debug_macro   0x00000000      0x21f bin/rzr.o
+ .debug_macro   0x00000000      0x22c bin/rzr.o
  .debug_macro   0x00000000       0x58 bin/rzr.o
  .debug_macro   0x00000000       0x2e bin/rzr.o
  .debug_macro   0x00000000      0x10f bin/rzr.o
@@ -14791,7 +14793,7 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
  *(.flashtext)
                 0x08004188                . = ALIGN (0x4)
 
-.text           0x08004188    0x2007c
+.text           0x08004188    0x200c4
                 0x08004188                . = ALIGN (0x4)
  *(.text)
  .text          0x08004188      0x378 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_addsubdf3.o)
@@ -17633,638 +17635,639 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
                 0x0801f0c8       0x44 bin/motors.o
  .rodata.CONN_M4_BL_INV
                 0x0801f10c       0x44 bin/motors.o
- .rodata.MOTORS
-                0x0801f150       0x10 bin/motors.o
-                0x0801f150                MOTORS
+ .rodata.DECK_CONN_M5
+                0x0801f150       0x44 bin/motors.o
+ .rodata.QUAD_MOTORS
+                0x0801f194       0x10 bin/motors.o
+                0x0801f194                QUAD_MOTORS
  .rodata.RZR_M1_BL
-                0x0801f160       0x44 bin/motors.o
- .rodata.RZR_M2_BL
                 0x0801f1a4       0x44 bin/motors.o
- .rodata.RZR_M3_BL
+ .rodata.RZR_M2_BL
                 0x0801f1e8       0x44 bin/motors.o
- .rodata.RZR_M4_BL
+ .rodata.RZR_M3_BL
                 0x0801f22c       0x44 bin/motors.o
+ .rodata.RZR_M4_BL
+                0x0801f270       0x44 bin/motors.o
  .rodata.motorsSetRatio.str1.1
-                0x0801f270       0x2c bin/motors.o
+                0x0801f2b4       0x31 bin/motors.o
  .rodata.str1.1
-                0x0801f29c       0x25 bin/motors.o
+                0x0801f2e5       0x25 bin/motors.o
                                  0x29 (size before relaxing)
- *fill*         0x0801f2c1        0x1 
  .rodata.testsound
-                0x0801f2c2        0x8 bin/motors.o
+                0x0801f30a        0x8 bin/motors.o
  .rodata.crtpInit.str1.1
-                0x0801f2ca       0x10 bin/crtp.o
+                0x0801f312       0x10 bin/crtp.o
  .rodata.crtpInitTaskQueue.str1.1
-                0x0801f2da       0x2e bin/crtp.o
+                0x0801f322       0x2e bin/crtp.o
  .rodata.crtpReceivePacket.str1.1
-                0x0801f308        0xf bin/crtp.o
+                0x0801f350        0xf bin/crtp.o
                                  0x11 (size before relaxing)
  .rodata.crtpSendPacket.str1.1
-                0x0801f317       0x1e bin/crtp.o
+                0x0801f35f       0x1e bin/crtp.o
  .rodata.ledseqInit.str1.1
-                0x0801f335        0xc bin/ledseq.o
- *fill*         0x0801f341        0x3 
+                0x0801f37d        0xc bin/ledseq.o
+ *fill*         0x0801f389        0x3 
  .rodata.seq_alive
-                0x0801f344       0x18 bin/ledseq.o
-                0x0801f344                seq_alive
- .rodata.seq_armed
-                0x0801f35c       0x18 bin/ledseq.o
-                0x0801f35c                seq_armed
- .rodata.seq_bootloader
-                0x0801f374       0x18 bin/ledseq.o
-                0x0801f374                seq_bootloader
- .rodata.seq_calibrated
                 0x0801f38c       0x18 bin/ledseq.o
-                0x0801f38c                seq_calibrated
+                0x0801f38c                seq_alive
+ .rodata.seq_armed
+                0x0801f3a4       0x18 bin/ledseq.o
+                0x0801f3a4                seq_armed
+ .rodata.seq_bootloader
+                0x0801f3bc       0x18 bin/ledseq.o
+                0x0801f3bc                seq_bootloader
+ .rodata.seq_calibrated
+                0x0801f3d4       0x18 bin/ledseq.o
+                0x0801f3d4                seq_calibrated
  .rodata.seq_charged
-                0x0801f3a4       0x10 bin/ledseq.o
-                0x0801f3a4                seq_charged
+                0x0801f3ec       0x10 bin/ledseq.o
+                0x0801f3ec                seq_charged
  .rodata.seq_linkup
-                0x0801f3b4       0x18 bin/ledseq.o
-                0x0801f3b4                seq_linkup
+                0x0801f3fc       0x18 bin/ledseq.o
+                0x0801f3fc                seq_linkup
  .rodata.seq_lowbat
-                0x0801f3cc       0x10 bin/ledseq.o
-                0x0801f3cc                seq_lowbat
+                0x0801f414       0x10 bin/ledseq.o
+                0x0801f414                seq_lowbat
  .rodata.seq_testPassed
-                0x0801f3dc       0x78 bin/ledseq.o
-                0x0801f3dc                seq_testPassed
+                0x0801f424       0x78 bin/ledseq.o
+                0x0801f424                seq_testPassed
  .rodata.sequences
-                0x0801f454       0x28 bin/ledseq.o
+                0x0801f49c       0x28 bin/ledseq.o
  .rodata.vApplicationMallocFailedHook.str1.1
-                0x0801f47c       0x11 bin/freeRTOSdebug.o
+                0x0801f4c4       0x11 bin/freeRTOSdebug.o
  .rodata.str1.1
-                0x0801f48d       0x45 bin/system.o
+                0x0801f4d5       0x45 bin/system.o
                                  0x54 (size before relaxing)
  .rodata.systemInit.str1.1
-                0x0801f4d2       0xa1 bin/system.o
+                0x0801f51a       0xa1 bin/system.o
  .rodata.systemLaunch.str1.1
-                0x0801f573        0x7 bin/system.o
+                0x0801f5bb        0x7 bin/system.o
  .rodata.systemTask.str1.1
-                0x0801f57a       0x2e bin/system.o
+                0x0801f5c2       0x2e bin/system.o
  .rodata.fullMsg
-                0x0801f5a8        0x5 bin/console.o
+                0x0801f5f0        0x5 bin/console.o
  .rodata.crtpserviceHandler.str1.1
-                0x0801f5ad       0x13 bin/crtpservice.o
+                0x0801f5f5       0x13 bin/crtpservice.o
  .rodata.paramInit.str1.1
-                0x0801f5c0       0x40 bin/param.o
+                0x0801f608       0x40 bin/param.o
  .rodata.paramTOCProcess.str1.1
-                0x0801f600       0x1d bin/param.o
+                0x0801f648       0x1d bin/param.o
                                  0x1e (size before relaxing)
  .rodata.logGetInt.str1.1
-                0x0801f61d        0xb bin/log.o
+                0x0801f665        0xb bin/log.o
  .rodata.logInit.str1.1
-                0x0801f628       0x36 bin/log.o
+                0x0801f670       0x36 bin/log.o
                                  0x3a (size before relaxing)
  .rodata.logTask.str1.1
-                0x0801f65e        0xe bin/log.o
+                0x0801f6a6        0xe bin/log.o
                                   0xf (size before relaxing)
  .rodata.typeLength
-                0x0801f66c        0x9 bin/log.o
+                0x0801f6b4        0x9 bin/log.o
  .rodata.commanderInit.str1.1
-                0x0801f675       0x38 bin/commander.o
- *fill*         0x0801f6ad        0x3 
+                0x0801f6bd       0x38 bin/commander.o
+ *fill*         0x0801f6f5        0x3 
  .rodata.priorityDisable
-                0x0801f6b0        0x4 bin/commander.o
+                0x0801f6f8        0x4 bin/commander.o
  .rodata.crtpCommanderRpytDecodeSetpoint.str1.1
-                0x0801f6b4       0x2c bin/crtp_commander_rpyt.o
+                0x0801f6fc       0x2c bin/crtp_commander_rpyt.o
  .rodata.str1.1
-                0x0801f6e0       0x5d bin/crtp_commander_rpyt.o
+                0x0801f728       0x5d bin/crtp_commander_rpyt.o
                                  0x68 (size before relaxing)
  .rodata.altHoldDecoder.str1.1
-                0x0801f73d       0x54 bin/crtp_commander_generic.o
+                0x0801f785       0x54 bin/crtp_commander_generic.o
  .rodata.cppmEmuDecoder.str1.1
-                0x0801f791       0x3b bin/crtp_commander_generic.o
+                0x0801f7d9       0x3b bin/crtp_commander_generic.o
  .rodata.crtpCommanderGenericDecodeSetpoint.str1.1
-                0x0801f7cc        0xd bin/crtp_commander_generic.o
- *fill*         0x0801f7d9        0x3 
+                0x0801f814        0xd bin/crtp_commander_generic.o
+ *fill*         0x0801f821        0x3 
  .rodata.packetDecoders
-                0x0801f7dc       0x14 bin/crtp_commander_generic.o
+                0x0801f824       0x14 bin/crtp_commander_generic.o
  .rodata.str1.1
-                0x0801f7f0       0x3a bin/crtp_commander_generic.o
+                0x0801f838       0x3a bin/crtp_commander_generic.o
                                  0x43 (size before relaxing)
  .rodata.locSrvSendPacket.str1.1
-                0x0801f82a       0x48 bin/crtp_localization_service.o
+                0x0801f872       0x48 bin/crtp_localization_service.o
  .rodata.locSrvSendRangeFloat.str1.1
-                0x0801f872       0x26 bin/crtp_localization_service.o
+                0x0801f8ba       0x26 bin/crtp_localization_service.o
  .rodata.str1.1
-                0x0801f898       0x2b bin/crtp_localization_service.o
+                0x0801f8e0       0x2b bin/crtp_localization_service.o
                                  0x40 (size before relaxing)
  .rodata.str1.1
-                0x0801f8c3       0x66 bin/sensfusion6.o
+                0x0801f90b       0x66 bin/sensfusion6.o
                                  0x74 (size before relaxing)
  .rodata.stabilizerInit.str1.1
-                0x0801f929        0xb bin/stabilizer.o
+                0x0801f971        0xb bin/stabilizer.o
  .rodata.str1.1
-                0x0801f934       0xd5 bin/stabilizer.o
+                0x0801f97c       0xd5 bin/stabilizer.o
                                 0x12e (size before relaxing)
  .rodata.arm_sqrt.str1.1
-                0x0801fa09       0x1b bin/estimator_kalman.o
+                0x0801fa51       0x1b bin/estimator_kalman.o
  .rodata.mat_mult.str1.1
-                0x0801fa24       0x39 bin/estimator_kalman.o
+                0x0801fa6c       0x39 bin/estimator_kalman.o
  .rodata.mat_trans.str1.1
-                0x0801fa5d       0x55 bin/estimator_kalman.o
+                0x0801faa5       0x55 bin/estimator_kalman.o
  .rodata.stateEstimatorScalarUpdate.str1.1
-                0x0801fab2       0x37 bin/estimator_kalman.o
+                0x0801fafa       0x37 bin/estimator_kalman.o
  .rodata.str1.1
-                0x0801fae9       0x1f bin/power_distribution_stock.o
+                0x0801fb31       0x1f bin/power_distribution_stock.o
                                  0x3c (size before relaxing)
  .rodata.assertFail.str1.1
-                0x0801fb08       0x1a bin/cfassert.o
+                0x0801fb50       0x1a bin/cfassert.o
  .rodata.printAssertSnapshotData.str1.1
-                0x0801fb22       0x3f bin/cfassert.o
+                0x0801fb6a       0x3f bin/cfassert.o
  .rodata.str1.1
-                0x0801fb61        0x1 bin/cfassert.o
- .rodata.digit  0x0801fb61       0x10 bin/eprintf.o
+                0x0801fba9        0x1 bin/cfassert.o
+ .rodata.digit  0x0801fba9       0x10 bin/eprintf.o
  .rodata.V_MODIFIED
-                0x0801fb71        0x1 bin/version.o
-                0x0801fb71                V_MODIFIED
- *fill*         0x0801fb72        0x2 
+                0x0801fbb9        0x1 bin/version.o
+                0x0801fbb9                V_MODIFIED
+ *fill*         0x0801fbba        0x2 
  .rodata.V_REVISION_0
-                0x0801fb74        0x4 bin/version.o
-                0x0801fb74                V_REVISION_0
+                0x0801fbbc        0x4 bin/version.o
+                0x0801fbbc                V_REVISION_0
  .rodata.V_REVISION_1
-                0x0801fb78        0x2 bin/version.o
-                0x0801fb78                V_REVISION_1
+                0x0801fbc0        0x2 bin/version.o
+                0x0801fbc0                V_REVISION_1
  .rodata.str1.1
-                0x0801fb7a       0x63 bin/version.o
+                0x0801fbc2       0x63 bin/version.o
                                  0x6e (size before relaxing)
- *fill*         0x0801fbdd        0x3 
+ *fill*         0x0801fc25        0x3 
  .rodata.uxTopUsedPriority
-                0x0801fbe0        0x4 bin/FreeRTOS-openocd.o
-                0x0801fbe0                uxTopUsedPriority
+                0x0801fc28        0x4 bin/FreeRTOS-openocd.o
+                0x0801fc28                uxTopUsedPriority
  .rodata.FATFS_AddDriver.str1.1
-                0x0801fbe4       0x31 bin/diskio.o
- .rodata.ExCvt  0x0801fc15       0x80 bin/ff.o
+                0x0801fc2c       0x31 bin/diskio.o
+ .rodata.ExCvt  0x0801fc5d       0x80 bin/ff.o
  .rodata.LfnOfs
-                0x0801fc95        0xd bin/ff.o
+                0x0801fcdd        0xd bin/ff.o
  .rodata.follow_path.str1.1
-                0x0801fca2       0x10 bin/ff.o
+                0x0801fcea       0x10 bin/ff.o
  .rodata.get_ldnumber.str1.1
-                0x0801fcb2       0x10 bin/ff.o
+                0x0801fcfa       0x10 bin/ff.o
                                   0x3 (size before relaxing)
- .rodata.Tbl    0x0801fcb2      0x100 bin/unicode.o
+ .rodata.Tbl    0x0801fcfa      0x100 bin/unicode.o
  .rodata.cvt1.5461
-                0x0801fdb2      0x1f2 bin/unicode.o
+                0x0801fdfa      0x1f2 bin/unicode.o
  .rodata.cvt2.5462
-                0x0801ffa4       0xbc bin/unicode.o
+                0x0801ffec       0xbc bin/unicode.o
  .rodata.led_pin
-                0x08020060       0x14 bin/led_f405.o
+                0x080200a8       0x14 bin/led_f405.o
  .rodata.led_polarity
-                0x08020074       0x14 bin/led_f405.o
+                0x080200bc       0x14 bin/led_f405.o
  .rodata.led_port
-                0x08020088       0x14 bin/led_f405.o
+                0x080200d0       0x14 bin/led_f405.o
  .rodata.mpu6500EvaluateSelfTest.str1.1
-                0x0802009c       0x48 bin/mpu6500.o
+                0x080200e4       0x48 bin/mpu6500.o
  .rodata.mpu6500SelfTest.str1.1
-                0x080200e4       0x27 bin/mpu6500.o
- *fill*         0x0802010b        0x1 
+                0x0802012c       0x27 bin/mpu6500.o
+ *fill*         0x08020153        0x1 
  .rodata.mpu6500StTb
-                0x0802010c      0x200 bin/mpu6500.o
+                0x08020154      0x200 bin/mpu6500.o
  .rodata.lps25hEvaluateSelfTest.str1.1
-                0x0802030c       0x47 bin/lps25h.o
+                0x08020354       0x47 bin/lps25h.o
  .rodata.lps25hSelfTest.str1.1
-                0x08020353        0xc bin/lps25h.o
+                0x0802039b        0xc bin/lps25h.o
                                  0x15 (size before relaxing)
- *fill*         0x0802035f        0x1 
+ *fill*         0x080203a7        0x1 
  .rodata.deckBusDef
-                0x08020360       0x50 bin/i2c_drv.o
+                0x080203a8       0x50 bin/i2c_drv.o
  .rodata.sensorBusDef
-                0x080203b0       0x50 bin/i2c_drv.o
+                0x080203f8       0x50 bin/i2c_drv.o
  .rodata.ak8963EvaluateSelfTest.str1.1
-                0x08020400       0x3e bin/ak8963.o
+                0x08020448       0x3e bin/ak8963.o
  .rodata.ak8963SelfTest.str1.1
-                0x0802043e       0x19 bin/ak8963.o
+                0x08020486       0x19 bin/ak8963.o
                                  0x1f (size before relaxing)
  .rodata.eepromTest.str1.1
-                0x08020457       0x3e bin/eeprom.o
+                0x0802049f       0x3e bin/eeprom.o
  .rodata.watchdogNormalStartTest.str1.1
-                0x08020495       0x3a bin/watchdog.o
+                0x080204dd       0x3a bin/watchdog.o
  .rodata.cppmGetTimestamp.str1.1
-                0x080204cf       0x21 bin/cppm.o
+                0x08020517       0x21 bin/cppm.o
  .rodata.usblinkInit.str1.1
-                0x080204f0        0x8 bin/usblink.o
+                0x08020538        0x8 bin/usblink.o
  .rodata.usblinkSendPacket.str1.1
-                0x080204f8       0x2c bin/usblink.o
+                0x08020540       0x2c bin/usblink.o
  .rodata.USBD_USR_ConfigStrDescriptor.str1.1
-                0x08020524        0xb bin/usbd_desc.o
+                0x0802056c        0xb bin/usbd_desc.o
  .rodata.USBD_USR_InterfaceStrDescriptor.str1.1
-                0x0802052f       0x21 bin/usbd_desc.o
+                0x08020577       0x21 bin/usbd_desc.o
  .rodata.USBD_USR_ManufacturerStrDescriptor.str1.1
-                0x08020550        0xc bin/usbd_desc.o
+                0x08020598        0xc bin/usbd_desc.o
  .rodata.USBD_USR_ProductStrDescriptor.str1.1
-                0x0802055c       0x21 bin/usbd_desc.o
+                0x080205a4       0x21 bin/usbd_desc.o
                                  0x2f (size before relaxing)
  .rodata.bin2hex
-                0x0802057d       0x10 bin/usbd_desc.o
- *fill*         0x0802058d        0x3 
+                0x080205c5       0x10 bin/usbd_desc.o
+ *fill*         0x080205d5        0x3 
  .rodata.bat671723HS25C
-                0x08020590       0x28 bin/pm_f405.o
+                0x080205d8       0x28 bin/pm_f405.o
  .rodata.pmInit.str1.1
-                0x080205b8        0x8 bin/pm_f405.o
+                0x08020600        0x8 bin/pm_f405.o
  .rodata.str1.1
-                0x080205c0       0x3c bin/pm_f405.o
+                0x08020608       0x3c bin/pm_f405.o
                                  0x45 (size before relaxing)
  .rodata.syslinkInit.str1.1
-                0x080205fc        0x8 bin/syslink.o
+                0x08020644        0x8 bin/syslink.o
  .rodata.syslinkSendPacket.str1.1
-                0x08020604       0x1b bin/syslink.o
+                0x0802064c       0x1b bin/syslink.o
  .rodata.syslinkTask.str1.1
-                0x0802061f       0x2e bin/syslink.o
+                0x08020667       0x2e bin/syslink.o
                                  0x30 (size before relaxing)
  .rodata.radiolinkInit.str1.1
-                0x0802064d       0x13 bin/radiolink.o
+                0x08020695       0x13 bin/radiolink.o
  .rodata.radiolinkSendCRTPPacket.str1.1
-                0x08020660       0x18 bin/radiolink.o
+                0x080206a8       0x18 bin/radiolink.o
                                  0x36 (size before relaxing)
  .rodata.str1.1
-                0x08020678       0x10 bin/radiolink.o
+                0x080206c0       0x10 bin/radiolink.o
                                  0x16 (size before relaxing)
  .rodata.owRead.str1.1
-                0x08020688       0x16 bin/ow_syslink.o
+                0x080206d0       0x16 bin/ow_syslink.o
  .rodata.owSyslinkTransfer.str1.1
-                0x0802069e       0x30 bin/ow_syslink.o
+                0x080206e6       0x30 bin/ow_syslink.o
                                  0x46 (size before relaxing)
  .rodata.proximityInit.str1.1
-                0x080206ce        0xa bin/proximity.o
+                0x08020716        0xa bin/proximity.o
  .rodata.sensorsInit.str1.1
-                0x080206d8       0xbe bin/sensors_cf2.o
+                0x08020720       0xbe bin/sensors_cf2.o
  .rodata.sensorsManufacturingTest.str1.1
-                0x08020796       0x78 bin/sensors_cf2.o
+                0x080207de       0x78 bin/sensors_cf2.o
  .rodata.sensorsTest.str1.1
-                0x0802080e       0x27 bin/sensors_cf2.o
+                0x08020856       0x27 bin/sensors_cf2.o
  .rodata.str1.1
-                0x08020835       0x38 bin/sensors_cf2.o
+                0x0802087d       0x38 bin/sensors_cf2.o
                                  0x4e (size before relaxing)
  .rodata.BIAS_500_16
-                0x0802086d       0x12 bin/libdw1000.o
+                0x080208b5       0x12 bin/libdw1000.o
  .rodata.BIAS_500_64
-                0x0802087f       0x12 bin/libdw1000.o
+                0x080208c7       0x12 bin/libdw1000.o
  .rodata.BIAS_900_16
-                0x08020891       0x12 bin/libdw1000.o
+                0x080208d9       0x12 bin/libdw1000.o
  .rodata.BIAS_900_64
-                0x080208a3       0x12 bin/libdw1000.o
+                0x080208eb       0x12 bin/libdw1000.o
  .rodata.MODE_LONGDATA_RANGE_LOWPOWER
-                0x080208b5        0x3 bin/libdw1000.o
-                0x080208b5                MODE_LONGDATA_RANGE_LOWPOWER
+                0x080208fd        0x3 bin/libdw1000.o
+                0x080208fd                MODE_LONGDATA_RANGE_LOWPOWER
  .rodata.MODE_SHORTDATA_FAST_ACCURACY
-                0x080208b8        0x3 bin/libdw1000.o
-                0x080208b8                MODE_SHORTDATA_FAST_ACCURACY
- *fill*         0x080208bb        0x1 
+                0x08020900        0x3 bin/libdw1000.o
+                0x08020900                MODE_SHORTDATA_FAST_ACCURACY
+ *fill*         0x08020903        0x1 
  .rodata.calibrated
-                0x080208bc      0x148 bin/sound_cf2.o
+                0x08020904      0x148 bin/sound_cf2.o
  .rodata.chg_done
-                0x08020a04      0x148 bin/sound_cf2.o
+                0x08020a4c      0x148 bin/sound_cf2.o
  .rodata.factory_test
-                0x08020b4c      0x148 bin/sound_cf2.o
+                0x08020b94      0x148 bin/sound_cf2.o
  .rodata.lowbatt
-                0x08020c94      0x148 bin/sound_cf2.o
+                0x08020cdc      0x148 bin/sound_cf2.o
  .rodata.range_fast
-                0x08020ddc      0x148 bin/sound_cf2.o
+                0x08020e24      0x148 bin/sound_cf2.o
  .rodata.range_slow
-                0x08020f24      0x148 bin/sound_cf2.o
+                0x08020f6c      0x148 bin/sound_cf2.o
  .rodata.soundInit.str1.1
-                0x0802106c        0xb bin/sound_cf2.o
- *fill*         0x08021077        0x1 
+                0x080210b4        0xb bin/sound_cf2.o
+ *fill*         0x080210bf        0x1 
  .rodata.startup
-                0x08021078      0x148 bin/sound_cf2.o
+                0x080210c0      0x148 bin/sound_cf2.o
  .rodata.starwars
-                0x080211c0      0x148 bin/sound_cf2.o
+                0x08021208      0x148 bin/sound_cf2.o
  .rodata.str1.1
-                0x08021308       0x1e bin/sound_cf2.o
+                0x08021350       0x1e bin/sound_cf2.o
                                  0x2b (size before relaxing)
  .rodata.tilt.str1.1
-                0x08021326       0x16 bin/sound_cf2.o
- *fill*         0x08021326        0x2 
+                0x0802136e       0x16 bin/sound_cf2.o
+ *fill*         0x0802136e        0x2 
  .rodata.usb_connect
-                0x08021328      0x148 bin/sound_cf2.o
+                0x08021370      0x148 bin/sound_cf2.o
  .rodata.usb_disconnect
-                0x08021470      0x148 bin/sound_cf2.o
+                0x080214b8      0x148 bin/sound_cf2.o
  .rodata.valkyries
-                0x080215b8      0x148 bin/sound_cf2.o
+                0x08021600      0x148 bin/sound_cf2.o
  .rodata.extRxInit.str1.1
-                0x08021700        0x6 bin/extrx.o
+                0x08021748        0x6 bin/extrx.o
  .rodata.str1.1
-                0x08021706       0x1b bin/extrx.o
+                0x0802174e       0x1b bin/extrx.o
                                  0x37 (size before relaxing)
  .rodata.str1.1
-                0x08021721       0x15 bin/sysload.o
+                0x08021769       0x15 bin/sysload.o
                                  0x1c (size before relaxing)
  .rodata.sysLoadInit.str1.1
-                0x08021736       0x21 bin/sysload.o
+                0x0802177e       0x21 bin/sysload.o
  .rodata.timerHandler.part.0.str1.1
-                0x08021757       0x9d bin/sysload.o
+                0x0802179f       0x9d bin/sysload.o
  .rodata.eepromSerialNum
-                0x080217f4        0x8 bin/mem_cf2.o
+                0x0802183c        0x8 bin/mem_cf2.o
  .rodata.memInit.str1.1
-                0x080217fc        0x4 bin/mem_cf2.o
+                0x08021844        0x4 bin/mem_cf2.o
  .rodata.noData
-                0x08021800        0x8 bin/mem_cf2.o
+                0x08021848        0x8 bin/mem_cf2.o
  .rodata.buzzerInit.str1.1
-                0x08021808        0xa bin/buzzer.o
+                0x08021850        0xa bin/buzzer.o
  .rodata.bypass.str1.1
-                0x08021812       0x13 bin/buzzer.o
+                0x0802185a       0x13 bin/buzzer.o
  .rodata.str1.1
-                0x08021812      0x135 bin/buzzer.o
+                0x0802185a      0x135 bin/buzzer.o
                                 0x172 (size before relaxing)
  .rodata.tilt.str1.1
-                0x08021947       0x16 bin/buzzer.o
+                0x0802198f       0x16 bin/buzzer.o
  .rodata.deckInit.str1.1
-                0x08021947       0x1f bin/deck.o
+                0x0802198f       0x1f bin/deck.o
  .rodata.deckTest.str1.1
-                0x08021966       0x40 bin/deck.o
+                0x080219ae       0x40 bin/deck.o
  .rodata.deckInfoInit.str1.1
-                0x080219a6      0x2b9 bin/deck_info.o
+                0x080219ee      0x2b9 bin/deck_info.o
                                 0x2bb (size before relaxing)
  .rodata.printDeckInfo.str1.1
-                0x08021c5f       0x2f bin/deck_info.o
+                0x08021ca7       0x2f bin/deck_info.o
  .rodata.deckdriversInit.str1.1
-                0x08021c8e       0x20 bin/deck_drivers.o
- *fill*         0x08021cae        0x2 
+                0x08021cd6       0x20 bin/deck_drivers.o
+ *fill*         0x08021cf6        0x2 
  .rodata.deckGPIOMapping
-                0x08021cb0       0x9c bin/deck_constants.o
-                0x08021cb0                deckGPIOMapping
+                0x08021cf8       0x9c bin/deck_constants.o
+                0x08021cf8                deckGPIOMapping
  .rodata.rzrInit.str1.1
-                0x08021d4c       0x1e bin/rzr.o
- *fill*         0x08021d6a        0x2 
+                0x08021d94       0x1e bin/rzr.o
+ *fill*         0x08021db2        0x2 
  .rodata.rzr_deck
-                0x08021d6c       0x18 bin/rzr.o
+                0x08021db4       0x18 bin/rzr.o
  .rodata.str1.1
-                0x08021d84        0x6 bin/rzr.o
+                0x08021dcc        0x6 bin/rzr.o
  .rodata.batteryChargeEffect.str1.1
-                0x08021d8a        0x8 bin/ledring12.o
+                0x08021dd2        0x8 bin/ledring12.o
  .rodata.blueRing
-                0x08021d8a       0x24 bin/ledring12.o
+                0x08021dd2       0x24 bin/ledring12.o
  .rodata.brightnessEffect.str1.1
-                0x08021dae        0xb bin/ledring12.o
+                0x08021df6        0xb bin/ledring12.o
  .rodata.colorRing
-                0x08021dae       0x24 bin/ledring12.o
+                0x08021df6       0x24 bin/ledring12.o
  .rodata.gravityLight.str1.1
-                0x08021dd2       0x16 bin/ledring12.o
+                0x08021e1a       0x16 bin/ledring12.o
  .rodata.ledring12Init.str1.1
-                0x08021dd2        0xa bin/ledring12.o
+                0x08021e1a        0xa bin/ledring12.o
  .rodata.ledring12_deck
-                0x08021ddc       0x18 bin/ledring12.o
+                0x08021e24       0x18 bin/ledring12.o
  .rodata.str1.1
-                0x08021df4       0x58 bin/ledring12.o
+                0x08021e3c       0x58 bin/ledring12.o
                                  0x76 (size before relaxing)
  .rodata.test_pat
-                0x08021e4c        0x9 bin/ledring12.o
+                0x08021e94        0x9 bin/ledring12.o
  .rodata.tiltEffect.str1.1
-                0x08021e55        0x7 bin/ledring12.o
+                0x08021e9d        0x7 bin/ledring12.o
  .rodata.whiteRing
-                0x08021e55       0x24 bin/ledring12.o
- *fill*         0x08021e79        0x3 
+                0x08021e9d       0x24 bin/ledring12.o
+ *fill*         0x08021ec1        0x3 
  .rodata.buzzer_deck
-                0x08021e7c       0x18 bin/buzzdeck.o
+                0x08021ec4       0x18 bin/buzzdeck.o
  .rodata.str1.1
-                0x08021e94        0x9 bin/buzzdeck.o
+                0x08021edc        0x9 bin/buzzdeck.o
  .rodata.gtgpsInit.str1.1
-                0x08021e9d       0x2c bin/gtgps.o
+                0x08021ee5       0x2c bin/gtgps.o
                                  0x32 (size before relaxing)
  .rodata.gtgpsTask.str1.1
-                0x08021ec9        0xc bin/gtgps.o
- *fill*         0x08021ed5        0x3 
+                0x08021f11        0xc bin/gtgps.o
+ *fill*         0x08021f1d        0x3 
  .rodata.gtgps_deck
-                0x08021ed8       0x18 bin/gtgps.o
+                0x08021f20       0x18 bin/gtgps.o
  .rodata.str1.1
-                0x08021ef0       0x2c bin/gtgps.o
+                0x08021f38       0x2c bin/gtgps.o
                                  0x30 (size before relaxing)
  .rodata.cppm_deck
-                0x08021f1c       0x18 bin/cppmdeck.o
+                0x08021f64       0x18 bin/cppmdeck.o
  .rodata.str1.1
-                0x08021f34        0x7 bin/cppmdeck.o
+                0x08021f7c        0x7 bin/cppmdeck.o
  .rodata.str1.1
-                0x08021f3b        0x6 bin/usddeck.o
+                0x08021f83        0x6 bin/usddeck.o
  .rodata.usdInit.str1.1
-                0x08021f41       0xb1 bin/usddeck.o
+                0x08021f89       0xb1 bin/usddeck.o
                                  0xb2 (size before relaxing)
  .rodata.usdLogTask.str1.1
-                0x08021ff2       0xd1 bin/usddeck.o
+                0x0802203a       0xd1 bin/usddeck.o
                                 0x122 (size before relaxing)
  .rodata.usdTest.str1.1
-                0x080220c3       0x28 bin/usddeck.o
+                0x0802210b       0x28 bin/usddeck.o
  .rodata.usdWriteTask.str1.1
-                0x080220eb       0x7a bin/usddeck.o
- *fill*         0x08022165        0x3 
+                0x08022133       0x7a bin/usddeck.o
+ *fill*         0x080221ad        0x3 
  .rodata.usd_deck
-                0x08022168       0x18 bin/usddeck.o
+                0x080221b0       0x18 bin/usddeck.o
  .rodata.str1.1
-                0x08022180       0x15 bin/vl53l0x.o
+                0x080221c8       0x15 bin/vl53l0x.o
                                  0x22 (size before relaxing)
  .rodata.vl53l0xInit.str1.1
-                0x08022195        0x5 bin/vl53l0x.o
+                0x080221dd        0x5 bin/vl53l0x.o
  .rodata.vl53l0xInitSensor.str1.1
-                0x0802219a       0x3c bin/vl53l0x.o
- *fill*         0x080221d6        0x2 
+                0x080221e2       0x3c bin/vl53l0x.o
+ *fill*         0x0802221e        0x2 
  .rodata.vl53l0x_deck
-                0x080221d8       0x18 bin/vl53l0x.o
+                0x08022220       0x18 bin/vl53l0x.o
  .rodata.dwm1000Init.str1.1
-                0x080221f0       0x27 bin/locodeck.o
+                0x08022238       0x27 bin/locodeck.o
  .rodata.dwm1000Test.str1.1
-                0x08022217       0x27 bin/locodeck.o
- *fill*         0x0802223e        0x2 
+                0x0802225f       0x27 bin/locodeck.o
+ *fill*         0x08022286        0x2 
  .rodata.dwm1000_deck
-                0x08022240       0x18 bin/locodeck.o
+                0x08022288       0x18 bin/locodeck.o
  .rodata.str1.1
-                0x08022258      0x140 bin/locodeck.o
+                0x080222a0      0x140 bin/locodeck.o
                                 0x15f (size before relaxing)
  .rodata.str1.1
-                0x08022398       0x2c bin/lpsTwrTag.o
+                0x080223e0       0x2c bin/lpsTwrTag.o
                                  0x30 (size before relaxing)
  .rodata.twrTagOnEvent.str1.1
-                0x080223c4       0x21 bin/lpsTwrTag.o
+                0x0802240c       0x21 bin/lpsTwrTag.o
                                  0x27 (size before relaxing)
  .rodata.exptestTestAllPins.str1.1
-                0x080223e5       0x19 bin/exptest.o
- *fill*         0x080223fe        0x2 
+                0x0802242d       0x19 bin/exptest.o
+ *fill*         0x08022446        0x2 
  .rodata.exptest_deck
-                0x08022400       0x18 bin/exptest.o
+                0x08022448       0x18 bin/exptest.o
  .rodata.str1.1
-                0x08022418        0xa bin/exptest.o
+                0x08022460        0xa bin/exptest.o
  .rodata.configblockInit.str1.1
-                0x08022422       0x3d bin/configblockeeprom.o
- *fill*         0x0802245f        0x1 
+                0x0802246a       0x3d bin/configblockeeprom.o
+ *fill*         0x080224a7        0x1 
  .rodata.sinTable_f32
-                0x08022460      0x804 bin/libarm_math.a(arm_common_tables.o)
-                0x08022460                sinTable_f32
+                0x080224a8      0x804 bin/libarm_math.a(arm_common_tables.o)
+                0x080224a8                sinTable_f32
  .rodata.atanhi
-                0x08022c64       0x10 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_atan.o)
+                0x08022cac       0x10 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_atan.o)
  .rodata.atanlo
-                0x08022c74       0x10 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_atan.o)
- *fill*         0x08022c84        0x4 
+                0x08022cbc       0x10 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_atan.o)
+ *fill*         0x08022ccc        0x4 
  .rodata.__exp2f_data
-                0x08022c88      0x148 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_exp2_data.o)
-                0x08022c88                __exp2f_data
+                0x08022cd0      0x148 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_exp2_data.o)
+                0x08022cd0                __exp2f_data
  .rodata.__powf_log2_data
-                0x08022dd0      0x128 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_pow_log2_data.o)
-                0x08022dd0                __powf_log2_data
+                0x08022e18      0x128 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_pow_log2_data.o)
+                0x08022e18                __powf_log2_data
  .rodata.pow.str1.4
-                0x08022ef8        0x4 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_pow.o)
+                0x08022f40        0x4 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_pow.o)
  .rodata.asinf.str1.4
-                0x08022efc        0x9 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-wf_asin.o)
- *fill*         0x08022f05        0x3 
+                0x08022f44        0x9 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-wf_asin.o)
+ *fill*         0x08022f4d        0x3 
  .rodata.log10f.str1.4
-                0x08022f08        0x7 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-wf_log10.o)
+                0x08022f50        0x7 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-wf_log10.o)
                                   0x9 (size before relaxing)
- *fill*         0x08022f0f        0x1 
+ *fill*         0x08022f57        0x1 
  .rodata.sqrtf.str1.4
-                0x08022f10        0x8 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-wf_sqrt.o)
+                0x08022f58        0x8 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-wf_sqrt.o)
                                   0x6 (size before relaxing)
  .rodata.__ieee754_pow.str1.4
-                0x08022f18        0x1 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_pow.o)
+                0x08022f60        0x1 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_pow.o)
  .rodata.npio2_hw
-                0x08022f18       0x80 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-ef_rem_pio2.o)
+                0x08022f60       0x80 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-ef_rem_pio2.o)
  .rodata.two_over_pi
-                0x08022f98      0x318 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-ef_rem_pio2.o)
- .rodata.PIo2   0x080232b0       0x2c /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-kf_rem_pio2.o)
+                0x08022fe0      0x318 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-ef_rem_pio2.o)
+ .rodata.PIo2   0x080232f8       0x2c /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-kf_rem_pio2.o)
  .rodata.init_jk
-                0x080232dc        0xc /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-kf_rem_pio2.o)
- .rodata.TWO52  0x080232e8       0x10 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_rint.o)
+                0x08023324        0xc /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-kf_rem_pio2.o)
+ .rodata.TWO52  0x08023330       0x10 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_rint.o)
  .rodata.__logf_data
-                0x080232f8      0x120 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_log_data.o)
-                0x080232f8                __logf_data
+                0x08023340      0x120 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_log_data.o)
+                0x08023340                __logf_data
  .rodata._setlocale_r.str1.1
-                0x08023418        0x8 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-locale.o)
+                0x08023460        0x8 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-locale.o)
                                   0x9 (size before relaxing)
  .rodata.str1.1
-                0x08023420        0x2 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-locale.o)
+                0x08023468        0x2 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-locale.o)
  .rodata._ctype_
-                0x08023422      0x101 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-ctype_.o)
-                0x08023422                _ctype_
+                0x0802346a      0x101 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-ctype_.o)
+                0x0802346a                _ctype_
  *(.glue_7)
- .glue_7        0x08023523        0x0 linker stubs
+ .glue_7        0x0802356b        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08023523        0x0 linker stubs
+ .glue_7t       0x0802356b        0x0 linker stubs
  *(.init)
- *fill*         0x08023523        0x1 
- .init          0x08023524        0x4 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
-                0x08023524                _init
+ *fill*         0x0802356b        0x1 
+ .init          0x0802356c        0x4 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+                0x0802356c                _init
  *(.fini)
- .fini          0x08023528        0x4 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
-                0x08023528                _fini
+ .fini          0x08023570        0x4 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+                0x08023570                _fini
  *(.eh_frame)
-                0x0802352c                . = ALIGN (0x4)
-                0x0802352c                _param_start = .
+                0x08023574                . = ALIGN (0x4)
+                0x08023574                _param_start = .
  *(.param)
  *(.param.*)
- .param.cpu     0x0802352c       0x48 bin/system.o
- .param.system  0x08023574       0x24 bin/system.o
+ .param.cpu     0x08023574       0x48 bin/system.o
+ .param.system  0x080235bc       0x24 bin/system.o
  .param.flightmode
-                0x08023598       0x78 bin/crtp_commander_rpyt.o
+                0x080235e0       0x78 bin/crtp_commander_rpyt.o
  .param.cmdrCPPM
-                0x08023610       0x54 bin/crtp_commander_generic.o
- .param.locSrv  0x08023664       0x24 bin/crtp_localization_service.o
+                0x08023658       0x54 bin/crtp_commander_generic.o
+ .param.locSrv  0x080236ac       0x24 bin/crtp_localization_service.o
  .param.sensorfusion6
-                0x08023688       0x3c bin/sensfusion6.o
+                0x080236d0       0x3c bin/sensfusion6.o
  .param.stateMachine
-                0x080236c4       0x48 bin/stabilizer.o
+                0x0802370c       0x48 bin/stabilizer.o
  .param.motorPowerSet
-                0x0802370c       0x54 bin/power_distribution_stock.o
+                0x08023754       0x54 bin/power_distribution_stock.o
  .param.firmware
-                0x08023760       0x3c bin/version.o
+                0x080237a8       0x3c bin/version.o
  .param.imu_sensors
-                0x0802379c       0x30 bin/sensors_cf2.o
+                0x080237e4       0x30 bin/sensors_cf2.o
  .param.imu_tests
-                0x080237cc       0x3c bin/sensors_cf2.o
- .param.sound   0x08023808       0x48 bin/sound_cf2.o
- .param.system  0x08023850       0x24 bin/sysload.o
- .param.buzzer  0x08023874       0x3c bin/buzzer.o
- .param.limits  0x080238b0       0x48 bin/buzzer.o
+                0x08023814       0x3c bin/sensors_cf2.o
+ .param.sound   0x08023850       0x48 bin/sound_cf2.o
+ .param.system  0x08023898       0x24 bin/sysload.o
+ .param.buzzer  0x080238bc       0x3c bin/buzzer.o
+ .param.limits  0x080238f8       0x48 bin/buzzer.o
  .param.sensing
-                0x080238f8       0x30 bin/buzzer.o
- .param.speeds  0x08023928       0x48 bin/buzzer.o
- .param.tuning  0x08023970       0x54 bin/buzzer.o
- .param.ring    0x080239c4       0x84 bin/ledring12.o
+                0x08023940       0x30 bin/buzzer.o
+ .param.speeds  0x08023970       0x48 bin/buzzer.o
+ .param.tuning  0x080239b8       0x54 bin/buzzer.o
+ .param.ring    0x08023a0c       0x84 bin/ledring12.o
  .param.anchorpos
-                0x08023a48       0xfc bin/locodeck.o
-                0x08023b44                _param_stop = .
-                0x08023b44                . = ALIGN (0x4)
-                0x08023b44                _log_start = .
+                0x08023a90       0xfc bin/locodeck.o
+                0x08023b8c                _param_stop = .
+                0x08023b8c                . = ALIGN (0x4)
+                0x08023b8c                _log_start = .
  *(.log)
  *(.log.*)
- .log.pwm       0x08023b44       0x48 bin/motors.o
- .log.sys       0x08023b8c       0x24 bin/system.o
- .log.ext_pos   0x08023bb0       0x3c bin/crtp_localization_service.o
+ .log.pwm       0x08023b8c       0x48 bin/motors.o
+ .log.sys       0x08023bd4       0x24 bin/system.o
+ .log.ext_pos   0x08023bf8       0x3c bin/crtp_localization_service.o
  .log.sensorfusion6
-                0x08023bec       0x90 bin/sensfusion6.o
- .log.acc       0x08023c7c       0x3c bin/stabilizer.o
- .log.baro      0x08023cb8       0x3c bin/stabilizer.o
+                0x08023c34       0x90 bin/sensfusion6.o
+ .log.acc       0x08023cc4       0x3c bin/stabilizer.o
+ .log.baro      0x08023d00       0x3c bin/stabilizer.o
  .log.controller
-                0x08023cf4       0x30 bin/stabilizer.o
- .log.gyro      0x08023d24       0x3c bin/stabilizer.o
- .log.mag       0x08023d60       0x3c bin/stabilizer.o
- .log.motor     0x08023d9c       0x48 bin/stabilizer.o
+                0x08023d3c       0x30 bin/stabilizer.o
+ .log.gyro      0x08023d6c       0x3c bin/stabilizer.o
+ .log.mag       0x08023da8       0x3c bin/stabilizer.o
+ .log.motor     0x08023de4       0x48 bin/stabilizer.o
  .log.stabilizer
-                0x08023de4       0x54 bin/stabilizer.o
+                0x08023e2c       0x54 bin/stabilizer.o
  .log.stateEstimate
-                0x08023e38       0x3c bin/stabilizer.o
+                0x08023e80       0x3c bin/stabilizer.o
  .log.stateMachine
-                0x08023e74       0x48 bin/stabilizer.o
- .log.motor     0x08023ebc       0x48 bin/power_distribution_stock.o
- .log.pm        0x08023f04       0x6c bin/pm_f405.o
- .log.radio     0x08023f70       0x24 bin/radiolink.o
- .log.extrx     0x08023f94       0x78 bin/extrx.o
- .log.sensing   0x0802400c       0x30 bin/buzzer.o
+                0x08023ebc       0x48 bin/stabilizer.o
+ .log.motor     0x08023f04       0x48 bin/power_distribution_stock.o
+ .log.pm        0x08023f4c       0x6c bin/pm_f405.o
+ .log.radio     0x08023fb8       0x24 bin/radiolink.o
+ .log.extrx     0x08023fdc       0x78 bin/extrx.o
+ .log.sensing   0x08024054       0x30 bin/buzzer.o
  .log.servo_status
-                0x0802403c       0x3c bin/buzzer.o
- .log.gps       0x08024078       0x60 bin/gtgps.o
- .log.range     0x080240d8       0x24 bin/vl53l0x.o
- .log.ranging   0x080240fc       0xb4 bin/locodeck.o
- .log.twr       0x080241b0       0x30 bin/lpsTwrTag.o
-                0x080241e0                _log_stop = .
-                0x080241e0                _deckDriver_start = .
+                0x08024084       0x3c bin/buzzer.o
+ .log.gps       0x080240c0       0x60 bin/gtgps.o
+ .log.range     0x08024120       0x24 bin/vl53l0x.o
+ .log.ranging   0x08024144       0xb4 bin/locodeck.o
+ .log.twr       0x080241f8       0x30 bin/lpsTwrTag.o
+                0x08024228                _log_stop = .
+                0x08024228                _deckDriver_start = .
  *(.deckDriver)
  *(.deckDriver.*)
  .deckDriver.rzr_deck
-                0x080241e0        0x4 bin/rzr.o
-                0x080241e0                driver_rzr_deck
+                0x08024228        0x4 bin/rzr.o
+                0x08024228                driver_rzr_deck
  .deckDriver.ledring12_deck
-                0x080241e4        0x4 bin/ledring12.o
-                0x080241e4                driver_ledring12_deck
+                0x0802422c        0x4 bin/ledring12.o
+                0x0802422c                driver_ledring12_deck
  .deckDriver.buzzer_deck
-                0x080241e8        0x4 bin/buzzdeck.o
-                0x080241e8                driver_buzzer_deck
+                0x08024230        0x4 bin/buzzdeck.o
+                0x08024230                driver_buzzer_deck
  .deckDriver.gtgps_deck
-                0x080241ec        0x4 bin/gtgps.o
-                0x080241ec                driver_gtgps_deck
+                0x08024234        0x4 bin/gtgps.o
+                0x08024234                driver_gtgps_deck
  .deckDriver.cppm_deck
-                0x080241f0        0x4 bin/cppmdeck.o
-                0x080241f0                driver_cppm_deck
+                0x08024238        0x4 bin/cppmdeck.o
+                0x08024238                driver_cppm_deck
  .deckDriver.usd_deck
-                0x080241f4        0x4 bin/usddeck.o
-                0x080241f4                driver_usd_deck
+                0x0802423c        0x4 bin/usddeck.o
+                0x0802423c                driver_usd_deck
  .deckDriver.vl53l0x_deck
-                0x080241f8        0x4 bin/vl53l0x.o
-                0x080241f8                driver_vl53l0x_deck
+                0x08024240        0x4 bin/vl53l0x.o
+                0x08024240                driver_vl53l0x_deck
  .deckDriver.dwm1000_deck
-                0x080241fc        0x4 bin/locodeck.o
-                0x080241fc                driver_dwm1000_deck
+                0x08024244        0x4 bin/locodeck.o
+                0x08024244                driver_dwm1000_deck
  .deckDriver.exptest_deck
-                0x08024200        0x4 bin/exptest.o
-                0x08024200                driver_exptest_deck
-                0x08024204                _deckDriver_stop = .
-                0x08024204                . = ALIGN (0x4)
-                0x08024204                _etext = .
+                0x08024248        0x4 bin/exptest.o
+                0x08024248                driver_exptest_deck
+                0x0802424c                _deckDriver_stop = .
+                0x0802424c                . = ALIGN (0x4)
+                0x0802424c                _etext = .
 
-.vfp11_veneer   0x08024204        0x0
- .vfp11_veneer  0x08024204        0x0 linker stubs
+.vfp11_veneer   0x0802424c        0x0
+ .vfp11_veneer  0x0802424c        0x0 linker stubs
 
-.v4_bx          0x08024204        0x0
- .v4_bx         0x08024204        0x0 linker stubs
+.v4_bx          0x0802424c        0x0
+ .v4_bx         0x0802424c        0x0 linker stubs
 
-.iplt           0x08024204        0x0
- .iplt          0x08024204        0x0 bin/list.o
+.iplt           0x0802424c        0x0
+ .iplt          0x0802424c        0x0 bin/list.o
 
-.libc           0x08024204        0x8
-                0x08024204                . = ALIGN (0x4)
+.libc           0x0802424c        0x8
+                0x0802424c                . = ALIGN (0x4)
  *(.ARM.exidx*)
- .ARM.exidx     0x08024204        0x8 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_udivmoddi4.o)
-                0x0802420c                . = ALIGN (0x4)
-                0x0802420c                _elibc = .
-                0x0802420c                _sidata = _elibc
+ .ARM.exidx     0x0802424c        0x8 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_udivmoddi4.o)
+                0x08024254                . = ALIGN (0x4)
+                0x08024254                _elibc = .
+                0x08024254                _sidata = _elibc
 
-.rel.dyn        0x0802420c        0x0
- .rel.iplt      0x0802420c        0x0 bin/list.o
+.rel.dyn        0x08024254        0x0
+ .rel.iplt      0x08024254        0x0 bin/list.o
 
 .flashpatch     0x00000000        0x0
                 0x00000000                . = ALIGN (0x4)
@@ -18276,7 +18279,7 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
  *(.endflash)
                 0x00000000                . = ALIGN (0x4)
 
-.data           0x20000000      0xcd0 load address 0x0802420c
+.data           0x20000000      0xcd8 load address 0x08024254
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -18286,1128 +18289,1128 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
  .data.APBAHBPrescTable
                 0x20000004       0x10 bin/stm32f4xx_rcc.o
  .data.motorMapDefaltConBrushless
-                0x20000014       0x10 bin/motors.o
+                0x20000014       0x14 bin/motors.o
                 0x20000014                motorMapDefaltConBrushless
  .data.motorMapRZRBrushless
-                0x20000024       0x10 bin/motors.o
-                0x20000024                motorMapRZRBrushless
- .data.link     0x20000034        0x4 bin/crtp.o
- .data.nopLink  0x20000038       0x14 bin/crtp.o
+                0x20000028       0x14 bin/motors.o
+                0x20000028                motorMapRZRBrushless
+ .data.link     0x2000003c        0x4 bin/crtp.o
+ .data.nopLink  0x20000040       0x14 bin/crtp.o
  .data.seq_charging
-                0x2000004c       0x18 bin/ledseq.o
-                0x2000004c                seq_charging
+                0x20000054       0x18 bin/ledseq.o
+                0x20000054                seq_charging
  .data.seq_chargingMax
-                0x20000064       0x18 bin/ledseq.o
-                0x20000064                seq_chargingMax
+                0x2000006c       0x18 bin/ledseq.o
+                0x2000006c                seq_chargingMax
  .data.stabilizationModePitch
-                0x2000007c        0x1 bin/crtp_commander_rpyt.o
+                0x20000084        0x1 bin/crtp_commander_rpyt.o
  .data.stabilizationModeRoll
-                0x2000007d        0x1 bin/crtp_commander_rpyt.o
+                0x20000085        0x1 bin/crtp_commander_rpyt.o
  .data.thrustLocked
-                0x2000007e        0x1 bin/crtp_commander_rpyt.o
- .data.yawMode  0x2000007f        0x1 bin/crtp_commander_rpyt.o
+                0x20000086        0x1 bin/crtp_commander_rpyt.o
+ .data.yawMode  0x20000087        0x1 bin/crtp_commander_rpyt.o
  .data.nTypes.6322
-                0x20000080        0x4 bin/crtp_commander_generic.o
- .data.s_CppmEmuPitchMaxAngleDeg
-                0x20000084        0x4 bin/crtp_commander_generic.o
- .data.s_CppmEmuPitchMaxRateDps
                 0x20000088        0x4 bin/crtp_commander_generic.o
- .data.s_CppmEmuRollMaxAngleDeg
+ .data.s_CppmEmuPitchMaxAngleDeg
                 0x2000008c        0x4 bin/crtp_commander_generic.o
- .data.s_CppmEmuRollMaxRateDps
+ .data.s_CppmEmuPitchMaxRateDps
                 0x20000090        0x4 bin/crtp_commander_generic.o
- .data.s_CppmEmuYawMaxRateDps
+ .data.s_CppmEmuRollMaxAngleDeg
                 0x20000094        0x4 bin/crtp_commander_generic.o
+ .data.s_CppmEmuRollMaxRateDps
+                0x20000098        0x4 bin/crtp_commander_generic.o
+ .data.s_CppmEmuYawMaxRateDps
+                0x2000009c        0x4 bin/crtp_commander_generic.o
  .data.baseZacc
-                0x20000098        0x4 bin/sensfusion6.o
- .data.q0       0x2000009c        0x4 bin/sensfusion6.o
-                0x2000009c                q0
- .data.twoKi    0x200000a0        0x4 bin/sensfusion6.o
-                0x200000a0                twoKi
- .data.twoKp    0x200000a4        0x4 bin/sensfusion6.o
-                0x200000a4                twoKp
+                0x200000a0        0x4 bin/sensfusion6.o
+ .data.q0       0x200000a4        0x4 bin/sensfusion6.o
+                0x200000a4                q0
+ .data.twoKi    0x200000a8        0x4 bin/sensfusion6.o
+                0x200000a8                twoKi
+ .data.twoKp    0x200000ac        0x4 bin/sensfusion6.o
+                0x200000ac                twoKp
  .data.STATE_MACHINE
-                0x200000a8        0x2 bin/stabilizer.o
- *fill*         0x200000aa        0x2 
- .data.state    0x200000ac       0x20 bin/position_estimator_altitude.o
+                0x200000b0        0x2 bin/stabilizer.o
+ *fill*         0x200000b2        0x2 
+ .data.state    0x200000b4       0x20 bin/position_estimator_altitude.o
  .data.Am.12833
-                0x200000cc        0x8 bin/estimator_kalman.o
- .data.Am.12974
                 0x200000d4        0x8 bin/estimator_kalman.o
- .data.HTm.12887
+ .data.Am.12974
                 0x200000dc        0x8 bin/estimator_kalman.o
- .data.Km.12879
+ .data.HTm.12887
                 0x200000e4        0x8 bin/estimator_kalman.o
- .data.PHTm.12889
+ .data.Km.12879
                 0x200000ec        0x8 bin/estimator_kalman.o
- .data.Pm       0x200000f4        0x8 bin/estimator_kalman.o
- .data.R        0x200000fc       0x24 bin/estimator_kalman.o
- .data.q        0x20000120       0x10 bin/estimator_kalman.o
+ .data.PHTm.12889
+                0x200000f4        0x8 bin/estimator_kalman.o
+ .data.Pm       0x200000fc        0x8 bin/estimator_kalman.o
+ .data.R        0x20000104       0x24 bin/estimator_kalman.o
+ .data.q        0x20000128       0x10 bin/estimator_kalman.o
  .data.resetEstimation
-                0x20000130        0x1 bin/estimator_kalman.o
- *fill*         0x20000131        0x3 
+                0x20000138        0x1 bin/estimator_kalman.o
+ *fill*         0x20000139        0x3 
  .data.tmpNN1m.12835
-                0x20000134        0x8 bin/estimator_kalman.o
- .data.tmpNN1m.12881
                 0x2000013c        0x8 bin/estimator_kalman.o
- .data.tmpNN1m.12976
+ .data.tmpNN1m.12881
                 0x20000144        0x8 bin/estimator_kalman.o
- .data.tmpNN2m.12837
+ .data.tmpNN1m.12976
                 0x2000014c        0x8 bin/estimator_kalman.o
- .data.tmpNN2m.12883
+ .data.tmpNN2m.12837
                 0x20000154        0x8 bin/estimator_kalman.o
- .data.tmpNN2m.12978
+ .data.tmpNN2m.12883
                 0x2000015c        0x8 bin/estimator_kalman.o
- .data.tmpNN3m.12885
+ .data.tmpNN2m.12978
                 0x20000164        0x8 bin/estimator_kalman.o
+ .data.tmpNN3m.12885
+                0x2000016c        0x8 bin/estimator_kalman.o
  .data.V_SLOCAL_REVISION
-                0x2000016c        0x4 bin/version.o
-                0x2000016c                V_SLOCAL_REVISION
+                0x20000174        0x4 bin/version.o
+                0x20000174                V_SLOCAL_REVISION
  .data.V_SREVISION
-                0x20000170        0x4 bin/version.o
-                0x20000170                V_SREVISION
- .data.V_STAG   0x20000174        0x4 bin/version.o
-                0x20000174                V_STAG
+                0x20000178        0x4 bin/version.o
+                0x20000178                V_SREVISION
+ .data.V_STAG   0x2000017c        0x4 bin/version.o
+                0x2000017c                V_STAG
  .data.SystemCoreClock
-                0x20000178        0x4 bin/system_stm32f4xx.o
-                0x20000178                SystemCoreClock
+                0x20000180        0x4 bin/system_stm32f4xx.o
+                0x20000180                SystemCoreClock
  .data.USBD_DCD_INT_cb
-                0x2000017c       0x2c bin/usbd_core.o
-                0x2000017c                USBD_DCD_INT_cb
+                0x20000184       0x2c bin/usbd_core.o
+                0x20000184                USBD_DCD_INT_cb
  .data.USBD_DCD_INT_fops
-                0x200001a8        0x4 bin/usbd_core.o
-                0x200001a8                USBD_DCD_INT_fops
- .data.deckBus  0x200001ac       0x64 bin/i2c_drv.o
-                0x200001ac                deckBus
+                0x200001b0        0x4 bin/usbd_core.o
+                0x200001b0                USBD_DCD_INT_fops
+ .data.deckBus  0x200001b4       0x64 bin/i2c_drv.o
+                0x200001b4                deckBus
  .data.sensorsBus
-                0x20000210       0x64 bin/i2c_drv.o
-                0x20000210                sensorsBus
+                0x20000218       0x64 bin/i2c_drv.o
+                0x20000218                sensorsBus
  .data.usblinkOp
-                0x20000274       0x14 bin/usblink.o
+                0x2000027c       0x14 bin/usblink.o
  .data.USBD_DeviceDesc
-                0x20000288       0x12 bin/usbd_desc.o
-                0x20000288                USBD_DeviceDesc
+                0x20000290       0x12 bin/usbd_desc.o
+                0x20000290                USBD_DeviceDesc
  .data.USBD_LangIDDesc
-                0x2000029a        0x4 bin/usbd_desc.o
-                0x2000029a                USBD_LangIDDesc
- *fill*         0x2000029e        0x2 
+                0x200002a2        0x4 bin/usbd_desc.o
+                0x200002a2                USBD_LangIDDesc
+ *fill*         0x200002a6        0x2 
  .data.USR_desc
-                0x200002a0       0x1c bin/usbd_desc.o
-                0x200002a0                USR_desc
- .data.USR_cb   0x200002bc       0x1c bin/usb.o
-                0x200002bc                USR_cb
+                0x200002a8       0x1c bin/usbd_desc.o
+                0x200002a8                USR_desc
+ .data.USR_cb   0x200002c4       0x1c bin/usb.o
+                0x200002c4                USR_cb
  .data.cf_usb_cb
-                0x200002d8       0x2c bin/usb.o
-                0x200002d8                cf_usb_cb
- .data.command  0x20000304        0x4 bin/usb.o
-                0x20000304                command
+                0x200002e0       0x2c bin/usb.o
+                0x200002e0                cf_usb_cb
+ .data.command  0x2000030c        0x4 bin/usb.o
+                0x2000030c                command
  .data.usbd_cf_CfgDesc
-                0x20000308       0x39 bin/usb.o
-                0x20000308                usbd_cf_CfgDesc
- *fill*         0x20000341        0x3 
+                0x20000310       0x39 bin/usb.o
+                0x20000310                usbd_cf_CfgDesc
+ *fill*         0x20000349        0x3 
  .data.batteryVoltageMin
-                0x20000344        0x4 bin/pm_f405.o
+                0x2000034c        0x4 bin/pm_f405.o
  .data.radiolinkOp
-                0x20000348       0x14 bin/radiolink.o
+                0x20000350       0x14 bin/radiolink.o
  .data.accScale
-                0x2000035c        0x4 bin/sensors_cf2.o
+                0x20000364        0x4 bin/sensors_cf2.o
  .data._handleError
-                0x20000360        0x4 bin/libdw1000.o
-                0x20000360                _handleError
+                0x20000368        0x4 bin/libdw1000.o
+                0x20000368                _handleError
  .data._handleReceiveTimestampAvailable
-                0x20000364        0x4 bin/libdw1000.o
-                0x20000364                _handleReceiveTimestampAvailable
- .data.effects  0x20000368       0xb4 bin/sound_cf2.o
+                0x2000036c        0x4 bin/libdw1000.o
+                0x2000036c                _handleReceiveTimestampAvailable
+ .data.effects  0x20000370       0xb4 bin/sound_cf2.o
  .data.siren_freq
-                0x2000041c        0x2 bin/sound_cf2.o
+                0x20000424        0x2 bin/sound_cf2.o
  .data.siren_step
-                0x2000041e        0x2 bin/sound_cf2.o
+                0x20000426        0x2 bin/sound_cf2.o
  .data.static_freq
-                0x20000420        0x2 bin/sound_cf2.o
- *fill*         0x20000422        0x2 
- .data.effects  0x20000424       0x10 bin/buzzer.o
-                0x20000424                effects
+                0x20000428        0x2 bin/sound_cf2.o
+ *fill*         0x2000042a        0x2 
+ .data.effects  0x2000042c       0x10 bin/buzzer.o
+                0x2000042c                effects
  .data.horizontal_speed
-                0x20000434        0x4 bin/buzzer.o
+                0x2000043c        0x4 bin/buzzer.o
  .data.left_foot_in
-                0x20000438        0x1 bin/buzzer.o
+                0x20000440        0x1 bin/buzzer.o
  .data.left_foot_up
-                0x20000439        0x1 bin/buzzer.o
- *fill*         0x2000043a        0x2 
+                0x20000441        0x1 bin/buzzer.o
+ *fill*         0x20000442        0x2 
  .data.melodies
-                0x2000043c      0x3e4 bin/buzzer.o
-                0x2000043c                melodies
- .data.melody   0x20000820        0x1 bin/buzzer.o
-                0x20000820                melody
- .data.nmelody  0x20000821        0x1 bin/buzzer.o
-                0x20000821                nmelody
+                0x20000444      0x3e4 bin/buzzer.o
+                0x20000444                melodies
+ .data.melody   0x20000828        0x1 bin/buzzer.o
+                0x20000828                melody
+ .data.nmelody  0x20000829        0x1 bin/buzzer.o
+                0x20000829                nmelody
  .data.right_foot_in
-                0x20000822        0x1 bin/buzzer.o
+                0x2000082a        0x1 bin/buzzer.o
  .data.right_foot_up
-                0x20000823        0x1 bin/buzzer.o
+                0x2000082b        0x1 bin/buzzer.o
  .data.search_length
-                0x20000824        0x1 bin/buzzer.o
- *fill*         0x20000825        0x3 
+                0x2000082c        0x1 bin/buzzer.o
+ *fill*         0x2000082d        0x3 
  .data.searching_speed
-                0x20000828        0x4 bin/buzzer.o
+                0x20000830        0x4 bin/buzzer.o
  .data.siren_freq
-                0x2000082c        0x2 bin/buzzer.o
-                0x2000082c                siren_freq
+                0x20000834        0x2 bin/buzzer.o
+                0x20000834                siren_freq
  .data.siren_start
-                0x2000082e        0x2 bin/buzzer.o
-                0x2000082e                siren_start
+                0x20000836        0x2 bin/buzzer.o
+                0x20000836                siren_start
  .data.siren_step
-                0x20000830        0x2 bin/buzzer.o
-                0x20000830                siren_step
+                0x20000838        0x2 bin/buzzer.o
+                0x20000838                siren_step
  .data.siren_stop
-                0x20000832        0x2 bin/buzzer.o
-                0x20000832                siren_stop
+                0x2000083a        0x2 bin/buzzer.o
+                0x2000083a                siren_stop
  .data.slant_height
-                0x20000834        0x1 bin/buzzer.o
- *fill*         0x20000835        0x3 
- .data.slant_speed
-                0x20000838        0x4 bin/buzzer.o
- .data.slant_width
                 0x2000083c        0x1 bin/buzzer.o
- *fill*         0x2000083d        0x1 
- .data.static_freq
-                0x2000083e        0x2 bin/buzzer.o
-                0x2000083e                static_freq
- .data.vertical_speed
+ *fill*         0x2000083d        0x3 
+ .data.slant_speed
                 0x20000840        0x4 bin/buzzer.o
- .data.x_detection_offset
-                0x20000844        0x4 bin/buzzer.o
- .data.x_reference
+ .data.slant_width
+                0x20000844        0x1 bin/buzzer.o
+ *fill*         0x20000845        0x1 
+ .data.static_freq
+                0x20000846        0x2 bin/buzzer.o
+                0x20000846                static_freq
+ .data.vertical_speed
                 0x20000848        0x4 bin/buzzer.o
- .data.z_detection_offset
+ .data.x_detection_offset
                 0x2000084c        0x4 bin/buzzer.o
- .data.z_reference
+ .data.x_reference
                 0x20000850        0x4 bin/buzzer.o
- .data.effect   0x20000854        0x4 bin/ledring12.o
+ .data.z_detection_offset
+                0x20000854        0x4 bin/buzzer.o
+ .data.z_reference
+                0x20000858        0x4 bin/buzzer.o
+ .data.effect   0x2000085c        0x4 bin/ledring12.o
  .data.effectsFct
-                0x20000858       0x38 bin/ledring12.o
-                0x20000858                effectsFct
+                0x20000860       0x38 bin/ledring12.o
+                0x20000860                effectsFct
  .data.emptyCharge
-                0x20000890        0x4 bin/ledring12.o
- .data.fullCharge
-                0x20000894        0x4 bin/ledring12.o
- .data.glowstep
                 0x20000898        0x4 bin/ledring12.o
- .data.gyroXid.10793
+ .data.fullCharge
                 0x2000089c        0x4 bin/ledring12.o
- .data.solidBlue
-                0x200008a0        0x1 bin/ledring12.o
- .data.solidGreen
-                0x200008a1        0x1 bin/ledring12.o
- .data.solidRed
-                0x200008a2        0x1 bin/ledring12.o
- *fill*         0x200008a3        0x1 
- .data.thrust.10742
+ .data.glowstep
+                0x200008a0        0x4 bin/ledring12.o
+ .data.gyroXid.10793
                 0x200008a4        0x4 bin/ledring12.o
+ .data.solidBlue
+                0x200008a8        0x1 bin/ledring12.o
+ .data.solidGreen
+                0x200008a9        0x1 bin/ledring12.o
+ .data.solidRed
+                0x200008aa        0x1 bin/ledring12.o
+ *fill*         0x200008ab        0x1 
+ .data.thrust.10742
+                0x200008ac        0x4 bin/ledring12.o
  .data.buzzDeckCtrl
-                0x200008a8        0x8 bin/buzzdeck.o
- .data.baudcmd  0x200008b0       0x15 bin/gtgps.o
+                0x200008b0        0x8 bin/buzzdeck.o
+ .data.baudcmd  0x200008b8       0x15 bin/gtgps.o
  .data.updaterate
-                0x200008c5       0x12 bin/gtgps.o
+                0x200008cd       0x12 bin/gtgps.o
  .data.updaterate2
-                0x200008d7       0x1a bin/gtgps.o
- *fill*         0x200008f1        0x3 
- .data.fatDrv   0x200008f4       0x18 bin/usddeck.o
+                0x200008df       0x1a bin/gtgps.o
+ *fill*         0x200008f9        0x3 
+ .data.fatDrv   0x200008fc       0x18 bin/usddeck.o
  .data.sdSpiContext
-                0x2000090c       0x2c bin/usddeck.o
+                0x20000914       0x2c bin/usddeck.o
  .data.algoOptions
-                0x20000938       0xf8 bin/locodeck.o
- .data.dwOps    0x20000a30       0x14 bin/locodeck.o
+                0x20000940       0xf8 bin/locodeck.o
+ .data.dwOps    0x20000a38       0x14 bin/locodeck.o
  .data.uwbTwrTagAlgorithm
-                0x20000a44        0x8 bin/lpsTwrTag.o
-                0x20000a44                uwbTwrTagAlgorithm
+                0x20000a4c        0x8 bin/lpsTwrTag.o
+                0x20000a4c                uwbTwrTagAlgorithm
  .data.etGpioIn
-                0x20000a4c       0x84 bin/exptest.o
-                0x20000a4c                etGpioIn
+                0x20000a54       0x84 bin/exptest.o
+                0x20000a54                etGpioIn
  .data.etGpioSCL
-                0x20000ad0        0xc bin/exptest.o
-                0x20000ad0                etGpioSCL
+                0x20000ad8        0xc bin/exptest.o
+                0x20000ad8                etGpioSCL
  .data.etGpioSDA
-                0x20000adc        0xc bin/exptest.o
-                0x20000adc                etGpioSDA
+                0x20000ae4        0xc bin/exptest.o
+                0x20000ae4                etGpioSDA
  .data.configblockDefault
-                0x20000ae8       0x15 bin/configblockeeprom.o
+                0x20000af0       0x15 bin/configblockeeprom.o
  .data.__fdlib_version
-                0x20000afd        0x1 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_lib_ver.o)
-                0x20000afd                __fdlib_version
- *fill*         0x20000afe        0x2 
+                0x20000b05        0x1 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_lib_ver.o)
+                0x20000b05                __fdlib_version
+ *fill*         0x20000b06        0x2 
  .data._impure_ptr
-                0x20000b00        0x4 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-impure.o)
-                0x20000b00                _impure_ptr
+                0x20000b08        0x4 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-impure.o)
+                0x20000b08                _impure_ptr
  .data.impure_data
-                0x20000b04       0x60 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-impure.o)
+                0x20000b0c       0x60 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-impure.o)
  .data.__global_locale
-                0x20000b64      0x16c /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-locale.o)
-                0x20000b64                __global_locale
+                0x20000b6c      0x16c /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-locale.o)
+                0x20000b6c                __global_locale
  *(.RAMtext)
-                0x20000cd0                . = ALIGN (0x4)
-                0x20000cd0                _edata = .
+                0x20000cd8                . = ALIGN (0x4)
+                0x20000cd8                _edata = .
 
-.igot.plt       0x20000cd0        0x0 load address 0x08024edc
- .igot.plt      0x20000cd0        0x0 bin/list.o
+.igot.plt       0x20000cd8        0x0 load address 0x08024f2c
+ .igot.plt      0x20000cd8        0x0 bin/list.o
 
-.bss            0x20000cd0     0xf328 load address 0x08024ee0
-                0x20000cd0                . = ALIGN (0x4)
-                0x20000cd0                _sbss = .
+.bss            0x20000cd8     0xf328 load address 0x08024f30
+                0x20000cd8                . = ALIGN (0x4)
+                0x20000cd8                _sbss = .
  *(.bss)
  *(.bss.*)
  .bss.pxCurrentTCB
-                0x20000cd0        0x4 bin/tasks.o
-                0x20000cd0                pxCurrentTCB
- .bss.pxDelayedTaskList
-                0x20000cd4        0x4 bin/tasks.o
- .bss.pxOverflowDelayedTaskList
                 0x20000cd8        0x4 bin/tasks.o
+                0x20000cd8                pxCurrentTCB
+ .bss.pxDelayedTaskList
+                0x20000cdc        0x4 bin/tasks.o
+ .bss.pxOverflowDelayedTaskList
+                0x20000ce0        0x4 bin/tasks.o
  .bss.pxReadyTasksLists
-                0x20000cdc       0x78 bin/tasks.o
+                0x20000ce4       0x78 bin/tasks.o
  .bss.ulTaskSwitchedInTime
-                0x20000d54        0x4 bin/tasks.o
- .bss.uxCurrentNumberOfTasks
-                0x20000d58        0x4 bin/tasks.o
- .bss.uxPendedTicks
                 0x20000d5c        0x4 bin/tasks.o
- .bss.uxSchedulerSuspended
+ .bss.uxCurrentNumberOfTasks
                 0x20000d60        0x4 bin/tasks.o
- .bss.uxTaskNumber
+ .bss.uxPendedTicks
                 0x20000d64        0x4 bin/tasks.o
- .bss.uxTasksDeleted
+ .bss.uxSchedulerSuspended
                 0x20000d68        0x4 bin/tasks.o
- .bss.uxTopReadyPriority
+ .bss.uxTaskNumber
                 0x20000d6c        0x4 bin/tasks.o
+ .bss.uxTasksDeleted
+                0x20000d70        0x4 bin/tasks.o
+ .bss.uxTopReadyPriority
+                0x20000d74        0x4 bin/tasks.o
  .bss.xDelayedTaskList1
-                0x20000d70       0x14 bin/tasks.o
+                0x20000d78       0x14 bin/tasks.o
  .bss.xDelayedTaskList2
-                0x20000d84       0x14 bin/tasks.o
+                0x20000d8c       0x14 bin/tasks.o
  .bss.xIdleTaskHandle
-                0x20000d98        0x4 bin/tasks.o
- .bss.xNextTaskUnblockTime
-                0x20000d9c        0x4 bin/tasks.o
- .bss.xNumOfOverflows
                 0x20000da0        0x4 bin/tasks.o
+ .bss.xNextTaskUnblockTime
+                0x20000da4        0x4 bin/tasks.o
+ .bss.xNumOfOverflows
+                0x20000da8        0x4 bin/tasks.o
  .bss.xPendingReadyList
-                0x20000da4       0x14 bin/tasks.o
+                0x20000dac       0x14 bin/tasks.o
  .bss.xSchedulerRunning
-                0x20000db8        0x4 bin/tasks.o
+                0x20000dc0        0x4 bin/tasks.o
  .bss.xSuspendedTaskList
-                0x20000dbc       0x14 bin/tasks.o
+                0x20000dc4       0x14 bin/tasks.o
  .bss.xTasksWaitingTermination
-                0x20000dd0       0x14 bin/tasks.o
+                0x20000dd8       0x14 bin/tasks.o
  .bss.xTickCount
-                0x20000de4        0x4 bin/tasks.o
+                0x20000dec        0x4 bin/tasks.o
  .bss.xYieldPending
-                0x20000de8        0x4 bin/tasks.o
+                0x20000df0        0x4 bin/tasks.o
  .bss.pxCurrentTimerList
-                0x20000dec        0x4 bin/timers.o
+                0x20000df4        0x4 bin/timers.o
  .bss.pxOverflowTimerList
-                0x20000df0        0x4 bin/timers.o
+                0x20000df8        0x4 bin/timers.o
  .bss.xActiveTimerList1
-                0x20000df4       0x14 bin/timers.o
+                0x20000dfc       0x14 bin/timers.o
  .bss.xActiveTimerList2
-                0x20000e08       0x14 bin/timers.o
+                0x20000e10       0x14 bin/timers.o
  .bss.xLastTime.6655
-                0x20000e1c        0x4 bin/timers.o
+                0x20000e24        0x4 bin/timers.o
  .bss.xTimerQueue
-                0x20000e20        0x4 bin/timers.o
- .bss.pxEnd     0x20000e24        0x4 bin/heap_4.o
- .bss.ucHeap    0x20000e28     0x9c40 bin/heap_4.o
+                0x20000e28        0x4 bin/timers.o
+ .bss.pxEnd     0x20000e2c        0x4 bin/heap_4.o
+ .bss.ucHeap    0x20000e30     0x9c40 bin/heap_4.o
  .bss.xBlockAllocatedBit
-                0x2000aa68        0x4 bin/heap_4.o
- .bss.xFreeBytesRemaining
-                0x2000aa6c        0x4 bin/heap_4.o
- .bss.xMinimumEverFreeBytesRemaining
                 0x2000aa70        0x4 bin/heap_4.o
- .bss.xStart    0x2000aa74        0x8 bin/heap_4.o
+ .bss.xFreeBytesRemaining
+                0x2000aa74        0x4 bin/heap_4.o
+ .bss.xMinimumEverFreeBytesRemaining
+                0x2000aa78        0x4 bin/heap_4.o
+ .bss.xStart    0x2000aa7c        0x8 bin/heap_4.o
  .bss.ucMaxSysCallPriority
-                0x2000aa7c        0x1 bin/port.o
- *fill*         0x2000aa7d        0x3 
+                0x2000aa84        0x1 bin/port.o
+ *fill*         0x2000aa85        0x3 
  .bss.ulMaxPRIGROUPValue
-                0x2000aa80        0x4 bin/port.o
+                0x2000aa88        0x4 bin/port.o
  .bss.NVIC_InitStructure.9046
-                0x2000aa84        0x4 bin/exti.o
- .bss.isInit    0x2000aa88        0x1 bin/exti.o
- .bss.isInit    0x2000aa89        0x1 bin/motors.o
- *fill*         0x2000aa8a        0x2 
+                0x2000aa8c        0x4 bin/exti.o
+ .bss.isInit    0x2000aa90        0x1 bin/exti.o
+ .bss.isInit    0x2000aa91        0x1 bin/motors.o
+ *fill*         0x2000aa92        0x2 
  .bss.motor_ratios
-                0x2000aa8c       0x10 bin/motors.o
-                0x2000aa8c                motor_ratios
+                0x2000aa94       0x10 bin/motors.o
+                0x2000aa94                motor_ratios
  .bss.callbacks
-                0x2000aa9c       0x40 bin/crtp.o
+                0x2000aaa4       0x40 bin/crtp.o
  .bss.droppedPacket.6225
-                0x2000aadc        0x4 bin/crtp.o
- .bss.isInit    0x2000aae0        0x1 bin/crtp.o
- *fill*         0x2000aae1        0x3 
- .bss.queues    0x2000aae4       0x40 bin/crtp.o
- .bss.txQueue   0x2000ab24        0x4 bin/crtp.o
+                0x2000aae4        0x4 bin/crtp.o
+ .bss.isInit    0x2000aae8        0x1 bin/crtp.o
+ *fill*         0x2000aae9        0x3 
+ .bss.queues    0x2000aaec       0x40 bin/crtp.o
+ .bss.txQueue   0x2000ab2c        0x4 bin/crtp.o
  .bss.activeSeq
-                0x2000ab28       0x14 bin/ledseq.o
- .bss.isInit    0x2000ab3c        0x1 bin/ledseq.o
+                0x2000ab30       0x14 bin/ledseq.o
+ .bss.isInit    0x2000ab44        0x1 bin/ledseq.o
  .bss.ledseqEnabled
-                0x2000ab3d        0x1 bin/ledseq.o
- *fill*         0x2000ab3e        0x2 
+                0x2000ab45        0x1 bin/ledseq.o
+ *fill*         0x2000ab46        0x2 
  .bss.ledseqSem
-                0x2000ab40        0x4 bin/ledseq.o
- .bss.state     0x2000ab44       0xc8 bin/ledseq.o
- .bss.timer     0x2000ac0c       0x14 bin/ledseq.o
- .bss.canFly    0x2000ac20        0x1 bin/system.o
- .bss.isInit    0x2000ac21        0x1 bin/system.o
+                0x2000ab48        0x4 bin/ledseq.o
+ .bss.state     0x2000ab4c       0xc8 bin/ledseq.o
+ .bss.timer     0x2000ac14       0x14 bin/ledseq.o
+ .bss.canFly    0x2000ac28        0x1 bin/system.o
+ .bss.isInit    0x2000ac29        0x1 bin/system.o
  .bss.selftestPassed
-                0x2000ac22        0x1 bin/system.o
- *fill*         0x2000ac23        0x1 
+                0x2000ac2a        0x1 bin/system.o
+ *fill*         0x2000ac2b        0x1 
  .bss.tickOfLatestWatchdogReset.10530
-                0x2000ac24        0x4 bin/system.o
- .bss.isInit    0x2000ac28        0x1 bin/comm.o
- .bss.isInit    0x2000ac29        0x1 bin/console.o
- *fill*         0x2000ac2a        0x2 
- .bss.synch     0x2000ac2c        0x4 bin/console.o
-                0x2000ac2c                synch
- .bss.isInit    0x2000ac30        0x1 bin/crtpservice.o
- .bss.isInit    0x2000ac31        0x1 bin/param.o
- .bss.p         0x2000ac32       0x20 bin/param.o
- *fill*         0x2000ac52        0x2 
- .bss.params    0x2000ac54        0x4 bin/param.o
+                0x2000ac2c        0x4 bin/system.o
+ .bss.isInit    0x2000ac30        0x1 bin/comm.o
+ .bss.isInit    0x2000ac31        0x1 bin/console.o
+ *fill*         0x2000ac32        0x2 
+ .bss.synch     0x2000ac34        0x4 bin/console.o
+                0x2000ac34                synch
+ .bss.isInit    0x2000ac38        0x1 bin/crtpservice.o
+ .bss.isInit    0x2000ac39        0x1 bin/param.o
+ .bss.p         0x2000ac3a       0x20 bin/param.o
+ *fill*         0x2000ac5a        0x2 
+ .bss.params    0x2000ac5c        0x4 bin/param.o
  .bss.paramsCount
-                0x2000ac58        0x4 bin/param.o
- .bss.paramsCrc
-                0x2000ac5c        0x4 bin/param.o
- .bss.paramsLen
                 0x2000ac60        0x4 bin/param.o
- .bss.isInit    0x2000ac64        0x1 bin/log.o
- *fill*         0x2000ac65        0x3 
+ .bss.paramsCrc
+                0x2000ac64        0x4 bin/param.o
+ .bss.paramsLen
+                0x2000ac68        0x4 bin/param.o
+ .bss.isInit    0x2000ac6c        0x1 bin/log.o
+ *fill*         0x2000ac6d        0x3 
  .bss.logBlocks
-                0x2000ac68       0xc0 bin/log.o
- .bss.logLock   0x2000ad28        0x4 bin/log.o
- .bss.logOps    0x2000ad2c      0x600 bin/log.o
- .bss.logs      0x2000b32c        0x4 bin/log.o
+                0x2000ac70       0xc0 bin/log.o
+ .bss.logLock   0x2000ad30        0x4 bin/log.o
+ .bss.logOps    0x2000ad34      0x600 bin/log.o
+ .bss.logs      0x2000b334        0x4 bin/log.o
  .bss.logsCount
-                0x2000b330        0x4 bin/log.o
- .bss.logsCrc   0x2000b334        0x4 bin/log.o
- .bss.logsLen   0x2000b338        0x4 bin/log.o
- .bss.p         0x2000b33c       0x20 bin/log.o
- .bss.pk.6638   0x2000b35c       0x20 bin/log.o
+                0x2000b338        0x4 bin/log.o
+ .bss.logsCrc   0x2000b33c        0x4 bin/log.o
+ .bss.logsLen   0x2000b340        0x4 bin/log.o
+ .bss.p         0x2000b344       0x20 bin/log.o
+ .bss.pk.6638   0x2000b364       0x20 bin/log.o
  .bss.workerQueue
-                0x2000b37c        0x4 bin/worker.o
- .bss.isInit    0x2000b380        0x1 bin/commander.o
- *fill*         0x2000b381        0x3 
+                0x2000b384        0x4 bin/worker.o
+ .bss.isInit    0x2000b388        0x1 bin/commander.o
+ *fill*         0x2000b389        0x3 
  .bss.lastUpdate
-                0x2000b384        0x4 bin/commander.o
+                0x2000b38c        0x4 bin/commander.o
  .bss.nullSetpoint
-                0x2000b388       0x50 bin/commander.o
- .bss.isInit    0x2000b3d8        0x1 bin/crtp_commander.o
- *fill*         0x2000b3d9        0x3 
+                0x2000b390       0x50 bin/commander.o
+ .bss.isInit    0x2000b3e0        0x1 bin/crtp_commander.o
+ *fill*         0x2000b3e1        0x3 
  .bss.setpoint.5730
-                0x2000b3dc       0x50 bin/crtp_commander.o
+                0x2000b3e4       0x50 bin/crtp_commander.o
  .bss.altHoldMode
-                0x2000b42c        0x1 bin/crtp_commander_rpyt.o
+                0x2000b434        0x1 bin/crtp_commander_rpyt.o
  .bss.carefreeResetFront
-                0x2000b42d        0x1 bin/crtp_commander_rpyt.o
+                0x2000b435        0x1 bin/crtp_commander_rpyt.o
  .bss.posHoldMode
-                0x2000b42e        0x1 bin/crtp_commander_rpyt.o
+                0x2000b436        0x1 bin/crtp_commander_rpyt.o
  .bss.posSetMode
-                0x2000b42f        0x1 bin/crtp_commander_rpyt.o
+                0x2000b437        0x1 bin/crtp_commander_rpyt.o
  .bss.stabilizationModeYaw
-                0x2000b430        0x1 bin/crtp_commander_rpyt.o
- *fill*         0x2000b431        0x3 
+                0x2000b438        0x1 bin/crtp_commander_rpyt.o
+ *fill*         0x2000b439        0x3 
  .bss.crtpExtPosCache
-                0x2000b434       0x20 bin/crtp_localization_service.o
+                0x2000b43c       0x20 bin/crtp_localization_service.o
  .bss.enableRangeStreamFloat
-                0x2000b454        0x1 bin/crtp_localization_service.o
- *fill*         0x2000b455        0x3 
- .bss.ext_pos   0x2000b458       0x10 bin/crtp_localization_service.o
- .bss.isInit    0x2000b468        0x1 bin/crtp_localization_service.o
- .bss.pkRange   0x2000b469       0x20 bin/crtp_localization_service.o
+                0x2000b45c        0x1 bin/crtp_localization_service.o
+ *fill*         0x2000b45d        0x3 
+ .bss.ext_pos   0x2000b460       0x10 bin/crtp_localization_service.o
+ .bss.isInit    0x2000b470        0x1 bin/crtp_localization_service.o
+ .bss.pkRange   0x2000b471       0x20 bin/crtp_localization_service.o
  .bss.rangeIndex
-                0x2000b489        0x1 bin/crtp_localization_service.o
- *fill*         0x2000b48a        0x2 
- .bss.gravX     0x2000b48c        0x4 bin/sensfusion6.o
- .bss.gravY     0x2000b490        0x4 bin/sensfusion6.o
- .bss.gravZ     0x2000b494        0x4 bin/sensfusion6.o
+                0x2000b491        0x1 bin/crtp_localization_service.o
+ *fill*         0x2000b492        0x2 
+ .bss.gravX     0x2000b494        0x4 bin/sensfusion6.o
+ .bss.gravY     0x2000b498        0x4 bin/sensfusion6.o
+ .bss.gravZ     0x2000b49c        0x4 bin/sensfusion6.o
  .bss.integralFBx
-                0x2000b498        0x4 bin/sensfusion6.o
-                0x2000b498                integralFBx
- .bss.integralFBy
-                0x2000b49c        0x4 bin/sensfusion6.o
-                0x2000b49c                integralFBy
- .bss.integralFBz
                 0x2000b4a0        0x4 bin/sensfusion6.o
-                0x2000b4a0                integralFBz
+                0x2000b4a0                integralFBx
+ .bss.integralFBy
+                0x2000b4a4        0x4 bin/sensfusion6.o
+                0x2000b4a4                integralFBy
+ .bss.integralFBz
+                0x2000b4a8        0x4 bin/sensfusion6.o
+                0x2000b4a8                integralFBz
  .bss.isCalibrated
-                0x2000b4a4        0x1 bin/sensfusion6.o
- .bss.isInit    0x2000b4a5        0x1 bin/sensfusion6.o
- *fill*         0x2000b4a6        0x2 
- .bss.q1        0x2000b4a8        0x4 bin/sensfusion6.o
-                0x2000b4a8                q1
- .bss.q2        0x2000b4ac        0x4 bin/sensfusion6.o
-                0x2000b4ac                q2
- .bss.q3        0x2000b4b0        0x4 bin/sensfusion6.o
-                0x2000b4b0                q3
- .bss.AC        0x2000b4b4       0x5c bin/stabilizer.o
+                0x2000b4ac        0x1 bin/sensfusion6.o
+ .bss.isInit    0x2000b4ad        0x1 bin/sensfusion6.o
+ *fill*         0x2000b4ae        0x2 
+ .bss.q1        0x2000b4b0        0x4 bin/sensfusion6.o
+                0x2000b4b0                q1
+ .bss.q2        0x2000b4b4        0x4 bin/sensfusion6.o
+                0x2000b4b4                q2
+ .bss.q3        0x2000b4b8        0x4 bin/sensfusion6.o
+                0x2000b4b8                q3
+ .bss.AC        0x2000b4bc       0x5c bin/stabilizer.o
  .bss.AltitudeDesired
-                0x2000b510        0x4 bin/stabilizer.o
- .bss.CONTROL   0x2000b514        0xc bin/stabilizer.o
- .bss.EPD_app   0x2000b520        0x4 bin/stabilizer.o
- .bss.ERD_app   0x2000b524        0x4 bin/stabilizer.o
- .bss.HC        0x2000b528       0x24 bin/stabilizer.o
- .bss.SENSORS   0x2000b54c       0x48 bin/stabilizer.o
- .bss.STATE     0x2000b594       0x54 bin/stabilizer.o
+                0x2000b518        0x4 bin/stabilizer.o
+ .bss.CONTROL   0x2000b51c        0xc bin/stabilizer.o
+ .bss.EPD_app   0x2000b528        0x4 bin/stabilizer.o
+ .bss.ERD_app   0x2000b52c        0x4 bin/stabilizer.o
+ .bss.HC        0x2000b530       0x24 bin/stabilizer.o
+ .bss.SENSORS   0x2000b554       0x48 bin/stabilizer.o
+ .bss.STATE     0x2000b59c       0x54 bin/stabilizer.o
  .bss.State_Joy
-                0x2000b5e8        0x1 bin/stabilizer.o
- *fill*         0x2000b5e9        0x3 
+                0x2000b5f0        0x1 bin/stabilizer.o
+ *fill*         0x2000b5f1        0x3 
  .bss.eulerPitchActual
-                0x2000b5ec        0x4 bin/stabilizer.o
- .bss.eulerPitchDesired
-                0x2000b5f0        0x4 bin/stabilizer.o
- .bss.eulerRollActual
                 0x2000b5f4        0x4 bin/stabilizer.o
- .bss.eulerRollDesired
+ .bss.eulerPitchDesired
                 0x2000b5f8        0x4 bin/stabilizer.o
- .bss.eulerYawActual
+ .bss.eulerRollActual
                 0x2000b5fc        0x4 bin/stabilizer.o
- .bss.eulerYawDesired
+ .bss.eulerRollDesired
                 0x2000b600        0x4 bin/stabilizer.o
- .bss.isInit    0x2000b604        0x1 bin/stabilizer.o
- *fill*         0x2000b605        0x1 
- .bss.perching_attached_timer
-                0x2000b606        0x2 bin/stabilizer.o
- .bss.yawRateDesired
+ .bss.eulerYawActual
+                0x2000b604        0x4 bin/stabilizer.o
+ .bss.eulerYawDesired
                 0x2000b608        0x4 bin/stabilizer.o
- .bss.A.12832   0x2000b60c      0x144 bin/estimator_kalman.o
- .bss.A.12973   0x2000b750      0x144 bin/estimator_kalman.o
+ .bss.isInit    0x2000b60c        0x1 bin/stabilizer.o
+ *fill*         0x2000b60d        0x1 
+ .bss.perching_attached_timer
+                0x2000b60e        0x2 bin/stabilizer.o
+ .bss.yawRateDesired
+                0x2000b610        0x4 bin/stabilizer.o
+ .bss.A.12832   0x2000b614      0x144 bin/estimator_kalman.o
+ .bss.A.12973   0x2000b758      0x144 bin/estimator_kalman.o
  .bss.HTd.12886
-                0x2000b894       0x24 bin/estimator_kalman.o
- .bss.K.12878   0x2000b8b8       0x24 bin/estimator_kalman.o
- .bss.P         0x2000b8dc      0x144 bin/estimator_kalman.o
+                0x2000b89c       0x24 bin/estimator_kalman.o
+ .bss.K.12878   0x2000b8c0       0x24 bin/estimator_kalman.o
+ .bss.P         0x2000b8e4      0x144 bin/estimator_kalman.o
  .bss.PHTd.12888
-                0x2000ba20       0x24 bin/estimator_kalman.o
- .bss.S         0x2000ba44       0x24 bin/estimator_kalman.o
+                0x2000ba28       0x24 bin/estimator_kalman.o
+ .bss.S         0x2000ba4c       0x24 bin/estimator_kalman.o
  .bss.accAccumulator
-                0x2000ba68        0xc bin/estimator_kalman.o
+                0x2000ba70        0xc bin/estimator_kalman.o
  .bss.accAccumulatorCount
-                0x2000ba74        0x4 bin/estimator_kalman.o
+                0x2000ba7c        0x4 bin/estimator_kalman.o
  .bss.baroAccumulator
-                0x2000ba78        0xc bin/estimator_kalman.o
+                0x2000ba80        0xc bin/estimator_kalman.o
  .bss.baroAccumulatorCount
-                0x2000ba84        0x4 bin/estimator_kalman.o
- .bss.baroReferenceHeight.12920
-                0x2000ba88        0x4 bin/estimator_kalman.o
- .bss.distDataQueue
                 0x2000ba8c        0x4 bin/estimator_kalman.o
+ .bss.baroReferenceHeight.12920
+                0x2000ba90        0x4 bin/estimator_kalman.o
+ .bss.distDataQueue
+                0x2000ba94        0x4 bin/estimator_kalman.o
  .bss.gyroAccumulator
-                0x2000ba90        0xc bin/estimator_kalman.o
+                0x2000ba98        0xc bin/estimator_kalman.o
  .bss.gyroAccumulatorCount
-                0x2000ba9c        0x4 bin/estimator_kalman.o
- .bss.isInit    0x2000baa0        0x1 bin/estimator_kalman.o
- *fill*         0x2000baa1        0x3 
- .bss.lastBaroUpdate
                 0x2000baa4        0x4 bin/estimator_kalman.o
- .bss.lastFlightCmd
-                0x2000baa8        0x4 bin/estimator_kalman.o
- .bss.lastPNUpdate
+ .bss.isInit    0x2000baa8        0x1 bin/estimator_kalman.o
+ *fill*         0x2000baa9        0x3 
+ .bss.lastBaroUpdate
                 0x2000baac        0x4 bin/estimator_kalman.o
- .bss.lastPrediction
+ .bss.lastFlightCmd
                 0x2000bab0        0x4 bin/estimator_kalman.o
- .bss.posDataQueue
+ .bss.lastPNUpdate
                 0x2000bab4        0x4 bin/estimator_kalman.o
- .bss.quadIsFlying
-                0x2000bab8        0x1 bin/estimator_kalman.o
- *fill*         0x2000bab9        0x3 
- .bss.tdoaCount
+ .bss.lastPrediction
+                0x2000bab8        0x4 bin/estimator_kalman.o
+ .bss.posDataQueue
                 0x2000babc        0x4 bin/estimator_kalman.o
- .bss.tdoaDataQueue
-                0x2000bac0        0x4 bin/estimator_kalman.o
- .bss.thrustAccumulator
+ .bss.quadIsFlying
+                0x2000bac0        0x1 bin/estimator_kalman.o
+ *fill*         0x2000bac1        0x3 
+ .bss.tdoaCount
                 0x2000bac4        0x4 bin/estimator_kalman.o
- .bss.thrustAccumulatorCount
+ .bss.tdoaDataQueue
                 0x2000bac8        0x4 bin/estimator_kalman.o
+ .bss.thrustAccumulator
+                0x2000bacc        0x4 bin/estimator_kalman.o
+ .bss.thrustAccumulatorCount
+                0x2000bad0        0x4 bin/estimator_kalman.o
  .bss.tmpNN1d.12834
-                0x2000bacc      0x144 bin/estimator_kalman.o
+                0x2000bad4      0x144 bin/estimator_kalman.o
  .bss.tmpNN1d.12880
-                0x2000bc10      0x144 bin/estimator_kalman.o
+                0x2000bc18      0x144 bin/estimator_kalman.o
  .bss.tmpNN1d.12975
-                0x2000bd54      0x144 bin/estimator_kalman.o
+                0x2000bd5c      0x144 bin/estimator_kalman.o
  .bss.tmpNN2d.12836
-                0x2000be98      0x144 bin/estimator_kalman.o
+                0x2000bea0      0x144 bin/estimator_kalman.o
  .bss.tmpNN2d.12882
-                0x2000bfdc      0x144 bin/estimator_kalman.o
+                0x2000bfe4      0x144 bin/estimator_kalman.o
  .bss.tmpNN2d.12977
-                0x2000c120      0x144 bin/estimator_kalman.o
+                0x2000c128      0x144 bin/estimator_kalman.o
  .bss.tmpNN3d.12884
-                0x2000c264      0x144 bin/estimator_kalman.o
+                0x2000c26c      0x144 bin/estimator_kalman.o
  .bss.tofDataQueue
-                0x2000c3a8        0x4 bin/estimator_kalman.o
+                0x2000c3b0        0x4 bin/estimator_kalman.o
  .bss.motorPower
-                0x2000c3ac       0x10 bin/power_distribution_stock.o
+                0x2000c3b4       0x10 bin/power_distribution_stock.o
  .bss.motorPowerSet
-                0x2000c3bc        0x8 bin/power_distribution_stock.o
+                0x2000c3c4        0x8 bin/power_distribution_stock.o
  .bss.motorSetEnable
-                0x2000c3c4        0x1 bin/power_distribution_stock.o
- *fill*         0x2000c3c5        0x3 
+                0x2000c3cc        0x1 bin/power_distribution_stock.o
+ *fill*         0x2000c3cd        0x3 
  .bss.USBD_cfg_status
-                0x2000c3c8        0x4 bin/usbd_req.o
-                0x2000c3c8                USBD_cfg_status
- .bss.USBD_default_cfg
-                0x2000c3cc        0x4 bin/usbd_req.o
-                0x2000c3cc                USBD_default_cfg
- .bss.USBD_ep_status
                 0x2000c3d0        0x4 bin/usbd_req.o
-                0x2000c3d0                USBD_ep_status
+                0x2000c3d0                USBD_cfg_status
+ .bss.USBD_default_cfg
+                0x2000c3d4        0x4 bin/usbd_req.o
+                0x2000c3d4                USBD_default_cfg
+ .bss.USBD_ep_status
+                0x2000c3d8        0x4 bin/usbd_req.o
+                0x2000c3d8                USBD_ep_status
  .bss.cfgidx.10139
-                0x2000c3d4        0x1 bin/usbd_req.o
- *fill*         0x2000c3d5        0x3 
- .bss.FatFs     0x2000c3d8        0x4 bin/ff.o
- .bss.Fsid      0x2000c3dc        0x2 bin/ff.o
- .bss.isInit    0x2000c3de        0x1 bin/led_f405.o
- *fill*         0x2000c3df        0x1 
- .bss.I2Cx      0x2000c3e0        0x4 bin/mpu6500.o
- .bss.buffer    0x2000c3e4        0xe bin/mpu6500.o
- .bss.devAddr   0x2000c3f2        0x1 bin/mpu6500.o
- .bss.isInit    0x2000c3f3        0x1 bin/mpu6500.o
+                0x2000c3dc        0x1 bin/usbd_req.o
+ *fill*         0x2000c3dd        0x3 
+ .bss.FatFs     0x2000c3e0        0x4 bin/ff.o
+ .bss.Fsid      0x2000c3e4        0x2 bin/ff.o
+ .bss.isInit    0x2000c3e6        0x1 bin/led_f405.o
+ *fill*         0x2000c3e7        0x1 
+ .bss.I2Cx      0x2000c3e8        0x4 bin/mpu6500.o
+ .bss.buffer    0x2000c3ec        0xe bin/mpu6500.o
+ .bss.devAddr   0x2000c3fa        0x1 bin/mpu6500.o
+ .bss.isInit    0x2000c3fb        0x1 bin/mpu6500.o
  .bss.DMA_InitStructure
-                0x2000c3f4       0x3c bin/ws2812_cf2.o
+                0x2000c3fc       0x3c bin/ws2812_cf2.o
  .bss.GPIO_InitStructure
-                0x2000c430        0x8 bin/ws2812_cf2.o
+                0x2000c438        0x8 bin/ws2812_cf2.o
  .bss.NVIC_InitStructure
-                0x2000c438        0x4 bin/ws2812_cf2.o
+                0x2000c440        0x4 bin/ws2812_cf2.o
  .bss.TIM_OCInitStructure
-                0x2000c43c       0x14 bin/ws2812_cf2.o
+                0x2000c444       0x14 bin/ws2812_cf2.o
  .bss.TIM_TimeBaseStructure
-                0x2000c450        0xc bin/ws2812_cf2.o
+                0x2000c458        0xc bin/ws2812_cf2.o
  .bss.allLedDone
-                0x2000c45c        0x4 bin/ws2812_cf2.o
- .bss.color_led
-                0x2000c460        0x4 bin/ws2812_cf2.o
- .bss.current_led
                 0x2000c464        0x4 bin/ws2812_cf2.o
- .bss.led_dma   0x2000c468       0x60 bin/ws2812_cf2.o
+ .bss.color_led
+                0x2000c468        0x4 bin/ws2812_cf2.o
+ .bss.current_led
+                0x2000c46c        0x4 bin/ws2812_cf2.o
+ .bss.led_dma   0x2000c470       0x60 bin/ws2812_cf2.o
  .bss.total_led
-                0x2000c4c8        0x4 bin/ws2812_cf2.o
- .bss.I2Cx      0x2000c4cc        0x4 bin/lps25h.o
- .bss.devAddr   0x2000c4d0        0x1 bin/lps25h.o
- .bss.isInit    0x2000c4d1        0x1 bin/lps25h.o
- *fill*         0x2000c4d2        0x2 
- .bss.I2Cx      0x2000c4d4        0x4 bin/ak8963.o
- .bss.buffer    0x2000c4d8        0x6 bin/ak8963.o
- .bss.devAddr   0x2000c4de        0x1 bin/ak8963.o
- *fill*         0x2000c4df        0x1 
- .bss.I2Cx      0x2000c4e0        0x4 bin/eeprom.o
- .bss.devAddr   0x2000c4e4        0x1 bin/eeprom.o
- .bss.isInit    0x2000c4e5        0x1 bin/eeprom.o
- *fill*         0x2000c4e6        0x2 
+                0x2000c4d0        0x4 bin/ws2812_cf2.o
+ .bss.I2Cx      0x2000c4d4        0x4 bin/lps25h.o
+ .bss.devAddr   0x2000c4d8        0x1 bin/lps25h.o
+ .bss.isInit    0x2000c4d9        0x1 bin/lps25h.o
+ *fill*         0x2000c4da        0x2 
+ .bss.I2Cx      0x2000c4dc        0x4 bin/ak8963.o
+ .bss.buffer    0x2000c4e0        0x6 bin/ak8963.o
+ .bss.devAddr   0x2000c4e6        0x1 bin/ak8963.o
+ *fill*         0x2000c4e7        0x1 
+ .bss.I2Cx      0x2000c4e8        0x4 bin/eeprom.o
+ .bss.devAddr   0x2000c4ec        0x1 bin/eeprom.o
+ .bss.isInit    0x2000c4ed        0x1 bin/eeprom.o
+ *fill*         0x2000c4ee        0x2 
  .bss.maxSonarAccuracy
-                0x2000c4e8        0x4 bin/maxsonar.o
+                0x2000c4f0        0x4 bin/maxsonar.o
  .bss.maxSonarDistance
-                0x2000c4ec        0x4 bin/maxsonar.o
- .bss.isInit    0x2000c4f0        0x1 bin/piezo.o
- *fill*         0x2000c4f1        0x3 
+                0x2000c4f4        0x4 bin/maxsonar.o
+ .bss.isInit    0x2000c4f8        0x1 bin/piezo.o
+ *fill*         0x2000c4f9        0x3 
  .bss.DMA_InitStructureShare
-                0x2000c4f4       0x3c bin/uart_syslink.o
+                0x2000c4fc       0x3c bin/uart_syslink.o
  .bss.dataIndexIsr
-                0x2000c530        0x1 bin/uart_syslink.o
+                0x2000c538        0x1 bin/uart_syslink.o
  .bss.dataSizeIsr
-                0x2000c531        0x1 bin/uart_syslink.o
+                0x2000c539        0x1 bin/uart_syslink.o
  .bss.dmaBuffer
-                0x2000c532       0x40 bin/uart_syslink.o
+                0x2000c53a       0x40 bin/uart_syslink.o
  .bss.dmaIsPaused
-                0x2000c572        0x1 bin/uart_syslink.o
- *fill*         0x2000c573        0x1 
+                0x2000c57a        0x1 bin/uart_syslink.o
+ *fill*         0x2000c57b        0x1 
  .bss.initialDMACount
-                0x2000c574        0x4 bin/uart_syslink.o
- .bss.isInit    0x2000c578        0x1 bin/uart_syslink.o
- .bss.isUartDmaInitialized
-                0x2000c579        0x1 bin/uart_syslink.o
- *fill*         0x2000c57a        0x2 
- .bss.outDataIsr
                 0x2000c57c        0x4 bin/uart_syslink.o
+ .bss.isInit    0x2000c580        0x1 bin/uart_syslink.o
+ .bss.isUartDmaInitialized
+                0x2000c581        0x1 bin/uart_syslink.o
+ *fill*         0x2000c582        0x2 
+ .bss.outDataIsr
+                0x2000c584        0x4 bin/uart_syslink.o
  .bss.remainingDMACount
-                0x2000c580        0x4 bin/uart_syslink.o
- .bss.uartBusy  0x2000c584        0x4 bin/uart_syslink.o
- .bss.uartslkDataDelivery
                 0x2000c588        0x4 bin/uart_syslink.o
+ .bss.uartBusy  0x2000c58c        0x4 bin/uart_syslink.o
+ .bss.uartslkDataDelivery
+                0x2000c590        0x4 bin/uart_syslink.o
  .bss.waitUntilSendDone
-                0x2000c58c        0x4 bin/uart_syslink.o
- .bss.isInit    0x2000c590        0x1 bin/uart1.o
- *fill*         0x2000c591        0x3 
- .bss.uart1queue
-                0x2000c594        0x4 bin/uart1.o
- .bss.captureFlag
-                0x2000c598        0x1 bin/cppm.o
+                0x2000c594        0x4 bin/uart_syslink.o
+ .bss.isInit    0x2000c598        0x1 bin/uart1.o
  *fill*         0x2000c599        0x3 
- .bss.captureQueue
-                0x2000c59c        0x4 bin/cppm.o
- .bss.isAvailible
+ .bss.uart1queue
+                0x2000c59c        0x4 bin/uart1.o
+ .bss.captureFlag
                 0x2000c5a0        0x1 bin/cppm.o
- *fill*         0x2000c5a1        0x1 
+ *fill*         0x2000c5a1        0x3 
+ .bss.captureQueue
+                0x2000c5a4        0x4 bin/cppm.o
+ .bss.isAvailible
+                0x2000c5a8        0x1 bin/cppm.o
+ *fill*         0x2000c5a9        0x1 
  .bss.prevCapureVal
-                0x2000c5a2        0x2 bin/cppm.o
+                0x2000c5aa        0x2 bin/cppm.o
  .bss.crtpPacketDelivery
-                0x2000c5a4        0x4 bin/usblink.o
- .bss.isInit    0x2000c5a8        0x1 bin/usblink.o
- .bss.p         0x2000c5a9       0x20 bin/usblink.o
+                0x2000c5ac        0x4 bin/usblink.o
+ .bss.isInit    0x2000c5b0        0x1 bin/usblink.o
+ .bss.p         0x2000c5b1       0x20 bin/usblink.o
  .bss.sendBuffer
-                0x2000c5c9       0x40 bin/usblink.o
- .bss.usbIn     0x2000c609       0x41 bin/usblink.o
- .bss.inPacket  0x2000c64a       0x41 bin/usb.o
- .bss.isInit    0x2000c68b        0x1 bin/usb.o
+                0x2000c5d1       0x40 bin/usblink.o
+ .bss.usbIn     0x2000c611       0x41 bin/usblink.o
+ .bss.inPacket  0x2000c652       0x41 bin/usb.o
+ .bss.isInit    0x2000c693        0x1 bin/usb.o
  .bss.outPacket
-                0x2000c68c       0x41 bin/usb.o
- .bss.outStage  0x2000c6cd       0x41 bin/usb.o
- *fill*         0x2000c70e        0x2 
+                0x2000c694       0x41 bin/usb.o
+ .bss.outStage  0x2000c6d5       0x41 bin/usb.o
+ *fill*         0x2000c716        0x2 
  .bss.usbDataRx
-                0x2000c710        0x4 bin/usb.o
+                0x2000c718        0x4 bin/usb.o
  .bss.usbDataTx
-                0x2000c714        0x4 bin/usb.o
+                0x2000c71c        0x4 bin/usb.o
  .bss.batteryLowTimeStamp
-                0x2000c718        0x4 bin/pm_f405.o
+                0x2000c720        0x4 bin/pm_f405.o
  .bss.batteryVoltage
-                0x2000c71c        0x4 bin/pm_f405.o
- .bss.batteryVoltageMV
-                0x2000c720        0x2 bin/pm_f405.o
- *fill*         0x2000c722        0x2 
- .bss.batteryVoltageMax
                 0x2000c724        0x4 bin/pm_f405.o
+ .bss.batteryVoltageMV
+                0x2000c728        0x2 bin/pm_f405.o
+ *fill*         0x2000c72a        0x2 
+ .bss.batteryVoltageMax
+                0x2000c72c        0x4 bin/pm_f405.o
  .bss.extBatCurrAmpPerVolt
-                0x2000c728        0x4 bin/pm_f405.o
- .bss.extBatCurrDeckPin
-                0x2000c72c        0x1 bin/pm_f405.o
- .bss.extBatVoltDeckPin
-                0x2000c72d        0x1 bin/pm_f405.o
- *fill*         0x2000c72e        0x2 
- .bss.extBatVoltMultiplier
                 0x2000c730        0x4 bin/pm_f405.o
- .bss.extBatteryCurrent
-                0x2000c734        0x4 bin/pm_f405.o
- .bss.extBatteryVoltage
+ .bss.extBatCurrDeckPin
+                0x2000c734        0x1 bin/pm_f405.o
+ .bss.extBatVoltDeckPin
+                0x2000c735        0x1 bin/pm_f405.o
+ *fill*         0x2000c736        0x2 
+ .bss.extBatVoltMultiplier
                 0x2000c738        0x4 bin/pm_f405.o
+ .bss.extBatteryCurrent
+                0x2000c73c        0x4 bin/pm_f405.o
+ .bss.extBatteryVoltage
+                0x2000c740        0x4 bin/pm_f405.o
  .bss.extBatteryVoltageMV
-                0x2000c73c        0x2 bin/pm_f405.o
- .bss.isInit    0x2000c73e        0x1 bin/pm_f405.o
- .bss.pmState   0x2000c73f        0x1 bin/pm_f405.o
+                0x2000c744        0x2 bin/pm_f405.o
+ .bss.isInit    0x2000c746        0x1 bin/pm_f405.o
+ .bss.pmState   0x2000c747        0x1 bin/pm_f405.o
  .bss.pmSyslinkInfo
-                0x2000c740        0x9 bin/pm_f405.o
- .bss.isInit    0x2000c749        0x1 bin/syslink.o
+                0x2000c748        0x9 bin/pm_f405.o
+ .bss.isInit    0x2000c751        0x1 bin/syslink.o
  .bss.sendBuffer
-                0x2000c74a       0x40 bin/syslink.o
- *fill*         0x2000c78a        0x2 
+                0x2000c752       0x40 bin/syslink.o
+ *fill*         0x2000c792        0x2 
  .bss.syslinkAccess
-                0x2000c78c        0x4 bin/syslink.o
+                0x2000c794        0x4 bin/syslink.o
  .bss.crtpPacketDelivery
-                0x2000c790        0x4 bin/radiolink.o
- .bss.isInit    0x2000c794        0x1 bin/radiolink.o
- .bss.rssi      0x2000c795        0x1 bin/radiolink.o
- .bss.slp.6523  0x2000c796       0x22 bin/radiolink.o
+                0x2000c798        0x4 bin/radiolink.o
+ .bss.isInit    0x2000c79c        0x1 bin/radiolink.o
+ .bss.rssi      0x2000c79d        0x1 bin/radiolink.o
+ .bss.slp.6523  0x2000c79e       0x22 bin/radiolink.o
  .bss.txPacket.6516
-                0x2000c7b8       0x22 bin/radiolink.o
- *fill*         0x2000c7da        0x2 
- .bss.txQueue   0x2000c7dc        0x4 bin/radiolink.o
+                0x2000c7c0       0x22 bin/radiolink.o
+ *fill*         0x2000c7e2        0x2 
+ .bss.txQueue   0x2000c7e4        0x4 bin/radiolink.o
  .bss.lockCmdBuf
-                0x2000c7e0        0x4 bin/ow_syslink.o
- .bss.owCmdBuf  0x2000c7e4       0x20 bin/ow_syslink.o
+                0x2000c7e8        0x4 bin/ow_syslink.o
+ .bss.owCmdBuf  0x2000c7ec       0x20 bin/ow_syslink.o
  .bss.owDataIsValid
-                0x2000c804        0x1 bin/ow_syslink.o
- *fill*         0x2000c805        0x3 
- .bss.waitForReply
-                0x2000c808        0x4 bin/ow_syslink.o
- .bss.isInit    0x2000c80c        0x1 bin/proximity.o
+                0x2000c80c        0x1 bin/ow_syslink.o
  *fill*         0x2000c80d        0x3 
+ .bss.waitForReply
+                0x2000c810        0x4 bin/ow_syslink.o
+ .bss.isInit    0x2000c814        0x1 bin/proximity.o
+ *fill*         0x2000c815        0x3 
  .bss.proximityAccuracy
-                0x2000c810        0x4 bin/proximity.o
- .bss.proximityDistance
-                0x2000c814        0x4 bin/proximity.o
- .bss.proximityDistanceAvg
                 0x2000c818        0x4 bin/proximity.o
- .bss.proximityDistanceMedian
+ .bss.proximityDistance
                 0x2000c81c        0x4 bin/proximity.o
+ .bss.proximityDistanceAvg
+                0x2000c820        0x4 bin/proximity.o
+ .bss.proximityDistanceMedian
+                0x2000c824        0x4 bin/proximity.o
  .bss.proximitySWin
-                0x2000c820       0x24 bin/proximity.o
+                0x2000c828       0x24 bin/proximity.o
  .bss.usecTimerHighCount
-                0x2000c844        0x4 bin/usec_time.o
+                0x2000c84c        0x4 bin/usec_time.o
  .bss.accBiasFound.11360
-                0x2000c848        0x1 bin/sensors_cf2.o
- *fill*         0x2000c849        0x3 
- .bss.accLpf    0x2000c84c       0x54 bin/sensors_cf2.o
+                0x2000c850        0x1 bin/sensors_cf2.o
+ *fill*         0x2000c851        0x3 
+ .bss.accLpf    0x2000c854       0x54 bin/sensors_cf2.o
  .bss.accScaleSum
-                0x2000c8a0        0x4 bin/sensors_cf2.o
- .bss.accScaleSumCount.11361
-                0x2000c8a4        0x4 bin/sensors_cf2.o
- .bss.accelerometerDataQueue
                 0x2000c8a8        0x4 bin/sensors_cf2.o
- .bss.barometerDataQueue
+ .bss.accScaleSumCount.11361
                 0x2000c8ac        0x4 bin/sensors_cf2.o
- .bss.buffer    0x2000c8b0       0x1c bin/sensors_cf2.o
- .bss.gyroBias  0x2000c8cc        0xc bin/sensors_cf2.o
+ .bss.accelerometerDataQueue
+                0x2000c8b0        0x4 bin/sensors_cf2.o
+ .bss.barometerDataQueue
+                0x2000c8b4        0x4 bin/sensors_cf2.o
+ .bss.buffer    0x2000c8b8       0x1c bin/sensors_cf2.o
+ .bss.gyroBias  0x2000c8d4        0xc bin/sensors_cf2.o
  .bss.gyroBiasFound
-                0x2000c8d8        0x1 bin/sensors_cf2.o
- *fill*         0x2000c8d9        0x3 
+                0x2000c8e0        0x1 bin/sensors_cf2.o
+ *fill*         0x2000c8e1        0x3 
  .bss.gyroBiasRunning
-                0x2000c8dc     0x1814 bin/sensors_cf2.o
+                0x2000c8e4     0x1814 bin/sensors_cf2.o
  .bss.gyroDataQueue
-                0x2000e0f0        0x4 bin/sensors_cf2.o
- .bss.gyroLpf   0x2000e0f4       0x54 bin/sensors_cf2.o
+                0x2000e0f8        0x4 bin/sensors_cf2.o
+ .bss.gyroLpf   0x2000e0fc       0x54 bin/sensors_cf2.o
  .bss.isAK8963TestPassed
-                0x2000e148        0x1 bin/sensors_cf2.o
+                0x2000e150        0x1 bin/sensors_cf2.o
  .bss.isBarometerPresent
-                0x2000e149        0x1 bin/sensors_cf2.o
- .bss.isInit    0x2000e14a        0x1 bin/sensors_cf2.o
+                0x2000e151        0x1 bin/sensors_cf2.o
+ .bss.isInit    0x2000e152        0x1 bin/sensors_cf2.o
  .bss.isLPS25HTestPassed
-                0x2000e14b        0x1 bin/sensors_cf2.o
+                0x2000e153        0x1 bin/sensors_cf2.o
  .bss.isMagnetometerPresent
-                0x2000e14c        0x1 bin/sensors_cf2.o
+                0x2000e154        0x1 bin/sensors_cf2.o
  .bss.isMpu6500TestPassed
-                0x2000e14d        0x1 bin/sensors_cf2.o
- *fill*         0x2000e14e        0x2 
+                0x2000e155        0x1 bin/sensors_cf2.o
+ *fill*         0x2000e156        0x2 
  .bss.magnetometerDataQueue
-                0x2000e150        0x4 bin/sensors_cf2.o
+                0x2000e158        0x4 bin/sensors_cf2.o
  .bss.rawPressure.11305
-                0x2000e154        0x4 bin/sensors_cf2.o
+                0x2000e15c        0x4 bin/sensors_cf2.o
  .bss.rawTemp.11306
-                0x2000e158        0x2 bin/sensors_cf2.o
- *fill*         0x2000e15a        0x2 
- .bss.sensors   0x2000e15c       0x48 bin/sensors_cf2.o
+                0x2000e160        0x2 bin/sensors_cf2.o
+ *fill*         0x2000e162        0x2 
+ .bss.sensors   0x2000e164       0x48 bin/sensors_cf2.o
  .bss.sensorsDataReady
-                0x2000e1a4        0x4 bin/sensors_cf2.o
+                0x2000e1ac        0x4 bin/sensors_cf2.o
  .bss.varianceSampleTime.11400
-                0x2000e1a8        0x4 bin/sensors_cf2.o
- .bss.isInit    0x2000e1ac        0x1 bin/platformservice.o
- *fill*         0x2000e1ad        0x3 
- .bss.counter   0x2000e1b0        0x4 bin/sound_cf2.o
- .bss.isInit    0x2000e1b4        0x1 bin/sound_cf2.o
+                0x2000e1b0        0x4 bin/sensors_cf2.o
+ .bss.isInit    0x2000e1b4        0x1 bin/platformservice.o
  *fill*         0x2000e1b5        0x3 
- .bss.mcounter  0x2000e1b8        0x4 bin/sound_cf2.o
- .bss.neffect   0x2000e1bc        0x4 bin/sound_cf2.o
- .bss.pitch     0x2000e1c0        0x4 bin/sound_cf2.o
- .bss.pitchid   0x2000e1c4        0x4 bin/sound_cf2.o
- .bss.rollid    0x2000e1c8        0x4 bin/sound_cf2.o
+ .bss.counter   0x2000e1b8        0x4 bin/sound_cf2.o
+ .bss.isInit    0x2000e1bc        0x1 bin/sound_cf2.o
+ *fill*         0x2000e1bd        0x3 
+ .bss.mcounter  0x2000e1c0        0x4 bin/sound_cf2.o
+ .bss.neffect   0x2000e1c4        0x4 bin/sound_cf2.o
+ .bss.pitch     0x2000e1c8        0x4 bin/sound_cf2.o
+ .bss.pitchid   0x2000e1cc        0x4 bin/sound_cf2.o
+ .bss.rollid    0x2000e1d0        0x4 bin/sound_cf2.o
  .bss.static_ratio
-                0x2000e1cc        0x1 bin/sound_cf2.o
- *fill*         0x2000e1cd        0x3 
+                0x2000e1d4        0x1 bin/sound_cf2.o
+ *fill*         0x2000e1d5        0x3 
  .bss.sys_effect
-                0x2000e1d0        0x4 bin/sound_cf2.o
- .bss.tilt_freq
-                0x2000e1d4        0x4 bin/sound_cf2.o
- .bss.user_effect
                 0x2000e1d8        0x4 bin/sound_cf2.o
- .bss.ch        0x2000e1dc       0x10 bin/extrx.o
+ .bss.tilt_freq
+                0x2000e1dc        0x4 bin/sound_cf2.o
+ .bss.user_effect
+                0x2000e1e0        0x4 bin/sound_cf2.o
+ .bss.ch        0x2000e1e4       0x10 bin/extrx.o
  .bss.currChannel.9688
-                0x2000e1ec        0x1 bin/extrx.o
- *fill*         0x2000e1ed        0x3 
+                0x2000e1f4        0x1 bin/extrx.o
+ *fill*         0x2000e1f5        0x3 
  .bss.extrxSetpoint
-                0x2000e1f0       0x50 bin/extrx.o
+                0x2000e1f8       0x50 bin/extrx.o
  .bss.initialized
-                0x2000e240        0x1 bin/sysload.o
- *fill*         0x2000e241        0x3 
+                0x2000e248        0x1 bin/sysload.o
+ *fill*         0x2000e249        0x3 
  .bss.previousSnapshot
-                0x2000e244       0x78 bin/sysload.o
+                0x2000e24c       0x78 bin/sysload.o
  .bss.previousTotalRunTime
-                0x2000e2bc        0x4 bin/sysload.o
+                0x2000e2c4        0x4 bin/sysload.o
  .bss.taskTopIndex
-                0x2000e2c0        0x4 bin/sysload.o
+                0x2000e2c8        0x4 bin/sysload.o
  .bss.triggerDump
-                0x2000e2c4        0x1 bin/sysload.o
- .bss.isInit    0x2000e2c5        0x1 bin/mem_cf2.o
+                0x2000e2cc        0x1 bin/sysload.o
+ .bss.isInit    0x2000e2cd        0x1 bin/mem_cf2.o
  .bss.nbrOwMems
-                0x2000e2c6        0x1 bin/mem_cf2.o
- .bss.p         0x2000e2c7       0x20 bin/mem_cf2.o
+                0x2000e2ce        0x1 bin/mem_cf2.o
+ .bss.p         0x2000e2cf       0x20 bin/mem_cf2.o
  .bss.serialNbr
-                0x2000e2e7        0x8 bin/mem_cf2.o
- *fill*         0x2000e2ef        0x1 
+                0x2000e2ef        0x8 bin/mem_cf2.o
+ *fill*         0x2000e2f7        0x1 
  .bss.angle_distance
-                0x2000e2f0        0x4 bin/buzzer.o
- .bss.counter   0x2000e2f4        0x4 bin/buzzer.o
- .bss.ctrl      0x2000e2f8        0x4 bin/buzzer.o
- .bss.effect    0x2000e2fc        0x4 bin/buzzer.o
-                0x2000e2fc                effect
+                0x2000e2f8        0x4 bin/buzzer.o
+ .bss.counter   0x2000e2fc        0x4 bin/buzzer.o
+ .bss.ctrl      0x2000e300        0x4 bin/buzzer.o
+ .bss.effect    0x2000e304        0x4 bin/buzzer.o
+                0x2000e304                effect
  .bss.end_move_time
-                0x2000e300        0x4 bin/buzzer.o
+                0x2000e308        0x4 bin/buzzer.o
  .bss.gait_state
-                0x2000e304        0x1 bin/buzzer.o
+                0x2000e30c        0x1 bin/buzzer.o
  .bss.horizontal_trim
-                0x2000e305        0x1 bin/buzzer.o
+                0x2000e30d        0x1 bin/buzzer.o
  .bss.initial_angle
-                0x2000e306        0x1 bin/buzzer.o
+                0x2000e30e        0x1 bin/buzzer.o
  .bss.initial_stroke
-                0x2000e307        0x1 bin/buzzer.o
- .bss.mcounter  0x2000e308        0x4 bin/buzzer.o
-                0x2000e308                mcounter
- .bss.move_ms   0x2000e30c        0x4 bin/buzzer.o
- .bss.neffect   0x2000e310        0x4 bin/buzzer.o
-                0x2000e310                neffect
+                0x2000e30f        0x1 bin/buzzer.o
+ .bss.mcounter  0x2000e310        0x4 bin/buzzer.o
+                0x2000e310                mcounter
+ .bss.move_ms   0x2000e314        0x4 bin/buzzer.o
+ .bss.neffect   0x2000e318        0x4 bin/buzzer.o
+                0x2000e318                neffect
  .bss.negative_angle
-                0x2000e314        0x1 bin/buzzer.o
+                0x2000e31c        0x1 bin/buzzer.o
  .bss.negative_stroke
-                0x2000e315        0x1 bin/buzzer.o
+                0x2000e31d        0x1 bin/buzzer.o
  .bss.next_gait_state
-                0x2000e316        0x1 bin/buzzer.o
- *fill*         0x2000e317        0x1 
+                0x2000e31e        0x1 bin/buzzer.o
+ *fill*         0x2000e31f        0x1 
  .bss.next_takeoff_move
-                0x2000e318        0x4 bin/buzzer.o
+                0x2000e320        0x4 bin/buzzer.o
  .bss.old_state
-                0x2000e31c        0x4 bin/buzzer.o
- .bss.pitch     0x2000e320        0x4 bin/buzzer.o
- .bss.pitchid   0x2000e324        0x4 bin/buzzer.o
+                0x2000e324        0x4 bin/buzzer.o
+ .bss.pitch     0x2000e328        0x4 bin/buzzer.o
+ .bss.pitchid   0x2000e32c        0x4 bin/buzzer.o
  .bss.ratio_inout
-                0x2000e328        0x1 bin/buzzer.o
- .bss.ratio_updown
-                0x2000e329        0x1 bin/buzzer.o
- *fill*         0x2000e32a        0x2 
- .bss.rollid    0x2000e32c        0x4 bin/buzzer.o
- .bss.search_trim
                 0x2000e330        0x1 bin/buzzer.o
- .bss.start_angle
+ .bss.ratio_updown
                 0x2000e331        0x1 bin/buzzer.o
  *fill*         0x2000e332        0x2 
- .bss.start_move_time
-                0x2000e334        0x4 bin/buzzer.o
- .bss.start_stroke
+ .bss.rollid    0x2000e334        0x4 bin/buzzer.o
+ .bss.search_trim
                 0x2000e338        0x1 bin/buzzer.o
- *fill*         0x2000e339        0x3 
- .bss.state     0x2000e33c        0x4 bin/buzzer.o
- .bss.static_ratio1
+ .bss.start_angle
+                0x2000e339        0x1 bin/buzzer.o
+ *fill*         0x2000e33a        0x2 
+ .bss.start_move_time
+                0x2000e33c        0x4 bin/buzzer.o
+ .bss.start_stroke
                 0x2000e340        0x1 bin/buzzer.o
-                0x2000e340                static_ratio1
- .bss.static_ratio2
-                0x2000e341        0x1 bin/buzzer.o
-                0x2000e341                static_ratio2
- *fill*         0x2000e342        0x2 
- .bss.steps     0x2000e344        0x4 bin/buzzer.o
- .bss.stop_angle
+ *fill*         0x2000e341        0x3 
+ .bss.state     0x2000e344        0x4 bin/buzzer.o
+ .bss.static_ratio1
                 0x2000e348        0x1 bin/buzzer.o
- .bss.stop_stroke
+                0x2000e348                static_ratio1
+ .bss.static_ratio2
                 0x2000e349        0x1 bin/buzzer.o
+                0x2000e349                static_ratio2
  *fill*         0x2000e34a        0x2 
+ .bss.steps     0x2000e34c        0x4 bin/buzzer.o
+ .bss.stop_angle
+                0x2000e350        0x1 bin/buzzer.o
+ .bss.stop_stroke
+                0x2000e351        0x1 bin/buzzer.o
+ *fill*         0x2000e352        0x2 
  .bss.stroke_distance
-                0x2000e34c        0x4 bin/buzzer.o
- .bss.takeoff_move
-                0x2000e350        0x4 bin/buzzer.o
- .bss.tilt_freq
                 0x2000e354        0x4 bin/buzzer.o
- .bss.count     0x2000e358        0x4 bin/deck_info.o
+ .bss.takeoff_move
+                0x2000e358        0x4 bin/buzzer.o
+ .bss.tilt_freq
+                0x2000e35c        0x4 bin/buzzer.o
+ .bss.count     0x2000e360        0x4 bin/deck_info.o
  .bss.deckInfos
-                0x2000e35c      0x1f0 bin/deck_info.o
+                0x2000e364      0x1f0 bin/deck_info.o
  .bss.dummyDriver
-                0x2000e54c       0x18 bin/deck_info.o
+                0x2000e554       0x18 bin/deck_info.o
  .bss.isInit.10034
-                0x2000e564        0x1 bin/deck_info.o
- *fill*         0x2000e565        0x3 
- .bss.drivers   0x2000e568        0x4 bin/deck_drivers.o
+                0x2000e56c        0x1 bin/deck_info.o
+ *fill*         0x2000e56d        0x3 
+ .bss.drivers   0x2000e570        0x4 bin/deck_drivers.o
  .bss.driversLen
-                0x2000e56c        0x4 bin/deck_drivers.o
+                0x2000e574        0x4 bin/deck_drivers.o
  .bss.init.9961
-                0x2000e570        0x1 bin/deck_drivers.o
- *fill*         0x2000e571        0x3 
- .bss.adcRange  0x2000e574        0x4 bin/deck_analog.o
+                0x2000e578        0x1 bin/deck_drivers.o
+ *fill*         0x2000e579        0x3 
+ .bss.adcRange  0x2000e57c        0x4 bin/deck_analog.o
  .bss.stregResolution
-                0x2000e578        0x4 bin/deck_analog.o
- .bss.isInit    0x2000e57c        0x1 bin/deck_spi.o
- *fill*         0x2000e57d        0x3 
+                0x2000e580        0x4 bin/deck_analog.o
+ .bss.isInit    0x2000e584        0x1 bin/deck_spi.o
+ *fill*         0x2000e585        0x3 
  .bss.rxComplete
-                0x2000e580        0x4 bin/deck_spi.o
+                0x2000e588        0x4 bin/deck_spi.o
  .bss.txComplete
-                0x2000e584        0x4 bin/deck_spi.o
- .bss.isInit    0x2000e588        0x1 bin/rzr.o
- .bss.black     0x2000e589       0x24 bin/ledring12.o
- *fill*         0x2000e5ad        0x3 
- .bss.brightness.10660
-                0x2000e5b0        0x4 bin/ledring12.o
- .bss.brightness.10794
-                0x2000e5b4        0x1 bin/ledring12.o
+                0x2000e58c        0x4 bin/deck_spi.o
+ .bss.isInit    0x2000e590        0x1 bin/rzr.o
+ .bss.black     0x2000e591       0x24 bin/ledring12.o
  *fill*         0x2000e5b5        0x3 
- .bss.brightness.10815
+ .bss.brightness.10660
                 0x2000e5b8        0x4 bin/ledring12.o
+ .bss.brightness.10794
+                0x2000e5bc        0x1 bin/ledring12.o
+ *fill*         0x2000e5bd        0x3 
+ .bss.brightness.10815
+                0x2000e5c0        0x4 bin/ledring12.o
  .bss.buffer.10852
-                0x2000e5bc       0x24 bin/ledring12.o
+                0x2000e5c4       0x24 bin/ledring12.o
  .bss.current_effect.10851
-                0x2000e5e0        0x4 bin/ledring12.o
- .bss.gyroYid.10791
-                0x2000e5e4        0x4 bin/ledring12.o
- .bss.gyroZid.10792
                 0x2000e5e8        0x4 bin/ledring12.o
+ .bss.gyroYid.10791
+                0x2000e5ec        0x4 bin/ledring12.o
+ .bss.gyroZid.10792
+                0x2000e5f0        0x4 bin/ledring12.o
  .bss.headlightEnable
-                0x2000e5ec        0x1 bin/ledring12.o
+                0x2000e5f4        0x1 bin/ledring12.o
  .bss.headlight_test_counter
-                0x2000e5ed        0x1 bin/ledring12.o
+                0x2000e5f5        0x1 bin/ledring12.o
  .bss.isInitialized.10763
-                0x2000e5ee        0x1 bin/ledring12.o
- *fill*         0x2000e5ef        0x1 
- .bss.neffect   0x2000e5f0        0x4 bin/ledring12.o
+                0x2000e5f6        0x1 bin/ledring12.o
+ *fill*         0x2000e5f7        0x1 
+ .bss.neffect   0x2000e5f8        0x4 bin/ledring12.o
  .bss.pitchid.10740
-                0x2000e5f4        0x4 bin/ledring12.o
- .bss.pitchid.10761
-                0x2000e5f8        0x4 bin/ledring12.o
- .bss.rollid.10741
                 0x2000e5fc        0x4 bin/ledring12.o
- .bss.rollid.10762
+ .bss.pitchid.10761
                 0x2000e600        0x4 bin/ledring12.o
- .bss.step.10732
+ .bss.rollid.10741
                 0x2000e604        0x4 bin/ledring12.o
+ .bss.rollid.10762
+                0x2000e608        0x4 bin/ledring12.o
+ .bss.step.10732
+                0x2000e60c        0x4 bin/ledring12.o
  .bss.sub1.10729
-                0x2000e608       0x24 bin/ledring12.o
+                0x2000e610       0x24 bin/ledring12.o
  .bss.sub2.10730
-                0x2000e62c       0x24 bin/ledring12.o
+                0x2000e634       0x24 bin/ledring12.o
  .bss.test_delay_counter
-                0x2000e650        0x1 bin/ledring12.o
+                0x2000e658        0x1 bin/ledring12.o
  .bss.test_eff_nbr
-                0x2000e651        0x1 bin/ledring12.o
+                0x2000e659        0x1 bin/ledring12.o
  .bss.test_front
-                0x2000e652        0x1 bin/ledring12.o
- *fill*         0x2000e653        0x1 
+                0x2000e65a        0x1 bin/ledring12.o
+ *fill*         0x2000e65b        0x1 
  .bss.tic.10836
-                0x2000e654        0x4 bin/ledring12.o
- .bss.b         0x2000e658       0x40 bin/gtgps.o
- .bss.isInit    0x2000e698        0x1 bin/gtgps.o
- *fill*         0x2000e699        0x3 
- .bss.m         0x2000e69c       0x20 bin/gtgps.o
- .bss.isInit    0x2000e6bc        0x1 bin/cppmdeck.o
- *fill*         0x2000e6bd        0x3 
- .bss.FatFs     0x2000e6c0      0x238 bin/usddeck.o
- .bss.crcTable  0x2000e8f8      0x400 bin/usddeck.o
+                0x2000e65c        0x4 bin/ledring12.o
+ .bss.b         0x2000e660       0x40 bin/gtgps.o
+ .bss.isInit    0x2000e6a0        0x1 bin/gtgps.o
+ *fill*         0x2000e6a1        0x3 
+ .bss.m         0x2000e6a4       0x20 bin/gtgps.o
+ .bss.isInit    0x2000e6c4        0x1 bin/cppmdeck.o
+ *fill*         0x2000e6c5        0x3 
+ .bss.FatFs     0x2000e6c8      0x238 bin/usddeck.o
+ .bss.crcTable  0x2000e900      0x400 bin/usddeck.o
  .bss.exchangeBuff
-                0x2000ecf8      0x200 bin/usddeck.o
- .bss.isInit    0x2000eef8        0x1 bin/usddeck.o
- *fill*         0x2000eef9        0x3 
- .bss.logFile   0x2000eefc      0x228 bin/usddeck.o
+                0x2000ed00      0x200 bin/usddeck.o
+ .bss.isInit    0x2000ef00        0x1 bin/usddeck.o
+ *fill*         0x2000ef01        0x3 
+ .bss.logFile   0x2000ef04      0x228 bin/usddeck.o
  .bss.usdLogConfig
-                0x2000f124       0x14 bin/usddeck.o
- .bss.I2Cx      0x2000f138        0x4 bin/vl53l0x.o
- .bss.devAddr   0x2000f13c        0x1 bin/vl53l0x.o
- *fill*         0x2000f13d        0x3 
- .bss.expCoeff  0x2000f140        0x4 bin/vl53l0x.o
- .bss.isInit    0x2000f144        0x1 bin/vl53l0x.o
- *fill*         0x2000f145        0x1 
+                0x2000f12c       0x14 bin/usddeck.o
+ .bss.I2Cx      0x2000f140        0x4 bin/vl53l0x.o
+ .bss.devAddr   0x2000f144        0x1 bin/vl53l0x.o
+ *fill*         0x2000f145        0x3 
+ .bss.expCoeff  0x2000f148        0x4 bin/vl53l0x.o
+ .bss.isInit    0x2000f14c        0x1 bin/vl53l0x.o
+ *fill*         0x2000f14d        0x1 
  .bss.measurement_timing_budget_ms
-                0x2000f146        0x2 bin/vl53l0x.o
+                0x2000f14e        0x2 bin/vl53l0x.o
  .bss.measurement_timing_budget_us
-                0x2000f148        0x4 bin/vl53l0x.o
+                0x2000f150        0x4 bin/vl53l0x.o
  .bss.range_last
-                0x2000f14c        0x2 bin/vl53l0x.o
-                0x2000f14c                range_last
+                0x2000f154        0x2 bin/vl53l0x.o
+                0x2000f154                range_last
  .bss.stop_variable
-                0x2000f14e        0x1 bin/vl53l0x.o
- *fill*         0x2000f14f        0x1 
+                0x2000f156        0x1 bin/vl53l0x.o
+ *fill*         0x2000f157        0x1 
  .bss.timeout_start_ms
-                0x2000f150        0x2 bin/vl53l0x.o
- *fill*         0x2000f152        0x6 
+                0x2000f158        0x2 bin/vl53l0x.o
+ *fill*         0x2000f15a        0x6 
  .bss.dwm_device
-                0x2000f158       0x50 bin/locodeck.o
+                0x2000f160       0x50 bin/locodeck.o
  .bss.irqSemaphore
-                0x2000f1a8        0x4 bin/locodeck.o
- .bss.isInit    0x2000f1ac        0x1 bin/locodeck.o
+                0x2000f1b0        0x4 bin/locodeck.o
+ .bss.isInit    0x2000f1b4        0x1 bin/locodeck.o
  .bss.lppShortPacket
-                0x2000f1ad       0x20 bin/locodeck.o
- *fill*         0x2000f1cd        0x3 
+                0x2000f1b5       0x20 bin/locodeck.o
+ *fill*         0x2000f1d5        0x3 
  .bss.lppShortQueue
-                0x2000f1d0        0x4 bin/locodeck.o
+                0x2000f1d8        0x4 bin/locodeck.o
  .bss.spiRxBuffer
-                0x2000f1d4       0xc4 bin/locodeck.o
+                0x2000f1dc       0xc4 bin/locodeck.o
  .bss.spiSemaphore
-                0x2000f298        0x4 bin/locodeck.o
+                0x2000f2a0        0x4 bin/locodeck.o
  .bss.spiTxBuffer
-                0x2000f29c       0xc4 bin/locodeck.o
- .bss.timeout   0x2000f360        0x4 bin/locodeck.o
- *fill*         0x2000f364        0x4 
+                0x2000f2a4       0xc4 bin/locodeck.o
+ .bss.timeout   0x2000f368        0x4 bin/locodeck.o
+ *fill*         0x2000f36c        0x4 
  .bss.answer_rx
-                0x2000f368        0x8 bin/lpsTwrTag.o
- .bss.answer_tx
                 0x2000f370        0x8 bin/lpsTwrTag.o
- .bss.curr_seq  0x2000f378        0x1 bin/lpsTwrTag.o
- *fill*         0x2000f379        0x3 
+ .bss.answer_tx
+                0x2000f378        0x8 bin/lpsTwrTag.o
+ .bss.curr_seq  0x2000f380        0x1 bin/lpsTwrTag.o
+ *fill*         0x2000f381        0x3 
  .bss.current_anchor
-                0x2000f37c        0x4 bin/lpsTwrTag.o
+                0x2000f384        0x4 bin/lpsTwrTag.o
  .bss.failedRanging
-                0x2000f380       0x18 bin/lpsTwrTag.o
- .bss.final_rx  0x2000f398        0x8 bin/lpsTwrTag.o
- .bss.final_tx  0x2000f3a0        0x8 bin/lpsTwrTag.o
+                0x2000f388       0x18 bin/lpsTwrTag.o
+ .bss.final_rx  0x2000f3a0        0x8 bin/lpsTwrTag.o
+ .bss.final_tx  0x2000f3a8        0x8 bin/lpsTwrTag.o
  .bss.lppShortPacket
-                0x2000f3a8       0x20 bin/lpsTwrTag.o
+                0x2000f3b0       0x20 bin/lpsTwrTag.o
  .bss.lpp_transaction
-                0x2000f3c8        0x1 bin/lpsTwrTag.o
- *fill*         0x2000f3c9        0x3 
- .bss.options   0x2000f3cc        0x4 bin/lpsTwrTag.o
- .bss.poll_rx   0x2000f3d0        0x8 bin/lpsTwrTag.o
- .bss.poll_tx   0x2000f3d8        0x8 bin/lpsTwrTag.o
+                0x2000f3d0        0x1 bin/lpsTwrTag.o
+ *fill*         0x2000f3d1        0x3 
+ .bss.options   0x2000f3d4        0x4 bin/lpsTwrTag.o
+ .bss.poll_rx   0x2000f3d8        0x8 bin/lpsTwrTag.o
+ .bss.poll_tx   0x2000f3e0        0x8 bin/lpsTwrTag.o
  .bss.rangingPerSec
-                0x2000f3e0       0x18 bin/lpsTwrTag.o
+                0x2000f3e8       0x18 bin/lpsTwrTag.o
  .bss.rangingStats
-                0x2000f3f8      0x318 bin/lpsTwrTag.o
+                0x2000f400      0x318 bin/lpsTwrTag.o
  .bss.rangingSuccessRate
-                0x2000f710       0x18 bin/lpsTwrTag.o
+                0x2000f718       0x18 bin/lpsTwrTag.o
  .bss.ranging_complete
-                0x2000f728        0x1 bin/lpsTwrTag.o
- *fill*         0x2000f729        0x3 
+                0x2000f730        0x1 bin/lpsTwrTag.o
+ *fill*         0x2000f731        0x3 
  .bss.statisticStartTick.9971
-                0x2000f72c        0x4 bin/lpsTwrTag.o
+                0x2000f734        0x4 bin/lpsTwrTag.o
  .bss.succededRanging
-                0x2000f730       0x18 bin/lpsTwrTag.o
- .bss.txPacket  0x2000f748       0x55 bin/lpsTwrTag.o
- .bss.cb_ok     0x2000f79d        0x1 bin/configblockeeprom.o
+                0x2000f738       0x18 bin/lpsTwrTag.o
+ .bss.txPacket  0x2000f750       0x55 bin/lpsTwrTag.o
+ .bss.cb_ok     0x2000f7a5        0x1 bin/configblockeeprom.o
  .bss.configblock
-                0x2000f79e       0x15 bin/configblockeeprom.o
- .bss.isInit    0x2000f7b3        0x1 bin/configblockeeprom.o
+                0x2000f7a6       0x15 bin/configblockeeprom.o
+ .bss.isInit    0x2000f7bb        0x1 bin/configblockeeprom.o
  *(COMMON)
- COMMON         0x2000f7b4       0x50 bin/queue.o
-                0x2000f7b4                xQueueRegistry
- COMMON         0x2000f804        0x4 bin/motors.o
-                0x2000f804                motorMap
- COMMON         0x2000f808        0x4 bin/system.o
-                0x2000f808                canStartMutex
- COMMON         0x2000f80c       0x20 bin/console.o
-                0x2000f80c                messageToPrint
- COMMON         0x2000f82c        0x8 bin/commander.o
-                0x2000f82c                setpointQueue
-                0x2000f830                priorityQueue
- COMMON         0x2000f834       0x24 bin/stabilizer.o
-                0x2000f834                ZRANGE_STAB
-                0x2000f83c                motorPowerM3
-                0x2000f840                motorPowerM2
-                0x2000f844                motorPowerM4
-                0x2000f848                prevRPY
-                0x2000f854                motorPowerM1
- COMMON         0x2000f858       0xff bin/usbd_req.o
-                0x2000f858                USBD_StrDesc
- *fill*         0x2000f957        0x1 
- COMMON         0x2000f958        0x4 bin/usbd_core.o
-                0x2000f958                SET_TEST_MODE
- COMMON         0x2000f95c       0x18 bin/diskio.o
-                0x2000f95c                FATFS_LowLevelDrivers
- COMMON         0x2000f974      0x5f4 bin/usb.o
-                0x2000f974                USB_OTG_dev
- COMMON         0x2000ff68       0x10 bin/sensors_cf2.o
-                0x2000ff68                cosPitch
-                0x2000ff6c                cosRoll
-                0x2000ff70                sinPitch
-                0x2000ff74                sinRoll
- COMMON         0x2000ff78       0x18 bin/ledring12.o
-                0x2000ff78                ledringmem
- COMMON         0x2000ff90       0x65 bin/gtgps.o
-                0x2000ff90                buff
-                0x2000fff4                bi
-                0x2000fff8                . = ALIGN (0x4)
- *fill*         0x2000fff5        0x3 
-                0x2000fff8                _ebss = .
+ COMMON         0x2000f7bc       0x50 bin/queue.o
+                0x2000f7bc                xQueueRegistry
+ COMMON         0x2000f80c        0x4 bin/motors.o
+                0x2000f80c                motorMap
+ COMMON         0x2000f810        0x4 bin/system.o
+                0x2000f810                canStartMutex
+ COMMON         0x2000f814       0x20 bin/console.o
+                0x2000f814                messageToPrint
+ COMMON         0x2000f834        0x8 bin/commander.o
+                0x2000f834                setpointQueue
+                0x2000f838                priorityQueue
+ COMMON         0x2000f83c       0x24 bin/stabilizer.o
+                0x2000f83c                ZRANGE_STAB
+                0x2000f844                motorPowerM3
+                0x2000f848                motorPowerM2
+                0x2000f84c                motorPowerM4
+                0x2000f850                prevRPY
+                0x2000f85c                motorPowerM1
+ COMMON         0x2000f860       0xff bin/usbd_req.o
+                0x2000f860                USBD_StrDesc
+ *fill*         0x2000f95f        0x1 
+ COMMON         0x2000f960        0x4 bin/usbd_core.o
+                0x2000f960                SET_TEST_MODE
+ COMMON         0x2000f964       0x18 bin/diskio.o
+                0x2000f964                FATFS_LowLevelDrivers
+ COMMON         0x2000f97c      0x5f4 bin/usb.o
+                0x2000f97c                USB_OTG_dev
+ COMMON         0x2000ff70       0x10 bin/sensors_cf2.o
+                0x2000ff70                cosPitch
+                0x2000ff74                cosRoll
+                0x2000ff78                sinPitch
+                0x2000ff7c                sinRoll
+ COMMON         0x2000ff80       0x18 bin/ledring12.o
+                0x2000ff80                ledringmem
+ COMMON         0x2000ff98       0x65 bin/gtgps.o
+                0x2000ff98                buff
+                0x2000fffc                bi
+                0x20010000                . = ALIGN (0x4)
+ *fill*         0x2000fffd        0x3 
+                0x20010000                _ebss = .
 
-.nzds           0x2000fff8        0xc load address 0x08034208
-                0x2000fff8                . = ALIGN (0x4)
-                0x2000fff8                _snzds = .
+.nzds           0x20010000        0xc load address 0x08034258
+                0x20010000                . = ALIGN (0x4)
+                0x20010000                _snzds = .
  *(.nzds)
- .nzds          0x2000fff8        0xc bin/cfassert.o
-                0x2000fff8                snapshot
+ .nzds          0x20010000        0xc bin/cfassert.o
+                0x20010000                snapshot
  *(.nzds.*)
  *(COMMON)
-                0x20010004                . = ALIGN (0x4)
-                0x20010004                _enzds = .
+                0x2001000c                . = ALIGN (0x4)
+                0x2001000c                _enzds = .
                 [!provide]                PROVIDE (end, _enzds)
                 [!provide]                PROVIDE (_end, _enzds)
 
-._usrstack      0x20010004      0x100 load address 0x08034214
-                0x20010004                . = ALIGN (0x4)
-                0x20010004                _susrstack = .
-                0x20010104                . = (. + _Minimum_Stack_Size)
- *fill*         0x20010004      0x100 
-                0x20010104                . = ALIGN (0x4)
-                0x20010104                _eusrstack = .
+._usrstack      0x2001000c      0x100 load address 0x08034264
+                0x2001000c                . = ALIGN (0x4)
+                0x2001000c                _susrstack = .
+                0x2001010c                . = (. + _Minimum_Stack_Size)
+ *fill*         0x2001000c      0x100 
+                0x2001010c                . = ALIGN (0x4)
+                0x2001010c                _eusrstack = .
 
 .b1text
  *(.b1text)
@@ -19433,8 +19436,8 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
  *(.eb3text)
  *(.eb3rodata)
  *(.eb3rodata*)
-                0x20010104                __exidx_start = .
-                0x20010104                __exidx_end = .
+                0x2001010c                __exidx_start = .
+                0x2001010c                __exidx_end = .
 
 /DISCARD/
  libc.a(*)
@@ -20219,7 +20222,7 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000    0x7bbef
+.debug_info     0x00000000    0x7bc1b
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xac2 bin/list.o
  .debug_info    0x00000ac2     0x3378 bin/tasks.o
@@ -20243,100 +20246,100 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
  .debug_info    0x00010340      0x168 bin/main.o
  .debug_info    0x000104a8      0x876 bin/exti.o
  .debug_info    0x00010d1e     0x10aa bin/nvic.o
- .debug_info    0x00011dc8     0x1118 bin/motors.o
- .debug_info    0x00012ee0     0x1205 bin/crtp.o
- .debug_info    0x000140e5      0x867 bin/ledseq.o
- .debug_info    0x0001494c      0x19e bin/freeRTOSdebug.o
- .debug_info    0x00014aea     0x1370 bin/system.o
- .debug_info    0x00015e5a      0x201 bin/comm.o
- .debug_info    0x0001605b      0x6ee bin/console.o
- .debug_info    0x00016749      0xaf5 bin/crtpservice.o
- .debug_info    0x0001723e     0x110d bin/param.o
- .debug_info    0x0001834b     0x19ba bin/log.o
- .debug_info    0x00019d05      0xa61 bin/worker.o
- .debug_info    0x0001a766      0xefe bin/commander.o
- .debug_info    0x0001b664      0x494 bin/crtp_commander.o
- .debug_info    0x0001baf8      0xe69 bin/crtp_commander_rpyt.o
- .debug_info    0x0001c961     0x122c bin/crtp_commander_generic.o
- .debug_info    0x0001db8d     0x11b9 bin/crtp_localization_service.o
- .debug_info    0x0001ed46      0xf69 bin/sensfusion6.o
- .debug_info    0x0001fcaf     0x2c90 bin/stabilizer.o
- .debug_info    0x0002293f      0x5cb bin/position_estimator_altitude.o
- .debug_info    0x00022f0a     0x2e5b bin/estimator_kalman.o
- .debug_info    0x00025d65      0x95d bin/power_distribution_stock.o
- .debug_info    0x000266c2      0xbb1 bin/filter.o
- .debug_info    0x00027273      0x832 bin/cfassert.o
- .debug_info    0x00027aa5      0x45f bin/eprintf.o
- .debug_info    0x00027f04      0x1be bin/crc.o
- .debug_info    0x000280c2      0xa65 bin/num.o
- .debug_info    0x00028b27      0x1be bin/version.o
- .debug_info    0x00028ce5       0x85 bin/FreeRTOS-openocd.o
- .debug_info    0x00028d6a      0x61a bin/system_stm32f4xx.o
- .debug_info    0x00029384     0x277d bin/usb_core.o
- .debug_info    0x0002bb01     0x228e bin/usb_dcd_int.o
- .debug_info    0x0002dd8f     0x12c4 bin/usb_dcd.o
- .debug_info    0x0002f053      0xdfe bin/usbd_ioreq.o
- .debug_info    0x0002fe51     0x1442 bin/usbd_req.o
- .debug_info    0x00031293     0x1347 bin/usbd_core.o
- .debug_info    0x000325da      0x3ff bin/diskio.o
- .debug_info    0x000329d9     0x5683 bin/ff.o
- .debug_info    0x0003805c      0x130 bin/syscall.o
- .debug_info    0x0003818c      0x1b1 bin/unicode.o
- .debug_info    0x0003833d      0xd79 bin/fatfs_sd.o
- .debug_info    0x000390b6       0x73 bin/platform_cf2.o
- .debug_info    0x00039129      0x76b bin/led_f405.o
- .debug_info    0x00039894     0x4e2a bin/mpu6500.o
- .debug_info    0x0003e6be      0xd8b bin/i2cdev_f405.o
- .debug_info    0x0003f449     0x186a bin/ws2812_cf2.o
- .debug_info    0x00040cb3     0x1353 bin/lps25h.o
- .debug_info    0x00042006     0x21cb bin/i2c_drv.o
- .debug_info    0x000441d1      0xf57 bin/ak8963.o
- .debug_info    0x00045128     0x112b bin/eeprom.o
- .debug_info    0x00046253      0xb66 bin/maxsonar.o
- .debug_info    0x00046db9      0x925 bin/piezo.o
- .debug_info    0x000476de     0x1d4b bin/uart_syslink.o
- .debug_info    0x00049429     0x12e1 bin/uart1.o
- .debug_info    0x0004a70a      0x21a bin/watchdog.o
- .debug_info    0x0004a924      0xd22 bin/cppm.o
- .debug_info    0x0004b646     0x1191 bin/usb_bsp.o
- .debug_info    0x0004c7d7      0xe8f bin/usblink.o
- .debug_info    0x0004d666      0x54e bin/usbd_desc.o
- .debug_info    0x0004dbb4     0x1b53 bin/usb.o
- .debug_info    0x0004f707     0x133e bin/pm_f405.o
- .debug_info    0x00050a45      0xd4d bin/syslink.o
- .debug_info    0x00051792     0x1087 bin/radiolink.o
- .debug_info    0x00052819     0x11fb bin/ow_syslink.o
- .debug_info    0x00053a14      0xdd0 bin/proximity.o
- .debug_info    0x000547e4      0x774 bin/usec_time.o
- .debug_info    0x00054f58     0x2d6e bin/sensors_cf2.o
- .debug_info    0x00057cc6     0x4347 bin/libdw1000.o
- .debug_info    0x0005c00d      0x6a3 bin/libdw1000Spi.o
- .debug_info    0x0005c6b0      0xc3d bin/platformservice.o
- .debug_info    0x0005d2ed     0x1046 bin/sound_cf2.o
- .debug_info    0x0005e333      0x524 bin/extrx.o
- .debug_info    0x0005e857      0x628 bin/sysload.o
- .debug_info    0x0005ee7f     0x1717 bin/mem_cf2.o
- .debug_info    0x00060596     0x153d bin/buzzer.o
- .debug_info    0x00061ad3      0xd84 bin/deck.o
- .debug_info    0x00062857     0x1352 bin/deck_info.o
- .debug_info    0x00063ba9      0xd9c bin/deck_drivers.o
- .debug_info    0x00064945      0xb2b bin/deck_test.o
- .debug_info    0x00065470      0xa50 bin/deck_constants.o
- .debug_info    0x00065ec0      0xca0 bin/deck_digital.o
- .debug_info    0x00066b60     0x10c1 bin/deck_analog.o
- .debug_info    0x00067c21     0x182a bin/deck_spi.o
- .debug_info    0x0006944b     0x1389 bin/rzr.o
- .debug_info    0x0006a7d4     0x1d4d bin/ledring12.o
- .debug_info    0x0006c521      0xd43 bin/buzzdeck.o
- .debug_info    0x0006d264     0x17e4 bin/gtgps.o
- .debug_info    0x0006ea48      0xc79 bin/cppmdeck.o
- .debug_info    0x0006f6c1     0x26a7 bin/usddeck.o
- .debug_info    0x00071d68     0x3698 bin/vl53l0x.o
- .debug_info    0x00075400     0x255d bin/locodeck.o
- .debug_info    0x0007795d     0x1b24 bin/lpsTwrTag.o
- .debug_info    0x00079481     0x1076 bin/exptest.o
- .debug_info    0x0007a4f7     0x14ef bin/configblockeeprom.o
- .debug_info    0x0007b9e6      0x209 bin/crc_bosch.o
+ .debug_info    0x00011dc8     0x1144 bin/motors.o
+ .debug_info    0x00012f0c     0x1205 bin/crtp.o
+ .debug_info    0x00014111      0x867 bin/ledseq.o
+ .debug_info    0x00014978      0x19e bin/freeRTOSdebug.o
+ .debug_info    0x00014b16     0x1370 bin/system.o
+ .debug_info    0x00015e86      0x201 bin/comm.o
+ .debug_info    0x00016087      0x6ee bin/console.o
+ .debug_info    0x00016775      0xaf5 bin/crtpservice.o
+ .debug_info    0x0001726a     0x110d bin/param.o
+ .debug_info    0x00018377     0x19ba bin/log.o
+ .debug_info    0x00019d31      0xa61 bin/worker.o
+ .debug_info    0x0001a792      0xefe bin/commander.o
+ .debug_info    0x0001b690      0x494 bin/crtp_commander.o
+ .debug_info    0x0001bb24      0xe69 bin/crtp_commander_rpyt.o
+ .debug_info    0x0001c98d     0x122c bin/crtp_commander_generic.o
+ .debug_info    0x0001dbb9     0x11b9 bin/crtp_localization_service.o
+ .debug_info    0x0001ed72      0xf69 bin/sensfusion6.o
+ .debug_info    0x0001fcdb     0x2c90 bin/stabilizer.o
+ .debug_info    0x0002296b      0x5cb bin/position_estimator_altitude.o
+ .debug_info    0x00022f36     0x2e5b bin/estimator_kalman.o
+ .debug_info    0x00025d91      0x95d bin/power_distribution_stock.o
+ .debug_info    0x000266ee      0xbb1 bin/filter.o
+ .debug_info    0x0002729f      0x832 bin/cfassert.o
+ .debug_info    0x00027ad1      0x45f bin/eprintf.o
+ .debug_info    0x00027f30      0x1be bin/crc.o
+ .debug_info    0x000280ee      0xa65 bin/num.o
+ .debug_info    0x00028b53      0x1be bin/version.o
+ .debug_info    0x00028d11       0x85 bin/FreeRTOS-openocd.o
+ .debug_info    0x00028d96      0x61a bin/system_stm32f4xx.o
+ .debug_info    0x000293b0     0x277d bin/usb_core.o
+ .debug_info    0x0002bb2d     0x228e bin/usb_dcd_int.o
+ .debug_info    0x0002ddbb     0x12c4 bin/usb_dcd.o
+ .debug_info    0x0002f07f      0xdfe bin/usbd_ioreq.o
+ .debug_info    0x0002fe7d     0x1442 bin/usbd_req.o
+ .debug_info    0x000312bf     0x1347 bin/usbd_core.o
+ .debug_info    0x00032606      0x3ff bin/diskio.o
+ .debug_info    0x00032a05     0x5683 bin/ff.o
+ .debug_info    0x00038088      0x130 bin/syscall.o
+ .debug_info    0x000381b8      0x1b1 bin/unicode.o
+ .debug_info    0x00038369      0xd79 bin/fatfs_sd.o
+ .debug_info    0x000390e2       0x73 bin/platform_cf2.o
+ .debug_info    0x00039155      0x76b bin/led_f405.o
+ .debug_info    0x000398c0     0x4e2a bin/mpu6500.o
+ .debug_info    0x0003e6ea      0xd8b bin/i2cdev_f405.o
+ .debug_info    0x0003f475     0x186a bin/ws2812_cf2.o
+ .debug_info    0x00040cdf     0x1353 bin/lps25h.o
+ .debug_info    0x00042032     0x21cb bin/i2c_drv.o
+ .debug_info    0x000441fd      0xf57 bin/ak8963.o
+ .debug_info    0x00045154     0x112b bin/eeprom.o
+ .debug_info    0x0004627f      0xb66 bin/maxsonar.o
+ .debug_info    0x00046de5      0x925 bin/piezo.o
+ .debug_info    0x0004770a     0x1d4b bin/uart_syslink.o
+ .debug_info    0x00049455     0x12e1 bin/uart1.o
+ .debug_info    0x0004a736      0x21a bin/watchdog.o
+ .debug_info    0x0004a950      0xd22 bin/cppm.o
+ .debug_info    0x0004b672     0x1191 bin/usb_bsp.o
+ .debug_info    0x0004c803      0xe8f bin/usblink.o
+ .debug_info    0x0004d692      0x54e bin/usbd_desc.o
+ .debug_info    0x0004dbe0     0x1b53 bin/usb.o
+ .debug_info    0x0004f733     0x133e bin/pm_f405.o
+ .debug_info    0x00050a71      0xd4d bin/syslink.o
+ .debug_info    0x000517be     0x1087 bin/radiolink.o
+ .debug_info    0x00052845     0x11fb bin/ow_syslink.o
+ .debug_info    0x00053a40      0xdd0 bin/proximity.o
+ .debug_info    0x00054810      0x774 bin/usec_time.o
+ .debug_info    0x00054f84     0x2d6e bin/sensors_cf2.o
+ .debug_info    0x00057cf2     0x4347 bin/libdw1000.o
+ .debug_info    0x0005c039      0x6a3 bin/libdw1000Spi.o
+ .debug_info    0x0005c6dc      0xc3d bin/platformservice.o
+ .debug_info    0x0005d319     0x1046 bin/sound_cf2.o
+ .debug_info    0x0005e35f      0x524 bin/extrx.o
+ .debug_info    0x0005e883      0x628 bin/sysload.o
+ .debug_info    0x0005eeab     0x1717 bin/mem_cf2.o
+ .debug_info    0x000605c2     0x153d bin/buzzer.o
+ .debug_info    0x00061aff      0xd84 bin/deck.o
+ .debug_info    0x00062883     0x1352 bin/deck_info.o
+ .debug_info    0x00063bd5      0xd9c bin/deck_drivers.o
+ .debug_info    0x00064971      0xb2b bin/deck_test.o
+ .debug_info    0x0006549c      0xa50 bin/deck_constants.o
+ .debug_info    0x00065eec      0xca0 bin/deck_digital.o
+ .debug_info    0x00066b8c     0x10c1 bin/deck_analog.o
+ .debug_info    0x00067c4d     0x182a bin/deck_spi.o
+ .debug_info    0x00069477     0x1389 bin/rzr.o
+ .debug_info    0x0006a800     0x1d4d bin/ledring12.o
+ .debug_info    0x0006c54d      0xd43 bin/buzzdeck.o
+ .debug_info    0x0006d290     0x17e4 bin/gtgps.o
+ .debug_info    0x0006ea74      0xc79 bin/cppmdeck.o
+ .debug_info    0x0006f6ed     0x26a7 bin/usddeck.o
+ .debug_info    0x00071d94     0x3698 bin/vl53l0x.o
+ .debug_info    0x0007542c     0x255d bin/locodeck.o
+ .debug_info    0x00077989     0x1b24 bin/lpsTwrTag.o
+ .debug_info    0x000794ad     0x1076 bin/exptest.o
+ .debug_info    0x0007a523     0x14ef bin/configblockeeprom.o
+ .debug_info    0x0007ba12      0x209 bin/crc_bosch.o
 
 .debug_abbrev   0x00000000    0x13e82
  *(.debug_abbrev)
@@ -20748,7 +20751,7 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
  .debug_frame   0x0000a7e0       0x84 /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-strtol.o)
  .debug_frame   0x0000a864       0x3c /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-wctomb_r.o)
 
-.debug_str      0x00000000    0x8bbeb
+.debug_str      0x00000000    0x8bc22
  *(.debug_str)
  .debug_str     0x00000000     0xac27 bin/list.o
                                0xaf21 (size before relaxing)
@@ -20792,195 +20795,195 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
                               0x62992 (size before relaxing)
  .debug_str     0x0006d0d5      0x7d6 bin/exti.o
                               0x5e849 (size before relaxing)
- .debug_str     0x0006d8ab     0x1549 bin/nvic.o
-                              0x63d5f (size before relaxing)
- .debug_str     0x0006edf4      0xb3d bin/motors.o
-                              0x64f16 (size before relaxing)
- .debug_str     0x0006f931      0x6a3 bin/crtp.o
+ .debug_str     0x0006d8ab     0x156c bin/nvic.o
+                              0x63d82 (size before relaxing)
+ .debug_str     0x0006ee17      0xb51 bin/motors.o
+                              0x64f4d (size before relaxing)
+ .debug_str     0x0006f968      0x6a3 bin/crtp.o
                                0xbb14 (size before relaxing)
- .debug_str     0x0006ffd4      0x21c bin/ledseq.o
+ .debug_str     0x0007000b      0x21c bin/ledseq.o
                                0xa6f6 (size before relaxing)
- .debug_str     0x000701f0      0x13a bin/freeRTOSdebug.o
+ .debug_str     0x00070227      0x13a bin/freeRTOSdebug.o
                                0x8d37 (size before relaxing)
- .debug_str     0x0007032a     0x18ec bin/system.o
+ .debug_str     0x00070361     0x18ec bin/system.o
                               0x690d6 (size before relaxing)
- .debug_str     0x00071c16      0x142 bin/comm.o
+ .debug_str     0x00071c4d      0x142 bin/comm.o
                                0x5e3e (size before relaxing)
- .debug_str     0x00071d58       0xae bin/console.o
+ .debug_str     0x00071d8f       0xae bin/console.o
                               0x62cce (size before relaxing)
- .debug_str     0x00071e06       0x66 bin/crtpservice.o
+ .debug_str     0x00071e3d       0x66 bin/crtpservice.o
                                0xa7b5 (size before relaxing)
- .debug_str     0x00071e6c      0x23c bin/param.o
+ .debug_str     0x00071ea3      0x23c bin/param.o
                                0xc363 (size before relaxing)
- .debug_str     0x000720a8      0x3a8 bin/log.o
+ .debug_str     0x000720df      0x3a8 bin/log.o
                                0xdcaa (size before relaxing)
- .debug_str     0x00072450       0x50 bin/worker.o
+ .debug_str     0x00072487       0x50 bin/worker.o
                                0xb030 (size before relaxing)
- .debug_str     0x000724a0      0x1d1 bin/commander.o
+ .debug_str     0x000724d7      0x1d1 bin/commander.o
                                0xc3df (size before relaxing)
- .debug_str     0x00072671       0x74 bin/crtp_commander.o
+ .debug_str     0x000726a8       0x74 bin/crtp_commander.o
                                0x5155 (size before relaxing)
- .debug_str     0x000726e5      0x9ef bin/crtp_commander_rpyt.o
+ .debug_str     0x0007271c      0x9ef bin/crtp_commander_rpyt.o
                                0xba1a (size before relaxing)
- .debug_str     0x000730d4      0x294 bin/crtp_commander_generic.o
+ .debug_str     0x0007310b      0x294 bin/crtp_commander_generic.o
                                0xb2a6 (size before relaxing)
- .debug_str     0x00073368     0x126a bin/crtp_localization_service.o
+ .debug_str     0x0007339f     0x126a bin/crtp_localization_service.o
                                0xd33d (size before relaxing)
- .debug_str     0x000745d2      0x227 bin/sensfusion6.o
+ .debug_str     0x00074609      0x227 bin/sensfusion6.o
                                0x8059 (size before relaxing)
- .debug_str     0x000747f9     0x14c7 bin/stabilizer.o
-                              0x692e7 (size before relaxing)
- .debug_str     0x00075cc0      0x134 bin/position_estimator_altitude.o
+ .debug_str     0x00074830     0x14c7 bin/stabilizer.o
+                              0x6930a (size before relaxing)
+ .debug_str     0x00075cf7      0x134 bin/position_estimator_altitude.o
                                0x49c8 (size before relaxing)
- .debug_str     0x00075df4     0x1072 bin/estimator_kalman.o
+ .debug_str     0x00075e2b     0x1072 bin/estimator_kalman.o
                               0x683be (size before relaxing)
- .debug_str     0x00076e66       0xec bin/power_distribution_stock.o
-                              0x5ff7a (size before relaxing)
- .debug_str     0x00076f52      0x102 bin/filter.o
+ .debug_str     0x00076e9d       0xec bin/power_distribution_stock.o
+                              0x5ff9d (size before relaxing)
+ .debug_str     0x00076f89      0x102 bin/filter.o
                                0x77cb (size before relaxing)
- .debug_str     0x00077054       0x7f bin/cfassert.o
-                              0x62515 (size before relaxing)
- .debug_str     0x000770d3      0x890 bin/eprintf.o
+ .debug_str     0x0007708b       0x7f bin/cfassert.o
+                              0x62538 (size before relaxing)
+ .debug_str     0x0007710a      0x890 bin/eprintf.o
                                0x5779 (size before relaxing)
- .debug_str     0x00077963       0xf9 bin/crc.o
+ .debug_str     0x0007799a       0xf9 bin/crc.o
                                0x3edd (size before relaxing)
- .debug_str     0x00077a5c       0x3d bin/num.o
+ .debug_str     0x00077a93       0x3d bin/num.o
                                0x76c3 (size before relaxing)
- .debug_str     0x00077a99       0x49 bin/version.o
+ .debug_str     0x00077ad0       0x49 bin/version.o
                                0x52e3 (size before relaxing)
- .debug_str     0x00077ae2       0x4e bin/FreeRTOS-openocd.o
+ .debug_str     0x00077b19       0x4e bin/FreeRTOS-openocd.o
                                0x78c2 (size before relaxing)
- .debug_str     0x00077b30       0xde bin/system_stm32f4xx.o
+ .debug_str     0x00077b67       0xde bin/system_stm32f4xx.o
                               0x5deba (size before relaxing)
- .debug_str     0x00077c0e     0x1e0b bin/usb_core.o
+ .debug_str     0x00077c45     0x1e0b bin/usb_core.o
                               0x61436 (size before relaxing)
- .debug_str     0x00079a19      0x4d2 bin/usb_dcd_int.o
+ .debug_str     0x00079a50      0x4d2 bin/usb_dcd_int.o
                               0x6135f (size before relaxing)
- .debug_str     0x00079eeb      0x109 bin/usb_dcd.o
+ .debug_str     0x00079f22      0x109 bin/usb_dcd.o
                               0x60aea (size before relaxing)
- .debug_str     0x00079ff4      0x73e bin/usbd_ioreq.o
+ .debug_str     0x0007a02b      0x73e bin/usbd_ioreq.o
                               0x60e9a (size before relaxing)
- .debug_str     0x0007a732      0x2e0 bin/usbd_req.o
+ .debug_str     0x0007a769      0x2e0 bin/usbd_req.o
                               0x6118e (size before relaxing)
- .debug_str     0x0007aa12      0x125 bin/usbd_core.o
+ .debug_str     0x0007aa49      0x125 bin/usbd_core.o
                               0x6125a (size before relaxing)
- .debug_str     0x0007ab37      0x6fb bin/diskio.o
+ .debug_str     0x0007ab6e      0x6fb bin/diskio.o
                                0x46c4 (size before relaxing)
- .debug_str     0x0007b232     0x1238 bin/ff.o
+ .debug_str     0x0007b269     0x1238 bin/ff.o
                                0x578c (size before relaxing)
- .debug_str     0x0007c46a       0x25 bin/syscall.o
+ .debug_str     0x0007c4a1       0x25 bin/syscall.o
                                0x419c (size before relaxing)
- .debug_str     0x0007c48f      0x1af bin/unicode.o
+ .debug_str     0x0007c4c6      0x1af bin/unicode.o
                                0x2bac (size before relaxing)
- .debug_str     0x0007c63e      0x263 bin/fatfs_sd.o
+ .debug_str     0x0007c675      0x263 bin/fatfs_sd.o
                                0x41cd (size before relaxing)
- .debug_str     0x0007c8a1       0x29 bin/platform_cf2.o
+ .debug_str     0x0007c8d8       0x29 bin/platform_cf2.o
                                0x2ea3 (size before relaxing)
- .debug_str     0x0007c8ca       0x43 bin/led_f405.o
+ .debug_str     0x0007c901       0x43 bin/led_f405.o
                               0x62be6 (size before relaxing)
- .debug_str     0x0007c90d     0x41b0 bin/mpu6500.o
+ .debug_str     0x0007c944     0x41b0 bin/mpu6500.o
                               0x6b61b (size before relaxing)
- .debug_str     0x00080abd       0xbc bin/i2cdev_f405.o
+ .debug_str     0x00080af4       0xbc bin/i2cdev_f405.o
                               0x64108 (size before relaxing)
- .debug_str     0x00080b79       0xc7 bin/ws2812_cf2.o
+ .debug_str     0x00080bb0       0xc7 bin/ws2812_cf2.o
                               0x664d0 (size before relaxing)
- .debug_str     0x00080c40      0x65f bin/lps25h.o
+ .debug_str     0x00080c77      0x65f bin/lps25h.o
                               0x67aa2 (size before relaxing)
- .debug_str     0x0008129f      0x3e4 bin/i2c_drv.o
+ .debug_str     0x000812d6      0x3e4 bin/i2c_drv.o
                               0x678db (size before relaxing)
- .debug_str     0x00081683      0x651 bin/ak8963.o
+ .debug_str     0x000816ba      0x651 bin/ak8963.o
                               0x64576 (size before relaxing)
- .debug_str     0x00081cd4       0xd2 bin/eeprom.o
+ .debug_str     0x00081d0b       0xd2 bin/eeprom.o
                               0x66c51 (size before relaxing)
- .debug_str     0x00081da6      0x11b bin/maxsonar.o
+ .debug_str     0x00081ddd      0x11b bin/maxsonar.o
                               0x62550 (size before relaxing)
- .debug_str     0x00081ec1      0x2bb bin/piezo.o
+ .debug_str     0x00081ef8      0x2bb bin/piezo.o
                               0x62e2c (size before relaxing)
- .debug_str     0x0008217c      0x2a2 bin/uart_syslink.o
+ .debug_str     0x000821b3      0x2a2 bin/uart_syslink.o
                               0x679b4 (size before relaxing)
- .debug_str     0x0008241e       0x98 bin/uart1.o
+ .debug_str     0x00082455       0x98 bin/uart1.o
                               0x65cc7 (size before relaxing)
- .debug_str     0x000824b6       0x2a bin/watchdog.o
+ .debug_str     0x000824ed       0x2a bin/watchdog.o
                               0x5f005 (size before relaxing)
- .debug_str     0x000824e0      0x291 bin/cppm.o
+ .debug_str     0x00082517      0x291 bin/cppm.o
                               0x644c2 (size before relaxing)
- .debug_str     0x00082771       0x21 bin/usb_bsp.o
+ .debug_str     0x000827a8       0x21 bin/usb_bsp.o
                               0x62081 (size before relaxing)
- .debug_str     0x00082792       0xfb bin/usblink.o
+ .debug_str     0x000827c9       0xfb bin/usblink.o
                                0xd55b (size before relaxing)
- .debug_str     0x0008288d      0x2c6 bin/usbd_desc.o
+ .debug_str     0x000828c4      0x2c6 bin/usbd_desc.o
                               0x61984 (size before relaxing)
- .debug_str     0x00082b53      0x22c bin/usb.o
+ .debug_str     0x00082b8a      0x22c bin/usb.o
                               0x68880 (size before relaxing)
- .debug_str     0x00082d7f      0x378 bin/pm_f405.o
+ .debug_str     0x00082db6      0x378 bin/pm_f405.o
                               0x67f71 (size before relaxing)
- .debug_str     0x000830f7      0x184 bin/syslink.o
+ .debug_str     0x0008312e      0x184 bin/syslink.o
                                0xd3bf (size before relaxing)
- .debug_str     0x0008327b      0x136 bin/radiolink.o
+ .debug_str     0x000832b2      0x136 bin/radiolink.o
                                0xd2d6 (size before relaxing)
- .debug_str     0x000833b1      0x1b1 bin/ow_syslink.o
+ .debug_str     0x000833e8      0x1b1 bin/ow_syslink.o
                                0xbdec (size before relaxing)
- .debug_str     0x00083562      0x134 bin/proximity.o
+ .debug_str     0x00083599      0x134 bin/proximity.o
                               0x664e7 (size before relaxing)
- .debug_str     0x00083696       0x41 bin/usec_time.o
+ .debug_str     0x000836cd       0x41 bin/usec_time.o
                               0x5e5c1 (size before relaxing)
- .debug_str     0x000836d7      0x8f5 bin/sensors_cf2.o
+ .debug_str     0x0008370e      0x8f5 bin/sensors_cf2.o
                               0x6d41d (size before relaxing)
- .debug_str     0x00083fcc      0xcb7 bin/libdw1000.o
+ .debug_str     0x00084003      0xcb7 bin/libdw1000.o
                                0x927c (size before relaxing)
- .debug_str     0x00084c83       0x37 bin/libdw1000Spi.o
+ .debug_str     0x00084cba       0x37 bin/libdw1000Spi.o
                                0x5142 (size before relaxing)
- .debug_str     0x00084cba       0xc4 bin/platformservice.o
+ .debug_str     0x00084cf1       0xc4 bin/platformservice.o
                                0xab11 (size before relaxing)
- .debug_str     0x00084d7e      0x428 bin/sound_cf2.o
+ .debug_str     0x00084db5      0x428 bin/sound_cf2.o
                                0xcd81 (size before relaxing)
- .debug_str     0x000851a6      0x18b bin/extrx.o
+ .debug_str     0x000851dd      0x18b bin/extrx.o
                               0x63d1a (size before relaxing)
- .debug_str     0x00085331      0x120 bin/sysload.o
+ .debug_str     0x00085368      0x120 bin/sysload.o
                                0x9911 (size before relaxing)
- .debug_str     0x00085451      0x298 bin/mem_cf2.o
+ .debug_str     0x00085488      0x298 bin/mem_cf2.o
                               0x69115 (size before relaxing)
- .debug_str     0x000856e9      0x40f bin/buzzer.o
+ .debug_str     0x00085720      0x40f bin/buzzer.o
                               0x68751 (size before relaxing)
- .debug_str     0x00085af8       0xfd bin/deck.o
+ .debug_str     0x00085b2f       0xfd bin/deck.o
                               0x625d1 (size before relaxing)
- .debug_str     0x00085bf5      0x130 bin/deck_info.o
+ .debug_str     0x00085c2c      0x130 bin/deck_info.o
                               0x62b32 (size before relaxing)
- .debug_str     0x00085d25       0xa6 bin/deck_drivers.o
+ .debug_str     0x00085d5c       0xa6 bin/deck_drivers.o
                               0x626d2 (size before relaxing)
- .debug_str     0x00085dcb       0xc4 bin/deck_test.o
+ .debug_str     0x00085e02       0xc4 bin/deck_test.o
                               0x62534 (size before relaxing)
- .debug_str     0x00085e8f       0x1e bin/deck_constants.o
+ .debug_str     0x00085ec6       0x1e bin/deck_constants.o
                               0x61312 (size before relaxing)
- .debug_str     0x00085ead       0x3d bin/deck_digital.o
+ .debug_str     0x00085ee4       0x3d bin/deck_digital.o
                               0x614e6 (size before relaxing)
- .debug_str     0x00085eea       0x95 bin/deck_analog.o
+ .debug_str     0x00085f21       0x95 bin/deck_analog.o
                               0x61788 (size before relaxing)
- .debug_str     0x00085f7f      0x4b0 bin/deck_spi.o
+ .debug_str     0x00085fb6      0x4b0 bin/deck_spi.o
                               0x66dd2 (size before relaxing)
- .debug_str     0x0008642f      0x218 bin/rzr.o
-                              0x670de (size before relaxing)
- .debug_str     0x00086647      0x5de bin/ledring12.o
+ .debug_str     0x00086466      0x218 bin/rzr.o
+                              0x67101 (size before relaxing)
+ .debug_str     0x0008667e      0x5de bin/ledring12.o
                               0x693ec (size before relaxing)
- .debug_str     0x00086c25       0x64 bin/buzzdeck.o
+ .debug_str     0x00086c5c       0x64 bin/buzzdeck.o
                               0x625f3 (size before relaxing)
- .debug_str     0x00086c89     0x1457 bin/gtgps.o
+ .debug_str     0x00086cc0     0x1457 bin/gtgps.o
                               0x68939 (size before relaxing)
- .debug_str     0x000880e0       0x4b bin/cppmdeck.o
+ .debug_str     0x00088117       0x4b bin/cppmdeck.o
                               0x62584 (size before relaxing)
- .debug_str     0x0008812b     0x140c bin/usddeck.o
+ .debug_str     0x00088162     0x140c bin/usddeck.o
                               0x6941f (size before relaxing)
- .debug_str     0x00089537      0x899 bin/vl53l0x.o
+ .debug_str     0x0008956e      0x899 bin/vl53l0x.o
                               0x69950 (size before relaxing)
- .debug_str     0x00089dd0      0x596 bin/locodeck.o
+ .debug_str     0x00089e07      0x596 bin/locodeck.o
                               0x69b72 (size before relaxing)
- .debug_str     0x0008a366      0x290 bin/lpsTwrTag.o
+ .debug_str     0x0008a39d      0x290 bin/lpsTwrTag.o
                                0xe672 (size before relaxing)
- .debug_str     0x0008a5f6      0x3c3 bin/exptest.o
+ .debug_str     0x0008a62d      0x3c3 bin/exptest.o
                               0x62c5b (size before relaxing)
- .debug_str     0x0008a9b9     0x11ee bin/configblockeeprom.o
+ .debug_str     0x0008a9f0     0x11ee bin/configblockeeprom.o
                               0x67b72 (size before relaxing)
- .debug_str     0x0008bba7       0x44 bin/crc_bosch.o
+ .debug_str     0x0008bbde       0x44 bin/crc_bosch.o
                                0x543d (size before relaxing)
 
 .debug_loc      0x00000000    0x2422b
@@ -21226,7 +21229,7 @@ OUTPUT(cf2.elf elf32-littlearm)
  .debug_ranges  0x00004a50       0x60 bin/configblockeeprom.o
  .debug_ranges  0x00004ab0       0x68 bin/crc_bosch.o
 
-.debug_macro    0x00000000    0x2a4fc
+.debug_macro    0x00000000    0x2a509
  .debug_macro   0x00000000      0x1f0 bin/list.o
  .debug_macro   0x000001f0      0xab4 bin/list.o
  .debug_macro   0x00000ca4       0x17 bin/list.o
@@ -21342,205 +21345,205 @@ OUTPUT(cf2.elf elf32-littlearm)
  .debug_macro   0x00014e27      0x323 bin/nvic.o
  .debug_macro   0x0001514a       0x7f bin/nvic.o
  .debug_macro   0x000151c9       0x22 bin/nvic.o
- .debug_macro   0x000151eb      0x219 bin/nvic.o
- .debug_macro   0x00015404       0x76 bin/nvic.o
- .debug_macro   0x0001547a      0x312 bin/motors.o
- .debug_macro   0x0001578c       0x40 bin/motors.o
- .debug_macro   0x000157cc       0x9a bin/motors.o
- .debug_macro   0x00015866       0x4c bin/motors.o
- .debug_macro   0x000158b2       0x64 bin/motors.o
- .debug_macro   0x00015916      0x228 bin/crtp.o
- .debug_macro   0x00015b3e       0x10 bin/crtp.o
- .debug_macro   0x00015b4e      0x23b bin/crtp.o
- .debug_macro   0x00015d89       0x1c bin/crtp.o
- .debug_macro   0x00015da5       0x10 bin/crtp.o
- .debug_macro   0x00015db5      0x18c bin/ledseq.o
- .debug_macro   0x00015f41       0x22 bin/ledseq.o
- .debug_macro   0x00015f63      0x165 bin/freeRTOSdebug.o
- .debug_macro   0x000160c8       0x2e bin/freeRTOSdebug.o
- .debug_macro   0x000160f6      0x51a bin/system.o
- .debug_macro   0x00016610       0x2e bin/system.o
- .debug_macro   0x0001663e      0x11e bin/system.o
- .debug_macro   0x0001675c       0x46 bin/system.o
- .debug_macro   0x000167a2       0x82 bin/system.o
- .debug_macro   0x00016824       0x64 bin/system.o
- .debug_macro   0x00016888       0x10 bin/system.o
- .debug_macro   0x00016898       0x4a bin/system.o
- .debug_macro   0x000168e2       0x28 bin/system.o
- .debug_macro   0x0001690a       0x1c bin/system.o
- .debug_macro   0x00016926       0x28 bin/system.o
- .debug_macro   0x0001694e       0x1c bin/system.o
- .debug_macro   0x0001696a       0x10 bin/system.o
- .debug_macro   0x0001697a       0x7c bin/system.o
- .debug_macro   0x000169f6       0x3a bin/system.o
- .debug_macro   0x00016a30      0x10f bin/system.o
- .debug_macro   0x00016b3f       0x7c bin/system.o
- .debug_macro   0x00016bbb       0x16 bin/system.o
- .debug_macro   0x00016bd1       0x58 bin/system.o
- .debug_macro   0x00016c29       0x10 bin/system.o
- .debug_macro   0x00016c39      0x162 bin/comm.o
- .debug_macro   0x00016d9b      0x2ac bin/console.o
- .debug_macro   0x00017047      0x1f7 bin/crtpservice.o
- .debug_macro   0x0001723e      0x269 bin/param.o
- .debug_macro   0x000174a7      0x241 bin/param.o
- .debug_macro   0x000176e8       0x46 bin/param.o
- .debug_macro   0x0001772e      0x2d5 bin/log.o
- .debug_macro   0x00017a03       0x3a bin/log.o
- .debug_macro   0x00017a3d      0x1ee bin/worker.o
- .debug_macro   0x00017c2b      0x244 bin/commander.o
- .debug_macro   0x00017e6f       0xe5 bin/crtp_commander.o
- .debug_macro   0x00017f54      0x227 bin/crtp_commander_rpyt.o
- .debug_macro   0x0001817b      0x240 bin/crtp_commander_generic.o
- .debug_macro   0x000183bb      0x2a2 bin/crtp_localization_service.o
- .debug_macro   0x0001865d      0x583 bin/crtp_localization_service.o
- .debug_macro   0x00018be0       0x12 bin/crtp_localization_service.o
- .debug_macro   0x00018bf2       0x28 bin/crtp_localization_service.o
- .debug_macro   0x00018c1a      0x13d bin/sensfusion6.o
- .debug_macro   0x00018d57      0x4a8 bin/stabilizer.o
- .debug_macro   0x000191ff      0x172 bin/stabilizer.o
- .debug_macro   0x00019371       0x2e bin/stabilizer.o
- .debug_macro   0x0001939f       0xb6 bin/position_estimator_altitude.o
- .debug_macro   0x00019455      0x464 bin/estimator_kalman.o
- .debug_macro   0x000198b9       0x12 bin/estimator_kalman.o
- .debug_macro   0x000198cb       0xd6 bin/estimator_kalman.o
- .debug_macro   0x000199a1      0x260 bin/power_distribution_stock.o
- .debug_macro   0x00019c01      0x14a bin/filter.o
- .debug_macro   0x00019d4b      0x2ca bin/cfassert.o
- .debug_macro   0x0001a015       0xaf bin/eprintf.o
- .debug_macro   0x0001a0c4      0x10b bin/eprintf.o
- .debug_macro   0x0001a1cf       0x96 bin/crc.o
- .debug_macro   0x0001a265       0x40 bin/crc.o
- .debug_macro   0x0001a2a5      0x109 bin/num.o
- .debug_macro   0x0001a3ae       0xaf bin/version.o
- .debug_macro   0x0001a45d      0x134 bin/FreeRTOS-openocd.o
- .debug_macro   0x0001a591      0x1ea bin/system_stm32f4xx.o
- .debug_macro   0x0001a77b      0x226 bin/usb_core.o
- .debug_macro   0x0001a9a1       0x48 bin/usb_core.o
- .debug_macro   0x0001a9e9       0x70 bin/usb_core.o
- .debug_macro   0x0001aa59      0x20f bin/usb_core.o
- .debug_macro   0x0001ac68       0x64 bin/usb_core.o
- .debug_macro   0x0001accc      0x236 bin/usb_dcd_int.o
- .debug_macro   0x0001af02       0x3a bin/usb_dcd_int.o
- .debug_macro   0x0001af3c       0x10 bin/usb_dcd_int.o
- .debug_macro   0x0001af4c      0x231 bin/usb_dcd.o
- .debug_macro   0x0001b17d      0x261 bin/usbd_ioreq.o
- .debug_macro   0x0001b3de       0x4c bin/usbd_ioreq.o
- .debug_macro   0x0001b42a      0x118 bin/usbd_ioreq.o
- .debug_macro   0x0001b542      0x278 bin/usbd_req.o
- .debug_macro   0x0001b7ba      0x11e bin/usbd_req.o
- .debug_macro   0x0001b8d8       0x2e bin/usbd_req.o
- .debug_macro   0x0001b906      0x288 bin/usbd_core.o
- .debug_macro   0x0001bb8e       0xda bin/diskio.o
- .debug_macro   0x0001bc68       0xa0 bin/diskio.o
- .debug_macro   0x0001bd08       0xe9 bin/diskio.o
- .debug_macro   0x0001bdf1       0xe7 bin/diskio.o
- .debug_macro   0x0001bed8       0x10 bin/diskio.o
- .debug_macro   0x0001bee8      0x49b bin/ff.o
- .debug_macro   0x0001c383       0x85 bin/syscall.o
- .debug_macro   0x0001c408       0x3d bin/unicode.o
- .debug_macro   0x0001c445      0x101 bin/fatfs_sd.o
- .debug_macro   0x0001c546       0x2e bin/platform_cf2.o
- .debug_macro   0x0001c574      0x2bc bin/led_f405.o
- .debug_macro   0x0001c830      0x3b7 bin/mpu6500.o
- .debug_macro   0x0001cbe7      0x931 bin/mpu6500.o
- .debug_macro   0x0001d518      0x308 bin/i2cdev_f405.o
- .debug_macro   0x0001d820      0x384 bin/ws2812_cf2.o
- .debug_macro   0x0001dba4      0x3cd bin/lps25h.o
- .debug_macro   0x0001df71      0x148 bin/lps25h.o
- .debug_macro   0x0001e0b9      0x3d7 bin/i2c_drv.o
- .debug_macro   0x0001e490       0x10 bin/i2c_drv.o
- .debug_macro   0x0001e4a0      0x30e bin/ak8963.o
- .debug_macro   0x0001e7ae      0x118 bin/ak8963.o
- .debug_macro   0x0001e8c6      0x3c4 bin/eeprom.o
- .debug_macro   0x0001ec8a       0x10 bin/eeprom.o
- .debug_macro   0x0001ec9a      0x329 bin/maxsonar.o
- .debug_macro   0x0001efc3       0x16 bin/maxsonar.o
- .debug_macro   0x0001efd9       0x76 bin/maxsonar.o
- .debug_macro   0x0001f04f      0x333 bin/piezo.o
- .debug_macro   0x0001f382      0x3cd bin/uart_syslink.o
- .debug_macro   0x0001f74f      0x382 bin/uart1.o
- .debug_macro   0x0001fad1      0x257 bin/watchdog.o
- .debug_macro   0x0001fd28      0x355 bin/cppm.o
- .debug_macro   0x0002007d      0x28b bin/usb_bsp.o
- .debug_macro   0x00020308      0x2ae bin/usblink.o
- .debug_macro   0x000205b6       0x16 bin/usblink.o
- .debug_macro   0x000205cc       0x4e bin/usblink.o
- .debug_macro   0x0002061a      0x2f4 bin/usbd_desc.o
- .debug_macro   0x0002090e      0x48b bin/usb.o
- .debug_macro   0x00020d99      0x43b bin/pm_f405.o
- .debug_macro   0x000211d4       0x28 bin/pm_f405.o
- .debug_macro   0x000211fc      0x289 bin/syslink.o
- .debug_macro   0x00021485       0x1c bin/syslink.o
- .debug_macro   0x000214a1      0x270 bin/radiolink.o
- .debug_macro   0x00021711      0x230 bin/ow_syslink.o
- .debug_macro   0x00021941       0x16 bin/ow_syslink.o
- .debug_macro   0x00021957       0x1c bin/ow_syslink.o
- .debug_macro   0x00021973      0x3d4 bin/proximity.o
- .debug_macro   0x00021d47      0x1dd bin/usec_time.o
- .debug_macro   0x00021f24      0x4ee bin/sensors_cf2.o
- .debug_macro   0x00022412      0x937 bin/sensors_cf2.o
- .debug_macro   0x00022d49      0x11e bin/sensors_cf2.o
- .debug_macro   0x00022e67       0x10 bin/sensors_cf2.o
- .debug_macro   0x00022e77       0x22 bin/sensors_cf2.o
- .debug_macro   0x00022e99      0x178 bin/libdw1000.o
- .debug_macro   0x00023011       0x96 bin/libdw1000Spi.o
- .debug_macro   0x000230a7      0x214 bin/platformservice.o
- .debug_macro   0x000232bb      0x51d bin/sound_cf2.o
- .debug_macro   0x000237d8      0x372 bin/extrx.o
- .debug_macro   0x00023b4a      0x18b bin/sysload.o
- .debug_macro   0x00023cd5      0x4df bin/mem_cf2.o
- .debug_macro   0x000241b4       0x10 bin/mem_cf2.o
- .debug_macro   0x000241c4      0x6a5 bin/buzzer.o
- .debug_macro   0x00024869      0x357 bin/deck.o
- .debug_macro   0x00024bc0      0x109 bin/deck.o
- .debug_macro   0x00024cc9      0x394 bin/deck_info.o
- .debug_macro   0x0002505d      0x373 bin/deck_drivers.o
- .debug_macro   0x000253d0      0x349 bin/deck_test.o
- .debug_macro   0x00025719      0x2d9 bin/deck_constants.o
- .debug_macro   0x000259f2      0x2d9 bin/deck_digital.o
- .debug_macro   0x00025ccb      0x2d9 bin/deck_analog.o
- .debug_macro   0x00025fa4      0x491 bin/deck_spi.o
- .debug_macro   0x00026435      0x431 bin/rzr.o
- .debug_macro   0x00026866      0x4a0 bin/ledring12.o
- .debug_macro   0x00026d06      0x34e bin/buzzdeck.o
- .debug_macro   0x00027054      0x4f2 bin/gtgps.o
- .debug_macro   0x00027546       0x1c bin/gtgps.o
- .debug_macro   0x00027562       0x10 bin/gtgps.o
- .debug_macro   0x00027572       0x10 bin/gtgps.o
- .debug_macro   0x00027582       0x1c bin/gtgps.o
- .debug_macro   0x0002759e       0x52 bin/gtgps.o
- .debug_macro   0x000275f0       0x40 bin/gtgps.o
- .debug_macro   0x00027630       0x10 bin/gtgps.o
- .debug_macro   0x00027640       0x40 bin/gtgps.o
- .debug_macro   0x00027680       0xd7 bin/gtgps.o
- .debug_macro   0x00027757       0x1c bin/gtgps.o
- .debug_macro   0x00027773       0x3d bin/gtgps.o
- .debug_macro   0x000277b0       0x16 bin/gtgps.o
- .debug_macro   0x000277c6      0x16f bin/gtgps.o
- .debug_macro   0x00027935       0x4c bin/gtgps.o
- .debug_macro   0x00027981      0x33d bin/cppmdeck.o
- .debug_macro   0x00027cbe      0x487 bin/usddeck.o
- .debug_macro   0x00028145       0x3a bin/usddeck.o
- .debug_macro   0x0002817f       0x10 bin/usddeck.o
- .debug_macro   0x0002818f      0x460 bin/usddeck.o
- .debug_macro   0x000285ef       0x4e bin/usddeck.o
- .debug_macro   0x0002863d      0x48f bin/vl53l0x.o
- .debug_macro   0x00028acc      0x488 bin/locodeck.o
- .debug_macro   0x00028f54       0x2e bin/locodeck.o
- .debug_macro   0x00028f82       0x46 bin/locodeck.o
- .debug_macro   0x00028fc8      0x2f9 bin/lpsTwrTag.o
- .debug_macro   0x000292c1       0x16 bin/lpsTwrTag.o
- .debug_macro   0x000292d7       0x16 bin/lpsTwrTag.o
- .debug_macro   0x000292ed       0xdd bin/lpsTwrTag.o
- .debug_macro   0x000293ca      0x414 bin/exptest.o
- .debug_macro   0x000297de      0x485 bin/configblockeeprom.o
- .debug_macro   0x00029c63       0x10 bin/configblockeeprom.o
- .debug_macro   0x00029c73       0xcf bin/configblockeeprom.o
- .debug_macro   0x00029d42       0xbe bin/configblockeeprom.o
- .debug_macro   0x00029e00      0x51a bin/configblockeeprom.o
- .debug_macro   0x0002a31a       0xbe bin/crc_bosch.o
- .debug_macro   0x0002a3d8       0xa2 bin/crc_bosch.o
- .debug_macro   0x0002a47a       0x82 bin/crc_bosch.o
+ .debug_macro   0x000151eb      0x226 bin/nvic.o
+ .debug_macro   0x00015411       0x76 bin/nvic.o
+ .debug_macro   0x00015487      0x312 bin/motors.o
+ .debug_macro   0x00015799       0x40 bin/motors.o
+ .debug_macro   0x000157d9       0x9a bin/motors.o
+ .debug_macro   0x00015873       0x4c bin/motors.o
+ .debug_macro   0x000158bf       0x64 bin/motors.o
+ .debug_macro   0x00015923      0x228 bin/crtp.o
+ .debug_macro   0x00015b4b       0x10 bin/crtp.o
+ .debug_macro   0x00015b5b      0x23b bin/crtp.o
+ .debug_macro   0x00015d96       0x1c bin/crtp.o
+ .debug_macro   0x00015db2       0x10 bin/crtp.o
+ .debug_macro   0x00015dc2      0x18c bin/ledseq.o
+ .debug_macro   0x00015f4e       0x22 bin/ledseq.o
+ .debug_macro   0x00015f70      0x165 bin/freeRTOSdebug.o
+ .debug_macro   0x000160d5       0x2e bin/freeRTOSdebug.o
+ .debug_macro   0x00016103      0x51a bin/system.o
+ .debug_macro   0x0001661d       0x2e bin/system.o
+ .debug_macro   0x0001664b      0x11e bin/system.o
+ .debug_macro   0x00016769       0x46 bin/system.o
+ .debug_macro   0x000167af       0x82 bin/system.o
+ .debug_macro   0x00016831       0x64 bin/system.o
+ .debug_macro   0x00016895       0x10 bin/system.o
+ .debug_macro   0x000168a5       0x4a bin/system.o
+ .debug_macro   0x000168ef       0x28 bin/system.o
+ .debug_macro   0x00016917       0x1c bin/system.o
+ .debug_macro   0x00016933       0x28 bin/system.o
+ .debug_macro   0x0001695b       0x1c bin/system.o
+ .debug_macro   0x00016977       0x10 bin/system.o
+ .debug_macro   0x00016987       0x7c bin/system.o
+ .debug_macro   0x00016a03       0x3a bin/system.o
+ .debug_macro   0x00016a3d      0x10f bin/system.o
+ .debug_macro   0x00016b4c       0x7c bin/system.o
+ .debug_macro   0x00016bc8       0x16 bin/system.o
+ .debug_macro   0x00016bde       0x58 bin/system.o
+ .debug_macro   0x00016c36       0x10 bin/system.o
+ .debug_macro   0x00016c46      0x162 bin/comm.o
+ .debug_macro   0x00016da8      0x2ac bin/console.o
+ .debug_macro   0x00017054      0x1f7 bin/crtpservice.o
+ .debug_macro   0x0001724b      0x269 bin/param.o
+ .debug_macro   0x000174b4      0x241 bin/param.o
+ .debug_macro   0x000176f5       0x46 bin/param.o
+ .debug_macro   0x0001773b      0x2d5 bin/log.o
+ .debug_macro   0x00017a10       0x3a bin/log.o
+ .debug_macro   0x00017a4a      0x1ee bin/worker.o
+ .debug_macro   0x00017c38      0x244 bin/commander.o
+ .debug_macro   0x00017e7c       0xe5 bin/crtp_commander.o
+ .debug_macro   0x00017f61      0x227 bin/crtp_commander_rpyt.o
+ .debug_macro   0x00018188      0x240 bin/crtp_commander_generic.o
+ .debug_macro   0x000183c8      0x2a2 bin/crtp_localization_service.o
+ .debug_macro   0x0001866a      0x583 bin/crtp_localization_service.o
+ .debug_macro   0x00018bed       0x12 bin/crtp_localization_service.o
+ .debug_macro   0x00018bff       0x28 bin/crtp_localization_service.o
+ .debug_macro   0x00018c27      0x13d bin/sensfusion6.o
+ .debug_macro   0x00018d64      0x4a8 bin/stabilizer.o
+ .debug_macro   0x0001920c      0x172 bin/stabilizer.o
+ .debug_macro   0x0001937e       0x2e bin/stabilizer.o
+ .debug_macro   0x000193ac       0xb6 bin/position_estimator_altitude.o
+ .debug_macro   0x00019462      0x464 bin/estimator_kalman.o
+ .debug_macro   0x000198c6       0x12 bin/estimator_kalman.o
+ .debug_macro   0x000198d8       0xd6 bin/estimator_kalman.o
+ .debug_macro   0x000199ae      0x260 bin/power_distribution_stock.o
+ .debug_macro   0x00019c0e      0x14a bin/filter.o
+ .debug_macro   0x00019d58      0x2ca bin/cfassert.o
+ .debug_macro   0x0001a022       0xaf bin/eprintf.o
+ .debug_macro   0x0001a0d1      0x10b bin/eprintf.o
+ .debug_macro   0x0001a1dc       0x96 bin/crc.o
+ .debug_macro   0x0001a272       0x40 bin/crc.o
+ .debug_macro   0x0001a2b2      0x109 bin/num.o
+ .debug_macro   0x0001a3bb       0xaf bin/version.o
+ .debug_macro   0x0001a46a      0x134 bin/FreeRTOS-openocd.o
+ .debug_macro   0x0001a59e      0x1ea bin/system_stm32f4xx.o
+ .debug_macro   0x0001a788      0x226 bin/usb_core.o
+ .debug_macro   0x0001a9ae       0x48 bin/usb_core.o
+ .debug_macro   0x0001a9f6       0x70 bin/usb_core.o
+ .debug_macro   0x0001aa66      0x20f bin/usb_core.o
+ .debug_macro   0x0001ac75       0x64 bin/usb_core.o
+ .debug_macro   0x0001acd9      0x236 bin/usb_dcd_int.o
+ .debug_macro   0x0001af0f       0x3a bin/usb_dcd_int.o
+ .debug_macro   0x0001af49       0x10 bin/usb_dcd_int.o
+ .debug_macro   0x0001af59      0x231 bin/usb_dcd.o
+ .debug_macro   0x0001b18a      0x261 bin/usbd_ioreq.o
+ .debug_macro   0x0001b3eb       0x4c bin/usbd_ioreq.o
+ .debug_macro   0x0001b437      0x118 bin/usbd_ioreq.o
+ .debug_macro   0x0001b54f      0x278 bin/usbd_req.o
+ .debug_macro   0x0001b7c7      0x11e bin/usbd_req.o
+ .debug_macro   0x0001b8e5       0x2e bin/usbd_req.o
+ .debug_macro   0x0001b913      0x288 bin/usbd_core.o
+ .debug_macro   0x0001bb9b       0xda bin/diskio.o
+ .debug_macro   0x0001bc75       0xa0 bin/diskio.o
+ .debug_macro   0x0001bd15       0xe9 bin/diskio.o
+ .debug_macro   0x0001bdfe       0xe7 bin/diskio.o
+ .debug_macro   0x0001bee5       0x10 bin/diskio.o
+ .debug_macro   0x0001bef5      0x49b bin/ff.o
+ .debug_macro   0x0001c390       0x85 bin/syscall.o
+ .debug_macro   0x0001c415       0x3d bin/unicode.o
+ .debug_macro   0x0001c452      0x101 bin/fatfs_sd.o
+ .debug_macro   0x0001c553       0x2e bin/platform_cf2.o
+ .debug_macro   0x0001c581      0x2bc bin/led_f405.o
+ .debug_macro   0x0001c83d      0x3b7 bin/mpu6500.o
+ .debug_macro   0x0001cbf4      0x931 bin/mpu6500.o
+ .debug_macro   0x0001d525      0x308 bin/i2cdev_f405.o
+ .debug_macro   0x0001d82d      0x384 bin/ws2812_cf2.o
+ .debug_macro   0x0001dbb1      0x3cd bin/lps25h.o
+ .debug_macro   0x0001df7e      0x148 bin/lps25h.o
+ .debug_macro   0x0001e0c6      0x3d7 bin/i2c_drv.o
+ .debug_macro   0x0001e49d       0x10 bin/i2c_drv.o
+ .debug_macro   0x0001e4ad      0x30e bin/ak8963.o
+ .debug_macro   0x0001e7bb      0x118 bin/ak8963.o
+ .debug_macro   0x0001e8d3      0x3c4 bin/eeprom.o
+ .debug_macro   0x0001ec97       0x10 bin/eeprom.o
+ .debug_macro   0x0001eca7      0x329 bin/maxsonar.o
+ .debug_macro   0x0001efd0       0x16 bin/maxsonar.o
+ .debug_macro   0x0001efe6       0x76 bin/maxsonar.o
+ .debug_macro   0x0001f05c      0x333 bin/piezo.o
+ .debug_macro   0x0001f38f      0x3cd bin/uart_syslink.o
+ .debug_macro   0x0001f75c      0x382 bin/uart1.o
+ .debug_macro   0x0001fade      0x257 bin/watchdog.o
+ .debug_macro   0x0001fd35      0x355 bin/cppm.o
+ .debug_macro   0x0002008a      0x28b bin/usb_bsp.o
+ .debug_macro   0x00020315      0x2ae bin/usblink.o
+ .debug_macro   0x000205c3       0x16 bin/usblink.o
+ .debug_macro   0x000205d9       0x4e bin/usblink.o
+ .debug_macro   0x00020627      0x2f4 bin/usbd_desc.o
+ .debug_macro   0x0002091b      0x48b bin/usb.o
+ .debug_macro   0x00020da6      0x43b bin/pm_f405.o
+ .debug_macro   0x000211e1       0x28 bin/pm_f405.o
+ .debug_macro   0x00021209      0x289 bin/syslink.o
+ .debug_macro   0x00021492       0x1c bin/syslink.o
+ .debug_macro   0x000214ae      0x270 bin/radiolink.o
+ .debug_macro   0x0002171e      0x230 bin/ow_syslink.o
+ .debug_macro   0x0002194e       0x16 bin/ow_syslink.o
+ .debug_macro   0x00021964       0x1c bin/ow_syslink.o
+ .debug_macro   0x00021980      0x3d4 bin/proximity.o
+ .debug_macro   0x00021d54      0x1dd bin/usec_time.o
+ .debug_macro   0x00021f31      0x4ee bin/sensors_cf2.o
+ .debug_macro   0x0002241f      0x937 bin/sensors_cf2.o
+ .debug_macro   0x00022d56      0x11e bin/sensors_cf2.o
+ .debug_macro   0x00022e74       0x10 bin/sensors_cf2.o
+ .debug_macro   0x00022e84       0x22 bin/sensors_cf2.o
+ .debug_macro   0x00022ea6      0x178 bin/libdw1000.o
+ .debug_macro   0x0002301e       0x96 bin/libdw1000Spi.o
+ .debug_macro   0x000230b4      0x214 bin/platformservice.o
+ .debug_macro   0x000232c8      0x51d bin/sound_cf2.o
+ .debug_macro   0x000237e5      0x372 bin/extrx.o
+ .debug_macro   0x00023b57      0x18b bin/sysload.o
+ .debug_macro   0x00023ce2      0x4df bin/mem_cf2.o
+ .debug_macro   0x000241c1       0x10 bin/mem_cf2.o
+ .debug_macro   0x000241d1      0x6a5 bin/buzzer.o
+ .debug_macro   0x00024876      0x357 bin/deck.o
+ .debug_macro   0x00024bcd      0x109 bin/deck.o
+ .debug_macro   0x00024cd6      0x394 bin/deck_info.o
+ .debug_macro   0x0002506a      0x373 bin/deck_drivers.o
+ .debug_macro   0x000253dd      0x349 bin/deck_test.o
+ .debug_macro   0x00025726      0x2d9 bin/deck_constants.o
+ .debug_macro   0x000259ff      0x2d9 bin/deck_digital.o
+ .debug_macro   0x00025cd8      0x2d9 bin/deck_analog.o
+ .debug_macro   0x00025fb1      0x491 bin/deck_spi.o
+ .debug_macro   0x00026442      0x431 bin/rzr.o
+ .debug_macro   0x00026873      0x4a0 bin/ledring12.o
+ .debug_macro   0x00026d13      0x34e bin/buzzdeck.o
+ .debug_macro   0x00027061      0x4f2 bin/gtgps.o
+ .debug_macro   0x00027553       0x1c bin/gtgps.o
+ .debug_macro   0x0002756f       0x10 bin/gtgps.o
+ .debug_macro   0x0002757f       0x10 bin/gtgps.o
+ .debug_macro   0x0002758f       0x1c bin/gtgps.o
+ .debug_macro   0x000275ab       0x52 bin/gtgps.o
+ .debug_macro   0x000275fd       0x40 bin/gtgps.o
+ .debug_macro   0x0002763d       0x10 bin/gtgps.o
+ .debug_macro   0x0002764d       0x40 bin/gtgps.o
+ .debug_macro   0x0002768d       0xd7 bin/gtgps.o
+ .debug_macro   0x00027764       0x1c bin/gtgps.o
+ .debug_macro   0x00027780       0x3d bin/gtgps.o
+ .debug_macro   0x000277bd       0x16 bin/gtgps.o
+ .debug_macro   0x000277d3      0x16f bin/gtgps.o
+ .debug_macro   0x00027942       0x4c bin/gtgps.o
+ .debug_macro   0x0002798e      0x33d bin/cppmdeck.o
+ .debug_macro   0x00027ccb      0x487 bin/usddeck.o
+ .debug_macro   0x00028152       0x3a bin/usddeck.o
+ .debug_macro   0x0002818c       0x10 bin/usddeck.o
+ .debug_macro   0x0002819c      0x460 bin/usddeck.o
+ .debug_macro   0x000285fc       0x4e bin/usddeck.o
+ .debug_macro   0x0002864a      0x48f bin/vl53l0x.o
+ .debug_macro   0x00028ad9      0x488 bin/locodeck.o
+ .debug_macro   0x00028f61       0x2e bin/locodeck.o
+ .debug_macro   0x00028f8f       0x46 bin/locodeck.o
+ .debug_macro   0x00028fd5      0x2f9 bin/lpsTwrTag.o
+ .debug_macro   0x000292ce       0x16 bin/lpsTwrTag.o
+ .debug_macro   0x000292e4       0x16 bin/lpsTwrTag.o
+ .debug_macro   0x000292fa       0xdd bin/lpsTwrTag.o
+ .debug_macro   0x000293d7      0x414 bin/exptest.o
+ .debug_macro   0x000297eb      0x485 bin/configblockeeprom.o
+ .debug_macro   0x00029c70       0x10 bin/configblockeeprom.o
+ .debug_macro   0x00029c80       0xcf bin/configblockeeprom.o
+ .debug_macro   0x00029d4f       0xbe bin/configblockeeprom.o
+ .debug_macro   0x00029e0d      0x51a bin/configblockeeprom.o
+ .debug_macro   0x0002a327       0xbe bin/crc_bosch.o
+ .debug_macro   0x0002a3e5       0xa2 bin/crc_bosch.o
+ .debug_macro   0x0002a487       0x82 bin/crc_bosch.o
 
 Cross Reference Table
 
@@ -21595,6 +21598,7 @@ ADC_StructInit                                    bin/stm32f4xx_adc.o
 ADC_TempSensorVrefintCmd                          bin/stm32f4xx_adc.o
 ADC_VBATCmd                                       bin/stm32f4xx_adc.o
 AHBPrescTable                                     bin/system_stm32f4xx.o
+ALL_MOTORS                                        bin/motors.o
 ActuateMotor                                      bin/stabilizer.o
 BusFault_Handler                                  bin/nvic.o
 CAN1_RX0_IRQHandler                               bin/startup_stm32f40xx.o
@@ -21941,7 +21945,6 @@ MODE_LONGDATA_RANGE_LOWPOWER                      bin/libdw1000.o
 MODE_SHORTDATA_FAST_ACCURACY                      bin/libdw1000.o
                                                   bin/locodeck.o
 MODE_SHORTDATA_FAST_LOWPOWER                      bin/libdw1000.o
-MOTORS                                            bin/motors.o
 MemManage_Handler                                 bin/nvic.o
 NMI_Handler                                       bin/nvic.o
 NVIC_Init                                         bin/stm32f4xx_misc.o
@@ -21969,6 +21972,7 @@ OTG_HS_IRQHandler                                 bin/startup_stm32f40xx.o
 OTG_HS_WKUP_IRQHandler                            bin/startup_stm32f40xx.o
 PVD_IRQHandler                                    bin/startup_stm32f40xx.o
 PendSV_Handler                                    bin/port.o
+QUAD_MOTORS                                       bin/motors.o
 RCC_AHB1PeriphClockCmd                            bin/stm32f4xx_rcc.o
                                                   bin/exptest.o
                                                   bin/rzr.o

@@ -114,13 +114,14 @@
   #define MOTORS_BL_POLARITY           TIM_OCPolarity_Low
 #endif
 
-#define NBR_OF_MOTORS 4
+#define NBR_OF_QUAD_MOTORS 4
+#define	NBR_OF_ALL_MOTORS  5
 // Motors IDs define
 #define MOTOR_M1  0
 #define MOTOR_M2  1
 #define MOTOR_M3  2
 #define MOTOR_M4  3
-
+#define DECK_M5   4 // PWM output on expansion deck PA5
 // Test defines
 #define MOTORS_TEST_RATIO         (uint16_t)(0.2*(1<<16))
 #define MOTORS_TEST_ON_TIME_MS    50
@@ -219,10 +220,10 @@ typedef struct
 /**
  * Motor mapping configurations
  */
-extern const MotorPerifDef* motorMapDefaultBrushed[NBR_OF_MOTORS];
-extern const MotorPerifDef* motorMapDefaltConBrushless[NBR_OF_MOTORS];
-extern const MotorPerifDef* motorMapBigQuadDeck[NBR_OF_MOTORS];
-extern const MotorPerifDef* motorMapRZRBrushless[NBR_OF_MOTORS];
+extern const MotorPerifDef* motorMapDefaultBrushed[NBR_OF_ALL_MOTORS];
+extern const MotorPerifDef* motorMapDefaltConBrushless[NBR_OF_ALL_MOTORS];
+extern const MotorPerifDef* motorMapBigQuadDeck[NBR_OF_ALL_MOTORS];
+extern const MotorPerifDef* motorMapRZRBrushless[NBR_OF_ALL_MOTORS];
 
 /*** Public interface ***/
 
