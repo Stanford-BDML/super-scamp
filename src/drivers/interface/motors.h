@@ -114,8 +114,8 @@
   #define MOTORS_BL_POLARITY           TIM_OCPolarity_Low
 #endif
 
-#define NBR_OF_QUAD_MOTORS 4
-#define	NBR_OF_ALL_MOTORS  5
+#define NBR_OF_QUAD_MOTORS 4 // the quad rotors on PA1, PB11, PA15, PB9
+#define	NBR_OF_ALL_MOTORS  5 // the quad rotors + 1 DC brushed motor on PA5
 // Motors IDs define
 #define MOTOR_M1  0
 #define MOTOR_M2  1

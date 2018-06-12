@@ -1,0 +1,101 @@
+[33mcommit cf709a7713e03c62b3ba97182ecf36655799e663[m
+Author: Stanford_BDML <sjmoon@stanford.edu>
+Date:   Tue Jun 12 16:20:31 2018 -0700
+
+    Added fifth motor M5 by imitating M1-M4 framework. M5 was converted from DECK_SCK module. Framework is in motors_def_cf2.c and initialization is in motors.c/.h
+
+[33mcommit 2d602839f6bc3a34ea95c426a3d82aee4ab42f5e[m
+Author: Stanford_BDML <sjmoon@stanford.edu>
+Date:   Tue Jun 12 16:19:51 2018 -0700
+
+    Added fifth motor M5 by imitating M1-M4 framework. M5 was converted from DECK_SCK module. Framework is in motors_def_cf2.c and initialization is in motors.c/.h
+
+[33mcommit 5b64522ee32f4807ab7240a23628a3eb26a32f6d[m
+Author: stephjmoon <sjmoon@stanford.edu>
+Date:   Tue Jun 12 13:51:50 2018 -0700
+
+    First transfer of Ale's code into this new repo
+
+[33mcommit 536a6c1acd8948e91f8d2f268091ea3a391bfdcf[m
+Author: alessandrodiodato <diodatoalessandro@gmail.com>
+Date:   Wed Nov 22 17:42:22 2017 -0800
+
+    SS wood version perch and flip
+
+[33mcommit 6cbdc1bf4f7954b8b44c5c2cbd2c865c33d35ff8[m
+Author: alessandrodiodato <diodatoalessandro@gmail.com>
+Date:   Wed Sep 13 16:16:35 2017 -0700
+
+    SS wood version (flying)
+
+[33mcommit 7cb1b01441be0c846dd10cf4c6fc431709672142[m
+Author: alessandrodiodato <diodatoalessandro@gmail.com>
+Date:   Wed Jul 26 14:22:01 2017 -0700
+
+    Control v0 SuperScamp
+
+[33mcommit fa207da7b959effaefda1588ed961e407871ea43[m
+Author: alessandrodiodato <diodatoalessandro@gmail.com>
+Date:   Mon Jul 24 20:03:41 2017 -0700
+
+    Perching working v1
+
+[33mcommit 6e5a31b908791cfef91f9df88b425f87b1518f62[m
+Author: alessandrodiodato <diodatoalessandro@gmail.com>
+Date:   Sun Jul 23 20:21:25 2017 -0700
+
+    Perching working v0
+
+[33mcommit c778aec32114336d092757ebd76264f2c93418f1[m
+Author: alessandrodiodato <diodatoalessandro@gmail.com>
+Date:   Sat Jul 22 11:43:15 2017 -0700
+
+    Control working without climbing structure
+
+[33mcommit 0504efaa1606b4202efa15ebf788b48baa0269bc[m
+Author: alessandrodiodato <diodatoalessandro@gmail.com>
+Date:   Fri Jul 21 17:13:49 2017 -0700
+
+    1 day testing
+
+[33mcommit bb19d50e7c505b46858b2e3594b303929b0114c2[m
+Author: alessandrodiodato <diodatoalessandro@gmail.com>
+Date:   Mon Jul 17 20:52:21 2017 -0700
+
+    New motor configuration added
+
+[33mcommit 8bd399032c3fd28e8d517515a2f6ae7a776897d7[m
+Author: alessandrodiodato <diodatoalessandro@gmail.com>
+Date:   Mon Jul 17 11:32:24 2017 -0700
+
+    Yaw compensation of the roll and pitch angle refence
+
+[33mcommit ba7fb5993034bb9e4664c755c107fc549f223938[m
+Author: alessandrodiodato <diodatoalessandro@gmail.com>
+Date:   Wed Jul 12 18:56:07 2017 -0700
+
+    Both Servo working + Ultrasonic sensor
+
+[33mcommit 2e8dad0e37547143b0156290a3bcef8a237eb833[m
+Author: alessandrodiodato <diodatoalessandro@gmail.com>
+Date:   Tue Jul 11 11:00:58 2017 -0700
+
+    Super Scamp test code
+
+[33mcommit 5139c4a33cb7a4c4e16849df9e7df64a388bc9be[m
+Author: alessandrodiodato <diodatoalessandro@gmail.com>
+Date:   Thu Jul 6 17:34:49 2017 -0700
+
+    070617 New Firmware - Attitude and Altitude working (z-range)
+
+[33mcommit 47cc4ffd15d797949ad9a297e39e12e613ba08a0[m
+Author: Connor Anderson <connora@stanford.edu>
+Date:   Tue Apr 18 12:38:39 2017 -0700
+
+    first commit
+
+[33mcommit d969e25b5df935a88d8de3fb3c5f6362827db4a5[m
+Author: Stanford-BDML <bdmlstanford@gmail.com>
+Date:   Tue Apr 18 12:35:56 2017 -0700
+
+    Initial commit

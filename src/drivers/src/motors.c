@@ -91,6 +91,7 @@ static uint16_t motorsConv16ToBits(uint16_t bits)
 /* Public functions */
 
 //Initialization. Will set all motors ratio to 0%
+// Initialize all motors
 void motorsInit(const MotorPerifDef** motorMapSelect)
 {
   int i;
@@ -210,6 +211,7 @@ bool motorsTest(void)
 
 //#define ENABLE_THRUST_BAT_COMPENSATED
 // Ithrust is thrust mapped for 65536 <==> 60 grams
+// Note that we only control the quadrotors and not M5
 void motorsSetRatio(uint32_t id, uint16_t ithrust)
 {
   if (isInit) {
