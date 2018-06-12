@@ -40,7 +40,7 @@
 #include "sensors.h"
 #include "crtp.h"
 #include "position_estimator.h"
-
+#include "buzzer.h"
 
 #include "log.h"
 //#include "pid.h"
@@ -111,55 +111,6 @@ static uint16_t wiggle_timer = 0;
 static float oldx = 0;
 static float perch_threshold = .5;
 
-/*
-// Baro variables
-static float temperature; // temp from barometer
-static float pressure;    // pressure from barometer
-static float asl;     // smoothed asl
-static float aslRaw;  // raw asl
-static float aslLong; // long term asl
-
-// Altitude hold variables
-static PidObject altHoldPID; // Used for altitute hold mode. I gets reset when the bat status changes
-bool altHold = false;          // Currently in altitude hold mode
-bool setAltHold = false;      // Hover mode has just been activated
-static float accWZ     = 0.0;
-static float flatMAG   = 0.0;
-static float accMAG    = 0.0;
-static float vSpeedASL = 0.0;
-static float vSpeedAcc = 0.0;
-static float vSpeed    = 0.0; // Vertical speed (world frame) integrated from vertical acceleration
-static float altHoldPIDVal;                    // Output of the PID controller
-static float altHoldErr;                       // Different between target and current altitude
-
-// Altitude hold & Baro Params
-static float altHoldKp              = 0.5;  // PID gain constants, used everytime we reinitialise the PID controller
-static float altHoldKi              = 0.18;
-static float altHoldKd              = 0.0;
-static float altHoldChange          = 0;     // Change in target altitude
-static float altHoldTarget          = -1;    // Target altitude
-static float altHoldErrMax          = 1.0;   // max cap on current estimated altitude vs target altitude in meters
-static float altHoldChange_SENS     = 200;   // sensitivity of target altitude change (thrust input control) while hovering. Lower = more sensitive & faster changes
-static float pidAslFac              = 13000; // relates meters asl to thrust
-static float pidAlpha               = 0.8;   // PID Smoothing //TODO: shouldnt need to do this
-static float vSpeedASLFac           = 0;    // multiplier
-static float vSpeedAccFac           = -48;  // multiplier
-static float vAccDeadband           = 0.05;  // Vertical acceleration deadband
-static float vSpeedASLDeadband      = 0.005; // Vertical speed based on barometer readings deadband
-static float vSpeedLimit            = 0.05;  // used to constrain vertical velocity
-static float errDeadband            = 0.00;  // error (target - altitude) deadband
-static float vBiasAlpha             = 0.98; // Blending factor we use to fuse vSpeedASL and vSpeedAcc
-static float aslAlpha               = 0.92; // Short term smoothing
-static float aslAlphaLong           = 0.93; // Long term smoothing
-static uint16_t altHoldMinThrust    = 00000; // minimum hover thrust - not used yet
-static uint16_t altHoldBaseThrust   = 43000; // approximate throttle needed when in perfect hover. More weight/older battery can use a higher value
-static uint16_t altHoldMaxThrust    = 60000; // max altitude hold thrust
-
-
-RPYType rollType;
-RPYType pitchType;
-RPYType yawType;
-*/
 
 
 static float accWZ  = 0.0;
@@ -194,7 +145,7 @@ static struct HeightController HC;
 //GPIO_InitTypeDef DebugPin;
 //bool debugFreq;
 
-static struct DigitalFilter FilGyro[2];
+
 
 void stabilizerInit(void)
 {
@@ -211,7 +162,7 @@ void stabilizerInit(void)
   //stateEstimatorInit();
   initUsecTimer();
 
-  // Da verificare
+
   #if defined(SITAW_ENABLED)
 	  sitAwInit();
   #endif
@@ -219,15 +170,7 @@ void stabilizerInit(void)
 
   set_AC(&AC);
   set_HC(&HC);
-  //setEstimator_Z(&EZ);
-
-
-  /*DebugPin.GPIO_Mode=GPIO_Mode_OUT;
-  DebugPin.GPIO_Pin=GPIO_Pin_6;
-  debugFreq=false;*/
-
-  //GPIO_Init(GPIOA,&DebugPin);
-
+  
   rollRateDesired = 0;
   pitchRateDesired = 0;
   yawRateDesired = 0;
@@ -261,20 +204,46 @@ static sensorData_t SENSORS;
 static control_t CONTROL;
 
 static uint8_t State_Joy;
+
+
+
+// This function process the input provided by the joystick (State_Joy)
 void processJoy()
 {
+	if (STATE_MACHINE==LANDED)
+	{
+		if (State_Joy & 16)
+		{
+			STATE_MACHINE=FLYING;
+		}
+		if (State_Joy & 128)
+		{
+			STATE_MACHINE=DETACHING;
+		}
+		if (State_Joy & 32)
+		{
+			STATE_MACHINE=CLIMBING;
+		}
+	}
+	
 	if (STATE_MACHINE==FLYING)
 	{
 		if (State_Joy & 1)
+		{
 			AltitudeDesired=AltitudeDesired+0.8f/RATE_MAIN_LOOP;
+		}
 		if (State_Joy & 2)
+		{
 			AltitudeDesired=AltitudeDesired-0.8f/RATE_MAIN_LOOP;
-
+		}
 		if (AltitudeDesired>5)
+		{
 			AltitudeDesired=5;
+		}
 		if (AltitudeDesired<-1)
+		{
 			AltitudeDesired=-1;
-
+		}
 		yawRateDesired=0;
 		if (State_Joy & 4)
 		{
@@ -283,8 +252,8 @@ void processJoy()
 		}
 		if (State_Joy & 8)
 		{
-			// correction disturbance
-			yawRateDesired=-35;//-25*1.5;
+			
+			yawRateDesired=-35;
 			eulerYawDesired=eulerYawActual;
 		}
 		if (State_Joy & 32)
@@ -318,11 +287,27 @@ void processJoy()
 	if (STATE_MACHINE==CLIMBING)
 	{
 
-		if (State_Joy & 32)
+		if (State_Joy & 128)
 		{
-			STATE_MACHINE=LANDED;
+			// Deploy takeoff arm to ready to flip and takeoff
+			STATE_MACHINE=DEPLOY_ARM;
 		}
 
+	}
+	if (STATE_MACHINE==DEPLOY_ARM)
+	{
+		if (State_Joy & 16)
+		{
+			STATE_MACHINE=RETRACT_ARM;
+		}
+	}
+
+	if (STATE_MACHINE==RETRACT_ARM)
+	{
+		if (State_Joy & 32)
+		{
+			STATE_MACHINE=DEPLOY_ARM;
+		}
 	}
 
 	if (State_Joy & 64)
@@ -358,44 +343,39 @@ static void stabilizerTask(void* param)
 	}
 // Initialize tick to something else then 0
 
-	bool Controller = false;
+	bool Flying = false;
 	while(1)
 	{
 		vTaskDelayUntil(&lastWakeTime, F2T(RATE_500_HZ)); // 1000Hz
 
+		// read sensors
 		stateEstimatorUpdate(&STATE, &SENSORS, &CONTROL);
-    //SENSORS.gyro.x=compute_DF(&FilGyro[0],SENSORS.gyro.x);
-    //SENSORS.gyro.y=compute_DF(&FilGyro[1],SENSORS.gyro.y);
-
+		// compute roll, pitch and yaw angles
 		sensfusion6UpdateQ(SENSORS.gyro.x, SENSORS.gyro.y, SENSORS.gyro.z,SENSORS.acc.x,SENSORS.acc.y, SENSORS.acc.z, dt_loop);
 		sensfusion6GetEulerRPY(&eulerRollActual, &eulerPitchActual, &eulerYawActual);
 		accWZ = sensfusion6GetAccZWithoutGravity(SENSORS.acc.x, SENSORS.acc.y, SENSORS.acc.z);
 		positionUpdateVelocity(accWZ,dt_loop);
 
 		//normG = sqrt(SENSORS.acc.x*SENSORS.acc.x + SENSORS.acc.y*SENSORS.acc.y +SENSORS.acc.z*SENSORS.acc.z);
-
+		
+		// process joystick input
 		processJoy();
 
 		switch(STATE_MACHINE)
 		{
+			
 			case LANDED:
-				Controller=false;
-				reset_dist_obs(&AC);
-				turnOFFMotor();
+				Flying=false;
 				AltitudeDesired=0;
-
-				if (State_Joy & 16)
-					STATE_MACHINE=FLYING;
-				if (State_Joy & 128)
-					STATE_MACHINE=DETACHING;
 
 				break;
 
 			case FLYING:
-				Controller=true;
+				Flying=true;
 				if (AltitudeDesired==-1)
 					STATE_MACHINE=LANDED;
 				break;
+				
 			case TOWARDS_WALL:
 
 					if(SENSORS.acc.y>1.5f)
@@ -406,42 +386,33 @@ static void stabilizerTask(void* param)
 					}
 					 ERD_app=3;
 					 EPD_app=0;
-					 Controller=true;
+					 Flying=true;
 			    	break;
+					
 			case PERCHING_1:
-				Controller=true;
-				reset_dist_obs(&AC);
+				Flying=true;
 				ERD_app=8;
 				EPD_app=0;
-				//if (eulerRollActual>45)
-				//	STATE_MACHINE = PERCHING_2;
+				
 				break;
 			case PERCHING_2:
-				Controller=false;
-				reset_dist_obs(&AC);
-				perch_takeoff_normal2(eulerRollActual,eulerPitchActual,eulerYawActual,eulerYawDesired, SENSORS.gyro.x, SENSORS.gyro.y, SENSORS.gyro.z, 500.0,90.0);
-				if (eulerRollActual>75.0f)
-				{
-					perching_attached_timer=0;
-					//STATE_MACHINE = ATTACHING;
-				}
+				Flying=false;
 
+				perching_vel(eulerRollActual,eulerPitchActual,eulerYawActual,eulerYawDesired, SENSORS.gyro.x, SENSORS.gyro.y, SENSORS.gyro.z, 500.0,90.0);
+				
 				if (!crtpIsConnected())
-					motorSafe(&HC);
-
-				/*if (SENSORS.acc.x>0.7f)
-					perching_attached_timer++;
-				else
-					perching_attached_timer=0;
-
-				if (perching_attached_timer>200)
-						STATE_MACHINE=CLIMBING;*/
+					motorSafe();
 				break;
+				
+			// DETACHING is the FLIPPING: I will change the variable name	
 			case DETACHING:
+			
+			    // To respect the convention
 				if (eulerRollActual<0)
 						eulerRollActual = eulerRollActual + 360;
-
-				perch_takeoff_normal3(eulerRollActual,eulerPitchActual, SENSORS.gyro.x, SENSORS.gyro.y, SENSORS.gyro.z, 500.0,85.0);
+					
+				flipping(eulerRollActual,eulerPitchActual, SENSORS.gyro.x, SENSORS.gyro.y, SENSORS.gyro.z, 500.0,85.0);
+				// When ROLL is smaller than 90°, turn off the motor 
 				if (eulerRollActual<90.0f)
 				{
 					STATE_MACHINE = LANDED;
@@ -449,39 +420,21 @@ static void stabilizerTask(void* param)
 				break;
 
 
-				/*if (perching_timer<1250)
-				{
-					ERD_app=0;
-					EPD_app=-35;
-				}
-				else
-					STATE_MACHINE=LANDED;
-
-
-				if (SENSORS.acc.x<-0.6f)
-					perching_attached_timer++;
-				else
-					perching_attached_timer=0;
-
-				if (perching_attached_timer>100)
-					STATE_MACHINE=CLIMBING;
-				break;
-				*/
+			// these states are related to climbing
 			case ATTACHING:
-				Controller=false;
+				Flying=false;
 				setMotor(0.75);
 				perching_attached_timer++;
 				if (perching_attached_timer>250)
 				{
 					perching_attached_timer=0;
-					//STATE_MACHINE=CLIMBING;
+					
 				}
-
 
 				break;
 			case CLIMBING:
-				Controller=false;
-				reset_dist_obs(&AC);
+				Flying=false;
+
 				if(SENSORS.acc.y > 0.8f)
 					turnOFFMotor();
 				else
@@ -489,261 +442,57 @@ static void stabilizerTask(void* param)
 
 				break;
 
+			case DEPLOY_ARM:
+				Flying=false;
+
+				move_takeoffarm(150);
+				break;
+			case RETRACT_ARM:
+				Flying=false;
+
+				move_takeoffarm(170);
 
 
 			default:
 				break;
 		}
-
-		if (Controller)
+		
+		// If Scamp fly
+		if (Flying)
 		{
+			// test the z-ranger connection
 			if(!vl53l0xTestConnection())
 				turnOFFMotor();
 			else
 			{
+				// read sensor and compute the Altitude controller
 				Zsensor=vl53l0xReadRange2(&ZRANGE_STAB);
 				compute_HC(&HC,ZRANGE_STAB.distance,AltitudeDesired,getVelocityPE(),Zsensor);
-				//if (STATE_MACHINE==PERCHING_1)
-					//mgcostheta(&HC,STATE.attitude.pitch);
+
 			}
 
-			//start_dist_obs(&AC);
+			// Attitude controller
 			compute_AC(&AC,eulerRollActual,eulerPitchActual,eulerYawActual,
     		  ERD_app-2,EPD_app-3,eulerYawDesired,yawRateDesired,
 						SENSORS.gyro.x, SENSORS.gyro.y, SENSORS.gyro.z);
-
+			
+			// if the radio is connected, actuate the motor.
 			if (crtpIsConnected())
 				ActuateMotor(&AC,&HC,STATE.attitude.roll,STATE.attitude.pitch,&CONTROL);
 			else
 			{
-				motorSafe(&HC);
-				ActuateMotor(&AC,&HC,STATE.attitude.roll,STATE.attitude.pitch,&CONTROL);
+				motorSafe();
+				//ActuateMotor(&AC,&HC,STATE.attitude.roll,STATE.attitude.pitch,&CONTROL);
 			}
 		}
-		//else
-		//	turnOFFMotor();
 
-
-
-
-
-        	/*switch(state)
-    	{
-//    	case FLYING:
-//    		commanderGetRPY(&eulerRollDesired, &eulerPitchDesired, &eulerYawDesired);
-//			commanderGetThrust(&actuatorThrust);
-//			break;
-    	case DECISION_STATE:
-    		decision_timer++;
-    		if(decision_timer > START_DECIDING_TIME)
-    		{
-				if(acc.x < -.5)
-				{
-					state = CLIMBING;
-					decision_timer = 0;
-				} else if (acc.z < -.5)
-				{
-					state = WIGGLE_SERVOS;
-					decision_timer = 0;
-				}
-			}
-
-    		if(decision_timer > DECISION_TIME)
-    		{
-    			state = FLYING;
-    			decision_timer = 0;
-    		}
-    		commanderGetRPY(&eulerRollDesired, &eulerPitchDesired, &eulerYawDesired);
-    		commanderGetThrust(&actuatorThrust);
-    		break;
-    	case WIGGLE_SERVOS:
-    		wiggle_timer++;
-    		if(wiggle_timer > WIGGLE_TIME)
-    		{
-    			state = AUTO_FLY;
-    			wiggle_timer = 0;
-    		}
-    		commanderGetRPY(&eulerRollDesired, &eulerPitchDesired, &eulerYawDesired);
-    		actuatorThrust = 10000;
-    		break;
-    	case TOWARDS_WALL:
-    		flatMAG = sensfusion6GetAccXYMag2WRTGravity(acc.x, acc.y, acc.z);
-    		if((acc.x < (-1.0*perch_threshold/2.0)) && (flatMAG > perch_threshold))
-    		{
-    			//	don't switch if the impact v is too high, just try and bump it again
-    			if (acc.x > -2.5) // || pitch > 0
-    			{
-				state = PERCHING;
-    			}
-    		}
-    		commanderGetRPY(&eulerRollDesired, &eulerPitchDesired, &eulerYawDesired);
-    		commanderGetThrust(&actuatorThrust);
-    		break;
-    	case PERCHING:
-    		perching_timer++;
-    		uint16_t perchingThrust = 0;
-    		if (perching_timer < PERCHING_MOTOR_TIMEOUT)
-    		{
-    			if ((perching_timer > PERCHING_PITCH_UP_TIME) && (acc.x < -1.0))
-    			{
-    				perching_timer = PERCHING_MOTOR_TIMEOUT;
-    			}
-    			perchingThrust = 60000;
-    		}
-    		else if (perching_timer > PERCHING_DONE)
-    		{
-    			state = CLIMBING;
-    			perching_timer = 0;
-    		} else if (acc.x > -.5)
-    		{
-    			state = RECOVERING;
-    			perching_timer = 0;
-    		}
-			eulerRollDesired = 0;
-			eulerPitchDesired = -90;
-			eulerYawDesired = 0;
-			actuatorThrust = perchingThrust;
-    		break;
-    	case CLIMBING:
-    		if(acc.x > -.5)
-    		{
-    			state = REATTACHING;
-    		}
-    		eulerRollDesired = 0;
-    		eulerPitchDesired = 0;
-    		eulerYawDesired = 0;
-    		actuatorThrust = 0;
-    		break;
-    	case REATTACHING:
-    		reattaching_timer++;
-    		if(reattaching_timer > REATTACHING_FAILED)
-    		{
-    			state = RECOVERING;
-    			reattaching_timer = 0;
-    		}
-    		if(acc.x <= -.5)
-    		{
-    			state = CLIMBING;
-    			reattaching_timer = 0;
-    		}
-    		eulerRollDesired = 0;
-    		eulerPitchDesired = 0;
-    		eulerYawDesired = 0;
-    		actuatorThrust = 0;
-    		break;
-    	case RECOVERING:
-    		recovering_timer++;
-    		uint16_t recoveringThrust = 0;
-    		if(recovering_timer < RECOVERY_DONE)
-    		{
-    			recoveringThrust = 48000;
-    		}
-    		else
-    		{
-    			state = FLYING;
-    			recovering_timer = 0;
-    			recoveringThrust = 0;
-    		}
-    		eulerRollDesired = 0;
-    		eulerPitchDesired = 0;
-    		eulerYawDesired = 0;
-    		actuatorThrust = recoveringThrust;
-    		break;
-    	case RETURNING_TO_FLIGHT:
-    		returningtoflight_timer++;
-    		uint16_t returningtoflightThrust = 0;
-    		if(returningtoflight_timer < RETURNING_TO_FLIGHT_MAX_DONE)
-    		{
-    			returningtoflightThrust = 60000;
-    		}
-    		else if (returningtoflight_timer < RETURNING_TO_FLIGHT_DONE)
-    		{
-    			returningtoflightThrust = 42000;
-    		}
-    		else
-    		{
-    			state = FLYING;
-    			returningtoflight_timer = 0;
-    			returningtoflightThrust = 0;
-    		}
-    		eulerRollDesired = 0;
-    		eulerPitchDesired = 0;
-    		eulerYawDesired = 0;
-    		actuatorThrust = returningtoflightThrust;
-    		break;
-    	case TAKEOFF:
-    		if(acc.x > -.5)
-    		{
-    			state = RETURNING_TO_FLIGHT;
-    		}
-    		eulerRollDesired = 0;
-    		eulerPitchDesired = 0;
-    		eulerYawDesired = 0;
-    		actuatorThrust = 10000;
-    		break;
-    	case RESET_SERVOS:
-    		reset_servos_timer++;
-    		if(reset_servos_timer > SERVOS_RESET_TIME)
-    		{
-    			state = FLYING;
-    			reset_servos_timer = 0;
-    		}
-    		eulerRollDesired = 0;
-    		eulerPitchDesired = 0;
-    		eulerYawDesired = 0;
-    		actuatorThrust = 0;
-    		break;
-    	case AUTO_FLY:
-    		auto_fly_timer++;
-    		flatMAG = sensfusion6GetAccXYMag2WRTGravity(acc.x, acc.y, acc.z);
-    		if((auto_fly_timer<auto_fly_time) && (acc.x < (-1.0*perch_threshold/2.0)) && (flatMAG > perch_threshold))
-    		{
-    			//	don't switch if the impact v is too high, just try and bump it again
-    			if (acc.x > -2.5) // || pitch > 0
-    			{
-				state = PERCHING;
-				auto_fly_timer = 0;
-    			}
-    		}
-    		if(auto_fly_timer < launch_time)
-    		{
-    		    cool_down_thrust_dec = cool_down_thrust;
-    			eulerPitchDesired = -1*launch_pitch;
-    			actuatorThrust = launch_thrust;
-    		} else
-    		{
-    			eulerPitchDesired = -1*auto_fly_pitch;
-    			actuatorThrust = auto_fly_thrust;
-    		}
-    		if(auto_fly_timer > auto_fly_time)
-    		{
-    			cool_down_thrust_dec-=cool_down_decrement;
-    			actuatorThrust = cool_down_thrust_dec;
-    			eulerPitchDesired = cool_down_pitch;
-    		}
-    		if(auto_fly_timer > cool_down_time)
-    		{
-    			state = FLYING;
-    			reset_servos_timer = 0;
-    			actuatorThrust = 0;
-    			eulerPitchDesired = 0;
-    			auto_fly_timer = 0;
-    		}
-    		eulerRollDesired = 0;
-			eulerYawDesired = 0;
-    		break;
-    	default:
-    		commanderGetRPY(&eulerRollDesired, &eulerPitchDesired, &eulerYawDesired);
-    		commanderGetThrust(&actuatorThrust);
-    	}
-    	oldx = acc.x;
-    	commanderGetRPYType(&rollType, &pitchType, &yawType);
-	  */
 
 
   }
 }
 
+
+// ############# LOG SECTION #############
 /*
 LOG_GROUP_START(stabilizer)
 LOG_ADD(LOG_FLOAT, roll, &eulerRollActual)

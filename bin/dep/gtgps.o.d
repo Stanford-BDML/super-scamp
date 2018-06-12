@@ -1,5 +1,5 @@
 gtgps.o: src/deck/drivers/src/gtgps.c \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/features.h \
@@ -12,15 +12,16 @@ gtgps.o: src/deck/drivers/src/gtgps.c \
  /usr/arm-none-eabi/include/machine/ieeefp.h \
  /usr/arm-none-eabi/include/sys/reent.h \
  /usr/arm-none-eabi/include/_ansi.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
  /usr/arm-none-eabi/include/sys/_types.h \
  /usr/arm-none-eabi/include/machine/_types.h \
  /usr/arm-none-eabi/include/sys/lock.h \
  /usr/arm-none-eabi/include/sys/cdefs.h \
  /usr/arm-none-eabi/include/xlocale.h \
+ /usr/arm-none-eabi/include/strings.h \
  /usr/arm-none-eabi/include/sys/string.h \
  /usr/arm-none-eabi/include/stdio.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h \
  /usr/arm-none-eabi/include/sys/types.h \
  /usr/arm-none-eabi/include/machine/endian.h \
  /usr/arm-none-eabi/include/machine/_endian.h \
@@ -30,6 +31,7 @@ gtgps.o: src/deck/drivers/src/gtgps.c \
  /usr/arm-none-eabi/include/sys/timespec.h \
  /usr/arm-none-eabi/include/sys/_timespec.h \
  /usr/arm-none-eabi/include/sys/_pthreadtypes.h \
+ /usr/arm-none-eabi/include/sys/sched.h \
  /usr/arm-none-eabi/include/machine/types.h \
  /usr/arm-none-eabi/include/sys/stdio.h src/config/stm32fxxx.h \
  src/lib/CMSIS/STM32F4xx/Include/stm32f4xx.h \
@@ -67,7 +69,7 @@ gtgps.o: src/deck/drivers/src/gtgps.c \
  src/lib/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dcmi.h \
  src/lib/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h \
  src/config/config.h src/drivers/interface/nrf24l01.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
  src/drivers/interface/nRF24L01reg.h src/config/trace.h \
  src/hal/interface/usec_time.h src/modules/interface/console.h \
  src/utils/interface/eprintf.h src/drivers/interface/uart1.h \
@@ -87,7 +89,7 @@ gtgps.o: src/deck/drivers/src/gtgps.c \
  /usr/arm-none-eabi/include/alloca.h /usr/arm-none-eabi/include/math.h \
  src/modules/interface/log.h
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 
@@ -115,7 +117,7 @@ gtgps.o: src/deck/drivers/src/gtgps.c \
 
 /usr/arm-none-eabi/include/_ansi.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
 
 /usr/arm-none-eabi/include/sys/_types.h:
 
@@ -127,11 +129,13 @@ gtgps.o: src/deck/drivers/src/gtgps.c \
 
 /usr/arm-none-eabi/include/xlocale.h:
 
+/usr/arm-none-eabi/include/strings.h:
+
 /usr/arm-none-eabi/include/sys/string.h:
 
 /usr/arm-none-eabi/include/stdio.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h:
 
 /usr/arm-none-eabi/include/sys/types.h:
 
@@ -150,6 +154,8 @@ gtgps.o: src/deck/drivers/src/gtgps.c \
 /usr/arm-none-eabi/include/sys/_timespec.h:
 
 /usr/arm-none-eabi/include/sys/_pthreadtypes.h:
+
+/usr/arm-none-eabi/include/sys/sched.h:
 
 /usr/arm-none-eabi/include/machine/types.h:
 
@@ -229,7 +235,7 @@ src/config/config.h:
 
 src/drivers/interface/nrf24l01.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
 
 src/drivers/interface/nRF24L01reg.h:
 

@@ -5,11 +5,11 @@ usbd_desc.o: src/hal/src/usbd_desc.c \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/features.h \
  /usr/arm-none-eabi/include/_newlib_version.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
  src/lib/STM32_USB_OTG_Driver/inc/usb_regs.h \
  src/lib/CMSIS/STM32F4xx/Include/stm32f4xx.h \
  vendor/CMSIS/CMSIS/Include/core_cm4.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/sys/_intsup.h \
  /usr/arm-none-eabi/include/sys/_stdint.h \
@@ -54,7 +54,7 @@ usbd_desc.o: src/hal/src/usbd_desc.c \
  src/lib/STM32_USB_Device_Library/Core/inc/usbd_core.h \
  src/lib/STM32_USB_OTG_Driver/inc/usb_regs.h src/config/config.h \
  src/drivers/interface/nrf24l01.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
  src/drivers/interface/nRF24L01reg.h src/config/trace.h \
  src/hal/interface/usec_time.h
 
@@ -72,7 +72,7 @@ src/hal/interface/usb_conf.h:
 
 /usr/arm-none-eabi/include/_newlib_version.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
 
 src/lib/STM32_USB_OTG_Driver/inc/usb_regs.h:
 
@@ -80,7 +80,7 @@ src/lib/CMSIS/STM32F4xx/Include/stm32f4xx.h:
 
 vendor/CMSIS/CMSIS/Include/core_cm4.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 
@@ -174,7 +174,7 @@ src/config/config.h:
 
 src/drivers/interface/nrf24l01.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
 
 src/drivers/interface/nRF24L01reg.h:
 

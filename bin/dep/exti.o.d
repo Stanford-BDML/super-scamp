@@ -1,8 +1,8 @@
 exti.o: src/drivers/src/exti.c \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
  src/config/stm32fxxx.h src/lib/CMSIS/STM32F4xx/Include/stm32f4xx.h \
  vendor/CMSIS/CMSIS/Include/core_cm4.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/features.h \
@@ -44,7 +44,7 @@ exti.o: src/drivers/src/exti.c \
  src/drivers/interface/exti.h src/config/nvicconf.h \
  src/drivers/interface/nrf24l01.h src/drivers/interface/nRF24L01reg.h
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
 
 src/config/stm32fxxx.h:
 
@@ -52,7 +52,7 @@ src/lib/CMSIS/STM32F4xx/Include/stm32f4xx.h:
 
 vendor/CMSIS/CMSIS/Include/core_cm4.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 

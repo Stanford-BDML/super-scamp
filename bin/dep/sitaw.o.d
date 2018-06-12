@@ -1,5 +1,5 @@
 sitaw.o: src/modules/src/sitaw.c \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
  /usr/arm-none-eabi/include/stdlib.h \
  /usr/arm-none-eabi/include/machine/ieeefp.h \
  /usr/arm-none-eabi/include/_ansi.h /usr/arm-none-eabi/include/newlib.h \
@@ -16,8 +16,8 @@ sitaw.o: src/modules/src/sitaw.c \
  /usr/arm-none-eabi/include/machine/stdlib.h \
  /usr/arm-none-eabi/include/alloca.h /usr/arm-none-eabi/include/math.h \
  src/modules/interface/log.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/sys/_intsup.h \
  /usr/arm-none-eabi/include/sys/_stdint.h src/modules/interface/param.h \
@@ -27,7 +27,7 @@ sitaw.o: src/modules/src/sitaw.c \
  src/drivers/interface/nrf24l01.h src/drivers/interface/nRF24L01reg.h \
  src/config/trace.h src/hal/interface/usec_time.h
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
 
 /usr/arm-none-eabi/include/stdlib.h:
 
@@ -65,9 +65,9 @@ sitaw.o: src/modules/src/sitaw.c \
 
 src/modules/interface/log.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 

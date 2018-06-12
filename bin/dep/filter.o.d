@@ -5,7 +5,7 @@ filter.o: src/utils/src/filter.c /usr/arm-none-eabi/include/math.h \
  /usr/arm-none-eabi/include/sys/config.h \
  /usr/arm-none-eabi/include/machine/ieeefp.h \
  /usr/arm-none-eabi/include/sys/features.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
  /usr/arm-none-eabi/include/sys/_types.h \
  /usr/arm-none-eabi/include/machine/_types.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
@@ -14,7 +14,7 @@ filter.o: src/utils/src/filter.c /usr/arm-none-eabi/include/math.h \
  /usr/arm-none-eabi/include/_ansi.h /usr/arm-none-eabi/include/stdlib.h \
  /usr/arm-none-eabi/include/machine/stdlib.h \
  /usr/arm-none-eabi/include/alloca.h src/utils/interface/filter.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/sys/_intsup.h \
  /usr/arm-none-eabi/include/sys/_stdint.h
@@ -35,7 +35,7 @@ filter.o: src/utils/src/filter.c /usr/arm-none-eabi/include/math.h \
 
 /usr/arm-none-eabi/include/sys/features.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
 
 /usr/arm-none-eabi/include/sys/_types.h:
 
@@ -57,7 +57,7 @@ filter.o: src/utils/src/filter.c /usr/arm-none-eabi/include/math.h \
 
 src/utils/interface/filter.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 

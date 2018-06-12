@@ -1,5 +1,5 @@
 rzr.o: src/deck/drivers/src/rzr.c \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/features.h \
@@ -12,12 +12,13 @@ rzr.o: src/deck/drivers/src/rzr.c \
  /usr/arm-none-eabi/include/machine/ieeefp.h \
  /usr/arm-none-eabi/include/sys/reent.h \
  /usr/arm-none-eabi/include/_ansi.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
  /usr/arm-none-eabi/include/sys/_types.h \
  /usr/arm-none-eabi/include/machine/_types.h \
  /usr/arm-none-eabi/include/sys/lock.h \
  /usr/arm-none-eabi/include/sys/cdefs.h \
  /usr/arm-none-eabi/include/xlocale.h \
+ /usr/arm-none-eabi/include/strings.h \
  /usr/arm-none-eabi/include/sys/string.h src/config/stm32fxxx.h \
  src/lib/CMSIS/STM32F4xx/Include/stm32f4xx.h \
  vendor/CMSIS/CMSIS/Include/core_cm4.h \
@@ -54,12 +55,12 @@ rzr.o: src/deck/drivers/src/rzr.c \
  src/lib/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dcmi.h \
  src/lib/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h \
  src/config/config.h src/drivers/interface/nrf24l01.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
  src/drivers/interface/nRF24L01reg.h src/config/trace.h \
  src/hal/interface/usec_time.h src/drivers/interface/motors.h \
  src/utils/interface/debug.h src/modules/interface/console.h \
  src/utils/interface/eprintf.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h \
  src/deck/interface/deck.h src/deck/interface/deck_core.h \
  src/deck/interface/deck_constants.h src/deck/interface/deck_digital.h \
  src/deck/interface/deck_analog.h src/deck/interface/deck_spi.h \
@@ -74,7 +75,7 @@ rzr.o: src/deck/drivers/src/rzr.c \
  src/lib/FreeRTOS/include/semphr.h src/lib/FreeRTOS/include/queue.h \
  src/hal/interface/syslink.h
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 
@@ -102,7 +103,7 @@ rzr.o: src/deck/drivers/src/rzr.c \
 
 /usr/arm-none-eabi/include/_ansi.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
 
 /usr/arm-none-eabi/include/sys/_types.h:
 
@@ -113,6 +114,8 @@ rzr.o: src/deck/drivers/src/rzr.c \
 /usr/arm-none-eabi/include/sys/cdefs.h:
 
 /usr/arm-none-eabi/include/xlocale.h:
+
+/usr/arm-none-eabi/include/strings.h:
 
 /usr/arm-none-eabi/include/sys/string.h:
 
@@ -190,7 +193,7 @@ src/config/config.h:
 
 src/drivers/interface/nrf24l01.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
 
 src/drivers/interface/nRF24L01reg.h:
 
@@ -206,7 +209,7 @@ src/modules/interface/console.h:
 
 src/utils/interface/eprintf.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h:
 
 src/deck/interface/deck.h:
 

@@ -1,5 +1,5 @@
 usec_time.o: src/hal/src/usec_time.c src/hal/interface/usec_time.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/features.h \
@@ -43,7 +43,7 @@ usec_time.o: src/hal/src/usec_time.c src/hal/interface/usec_time.h \
 
 src/hal/interface/usec_time.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 

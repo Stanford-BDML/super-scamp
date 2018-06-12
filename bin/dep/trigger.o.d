@@ -1,5 +1,5 @@
 trigger.o: src/modules/src/trigger.c \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
  /usr/arm-none-eabi/include/stdlib.h \
  /usr/arm-none-eabi/include/machine/ieeefp.h \
  /usr/arm-none-eabi/include/_ansi.h /usr/arm-none-eabi/include/newlib.h \
@@ -17,7 +17,7 @@ trigger.o: src/modules/src/trigger.c \
  /usr/arm-none-eabi/include/alloca.h src/config/stm32fxxx.h \
  src/lib/CMSIS/STM32F4xx/Include/stm32f4xx.h \
  vendor/CMSIS/CMSIS/Include/core_cm4.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/sys/_intsup.h \
  /usr/arm-none-eabi/include/sys/_stdint.h \
@@ -54,9 +54,9 @@ trigger.o: src/modules/src/trigger.c \
  src/lib/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dcmi.h \
  src/lib/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h \
  src/modules/interface/trigger.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
 
 /usr/arm-none-eabi/include/stdlib.h:
 
@@ -96,7 +96,7 @@ src/lib/CMSIS/STM32F4xx/Include/stm32f4xx.h:
 
 vendor/CMSIS/CMSIS/Include/core_cm4.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 
@@ -170,4 +170,4 @@ src/lib/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h:
 
 src/modules/interface/trigger.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:

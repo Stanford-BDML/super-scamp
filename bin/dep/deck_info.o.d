@@ -5,7 +5,7 @@ deck_info.o: src/deck/core/deck_info.c \
  /usr/arm-none-eabi/include/_newlib_version.h \
  /usr/arm-none-eabi/include/sys/config.h \
  /usr/arm-none-eabi/include/sys/features.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
  /usr/arm-none-eabi/include/sys/reent.h \
  /usr/arm-none-eabi/include/_ansi.h \
  /usr/arm-none-eabi/include/sys/_types.h \
@@ -15,11 +15,12 @@ deck_info.o: src/deck/core/deck_info.c \
  /usr/arm-none-eabi/include/sys/cdefs.h \
  /usr/arm-none-eabi/include/machine/stdlib.h \
  /usr/arm-none-eabi/include/alloca.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
  /usr/arm-none-eabi/include/string.h /usr/arm-none-eabi/include/xlocale.h \
+ /usr/arm-none-eabi/include/strings.h \
  /usr/arm-none-eabi/include/sys/string.h src/deck/interface/deck.h \
  src/deck/interface/deck_core.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/sys/_intsup.h \
  /usr/arm-none-eabi/include/sys/_stdint.h \
@@ -65,7 +66,7 @@ deck_info.o: src/deck/core/deck_info.c \
  src/drivers/interface/nrf24l01.h src/drivers/interface/nRF24L01reg.h \
  src/config/trace.h src/hal/interface/usec_time.h \
  src/modules/interface/console.h src/utils/interface/eprintf.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h
 
 /usr/arm-none-eabi/include/stdlib.h:
 
@@ -81,7 +82,7 @@ deck_info.o: src/deck/core/deck_info.c \
 
 /usr/arm-none-eabi/include/sys/features.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
 
 /usr/arm-none-eabi/include/sys/reent.h:
 
@@ -101,11 +102,13 @@ deck_info.o: src/deck/core/deck_info.c \
 
 /usr/arm-none-eabi/include/alloca.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
 
 /usr/arm-none-eabi/include/string.h:
 
 /usr/arm-none-eabi/include/xlocale.h:
+
+/usr/arm-none-eabi/include/strings.h:
 
 /usr/arm-none-eabi/include/sys/string.h:
 
@@ -113,7 +116,7 @@ src/deck/interface/deck.h:
 
 src/deck/interface/deck_core.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 
@@ -221,4 +224,4 @@ src/modules/interface/console.h:
 
 src/utils/interface/eprintf.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h:

@@ -65,7 +65,9 @@ struct param_s {
 #define WIGGLE_SERVOS 0xB
 #define RETURNING_TO_FLIGHT 0xC
 #define LANDED 100
-
+// Takeoff arm related states
+#define RETRACT_ARM 0x0D
+#define DEPLOY_ARM 0xE
 
 
 #define PARAM_TYPE_INT   (0x00<<2)

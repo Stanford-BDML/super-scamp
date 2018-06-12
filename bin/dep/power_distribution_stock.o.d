@@ -1,14 +1,14 @@
 power_distribution_stock.o: src/modules/src/power_distribution_stock.c \
  src/modules/interface/power_distribution.h \
  src/modules/interface/stabilizer_types.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/features.h \
  /usr/arm-none-eabi/include/_newlib_version.h \
  /usr/arm-none-eabi/include/sys/_intsup.h \
  /usr/arm-none-eabi/include/sys/_stdint.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
  src/hal/interface/imu_types.h src/modules/interface/log.h \
  src/modules/interface/param.h src/utils/interface/num.h \
  src/drivers/interface/motors.h src/config/config.h \
@@ -53,7 +53,7 @@ src/modules/interface/power_distribution.h:
 
 src/modules/interface/stabilizer_types.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 
@@ -67,7 +67,7 @@ src/modules/interface/stabilizer_types.h:
 
 /usr/arm-none-eabi/include/sys/_stdint.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
 
 src/hal/interface/imu_types.h:
 

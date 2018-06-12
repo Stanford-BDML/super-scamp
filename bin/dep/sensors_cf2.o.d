@@ -1,19 +1,19 @@
 sensors_cf2.o: src/hal/src/sensors_cf2.c src/hal/interface/sensors.h \
  src/modules/interface/stabilizer_types.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/features.h \
  /usr/arm-none-eabi/include/_newlib_version.h \
  /usr/arm-none-eabi/include/sys/_intsup.h \
  /usr/arm-none-eabi/include/sys/_stdint.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
  src/hal/interface/imu_types.h /usr/arm-none-eabi/include/math.h \
  /usr/arm-none-eabi/include/sys/reent.h \
  /usr/arm-none-eabi/include/_ansi.h /usr/arm-none-eabi/include/newlib.h \
  /usr/arm-none-eabi/include/sys/config.h \
  /usr/arm-none-eabi/include/machine/ieeefp.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
  /usr/arm-none-eabi/include/sys/_types.h \
  /usr/arm-none-eabi/include/machine/_types.h \
  /usr/arm-none-eabi/include/sys/lock.h \
@@ -60,7 +60,7 @@ sensors_cf2.o: src/hal/src/sensors_cf2.c src/hal/interface/sensors.h \
  src/config/trace.h src/hal/interface/usec_time.h \
  src/utils/interface/cfassert.h src/modules/interface/console.h \
  src/utils/interface/eprintf.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h \
  src/lib/FreeRTOS/include/projdefs.h src/lib/FreeRTOS/include/portable.h \
  src/lib/FreeRTOS/include/deprecated_definitions.h \
  src/lib/FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h \
@@ -81,7 +81,7 @@ src/hal/interface/sensors.h:
 
 src/modules/interface/stabilizer_types.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 
@@ -95,7 +95,7 @@ src/modules/interface/stabilizer_types.h:
 
 /usr/arm-none-eabi/include/sys/_stdint.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
 
 src/hal/interface/imu_types.h:
 
@@ -111,7 +111,7 @@ src/hal/interface/imu_types.h:
 
 /usr/arm-none-eabi/include/machine/ieeefp.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
 
 /usr/arm-none-eabi/include/sys/_types.h:
 
@@ -217,7 +217,7 @@ src/modules/interface/console.h:
 
 src/utils/interface/eprintf.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h:
 
 src/lib/FreeRTOS/include/projdefs.h:
 

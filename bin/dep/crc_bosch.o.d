@@ -6,11 +6,13 @@ crc_bosch.o: src/utils/src/crc_bosch.c src/utils/interface/crc_bosch.h \
  /usr/arm-none-eabi/include/machine/ieeefp.h \
  /usr/arm-none-eabi/include/sys/features.h \
  /usr/arm-none-eabi/include/sys/_intsup.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/arm-none-eabi/include/_ansi.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/_stdint.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
+ /usr/arm-none-eabi/include/xlocale.h
 
 src/utils/interface/crc_bosch.h:
 
@@ -28,7 +30,9 @@ src/utils/interface/crc_bosch.h:
 
 /usr/arm-none-eabi/include/sys/_intsup.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/arm-none-eabi/include/_ansi.h:
+
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 
@@ -36,4 +40,6 @@ src/utils/interface/crc_bosch.h:
 
 /usr/arm-none-eabi/include/sys/_stdint.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
+
+/usr/arm-none-eabi/include/xlocale.h:

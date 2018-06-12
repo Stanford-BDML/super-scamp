@@ -5,23 +5,23 @@ stabilizer.o: src/modules/src/stabilizer.c \
  /usr/arm-none-eabi/include/sys/config.h \
  /usr/arm-none-eabi/include/machine/ieeefp.h \
  /usr/arm-none-eabi/include/sys/features.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
  /usr/arm-none-eabi/include/sys/_types.h \
  /usr/arm-none-eabi/include/machine/_types.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/lock.h \
  /usr/arm-none-eabi/include/sys/cdefs.h \
  /usr/arm-none-eabi/include/_ansi.h src/lib/FreeRTOS/include/FreeRTOS.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/sys/_intsup.h \
  /usr/arm-none-eabi/include/sys/_stdint.h src/config/FreeRTOSConfig.h \
  src/config/config.h src/drivers/interface/nrf24l01.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
  src/drivers/interface/nRF24L01reg.h src/config/trace.h \
  src/hal/interface/usec_time.h src/utils/interface/cfassert.h \
  src/modules/interface/console.h src/utils/interface/eprintf.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h \
  src/lib/FreeRTOS/include/projdefs.h src/lib/FreeRTOS/include/portable.h \
  src/lib/FreeRTOS/include/deprecated_definitions.h \
  src/lib/FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h \
@@ -33,11 +33,12 @@ stabilizer.o: src/modules/src/stabilizer.c \
  src/modules/interface/stabilizer_types.h src/deck/interface/deck_core.h \
  src/modules/interface/commander.h src/modules/interface/sensfusion6.h \
  src/hal/interface/sensors.h src/modules/interface/crtp.h \
- src/modules/interface/position_estimator.h src/modules/interface/log.h \
- src/hal/interface/ledseq.h src/drivers/interface/led.h \
- src/modules/interface/param.h src/utils/interface/debug.h \
- src/modules/src/AttitudeController.h src/drivers/interface/motors.h \
- src/config/stm32fxxx.h src/lib/CMSIS/STM32F4xx/Include/stm32f4xx.h \
+ src/modules/interface/position_estimator.h src/hal/interface/buzzer.h \
+ src/modules/interface/log.h src/hal/interface/ledseq.h \
+ src/drivers/interface/led.h src/modules/interface/param.h \
+ src/utils/interface/debug.h src/modules/src/AttitudeController.h \
+ src/drivers/interface/motors.h src/config/stm32fxxx.h \
+ src/lib/CMSIS/STM32F4xx/Include/stm32f4xx.h \
  vendor/CMSIS/CMSIS/Include/core_cm4.h \
  vendor/CMSIS/CMSIS/Include/core_cmInstr.h \
  vendor/CMSIS/CMSIS/Include/cmsis_gcc.h \
@@ -91,7 +92,7 @@ stabilizer.o: src/modules/src/stabilizer.c \
 
 /usr/arm-none-eabi/include/sys/features.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
 
 /usr/arm-none-eabi/include/sys/_types.h:
 
@@ -107,7 +108,7 @@ stabilizer.o: src/modules/src/stabilizer.c \
 
 src/lib/FreeRTOS/include/FreeRTOS.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 
@@ -121,7 +122,7 @@ src/config/config.h:
 
 src/drivers/interface/nrf24l01.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
 
 src/drivers/interface/nRF24L01reg.h:
 
@@ -135,7 +136,7 @@ src/modules/interface/console.h:
 
 src/utils/interface/eprintf.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h:
 
 src/lib/FreeRTOS/include/projdefs.h:
 
@@ -178,6 +179,8 @@ src/hal/interface/sensors.h:
 src/modules/interface/crtp.h:
 
 src/modules/interface/position_estimator.h:
+
+src/hal/interface/buzzer.h:
 
 src/modules/interface/log.h:
 

@@ -1,7 +1,7 @@
 system_stm32f4xx.o: src/lib/CMSIS/STM32F4xx/Source/system_stm32f4xx.c \
  src/lib/CMSIS/STM32F4xx/Include/stm32f4xx.h \
  vendor/CMSIS/CMSIS/Include/core_cm4.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/features.h \
@@ -45,7 +45,7 @@ src/lib/CMSIS/STM32F4xx/Include/stm32f4xx.h:
 
 vendor/CMSIS/CMSIS/Include/core_cm4.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 

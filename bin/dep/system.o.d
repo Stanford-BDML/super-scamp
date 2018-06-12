@@ -1,8 +1,8 @@
 system.o: src/modules/src/system.c \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
  src/lib/FreeRTOS/include/FreeRTOS.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/features.h \
@@ -13,7 +13,7 @@ system.o: src/modules/src/system.c \
  src/drivers/interface/nRF24L01reg.h src/config/trace.h \
  src/hal/interface/usec_time.h src/utils/interface/cfassert.h \
  src/modules/interface/console.h src/utils/interface/eprintf.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h \
  src/lib/FreeRTOS/include/projdefs.h src/lib/FreeRTOS/include/portable.h \
  src/lib/FreeRTOS/include/deprecated_definitions.h \
  src/lib/FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h \
@@ -83,15 +83,16 @@ system.o: src/modules/src/system.c \
  /usr/arm-none-eabi/include/sys/lock.h \
  /usr/arm-none-eabi/include/sys/cdefs.h \
  /usr/arm-none-eabi/include/xlocale.h \
+ /usr/arm-none-eabi/include/strings.h \
  /usr/arm-none-eabi/include/sys/string.h src/modules/interface/extrx.h
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
 
 src/lib/FreeRTOS/include/FreeRTOS.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 
@@ -123,7 +124,7 @@ src/modules/interface/console.h:
 
 src/utils/interface/eprintf.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h:
 
 src/lib/FreeRTOS/include/projdefs.h:
 
@@ -310,6 +311,8 @@ src/deck/interface/deck_spi.h:
 /usr/arm-none-eabi/include/sys/cdefs.h:
 
 /usr/arm-none-eabi/include/xlocale.h:
+
+/usr/arm-none-eabi/include/strings.h:
 
 /usr/arm-none-eabi/include/sys/string.h:
 

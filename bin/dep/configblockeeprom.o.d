@@ -1,19 +1,19 @@
 configblockeeprom.o: src/utils/src/configblockeeprom.c \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/features.h \
  /usr/arm-none-eabi/include/_newlib_version.h \
  /usr/arm-none-eabi/include/sys/_intsup.h \
  /usr/arm-none-eabi/include/sys/_stdint.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
  /usr/arm-none-eabi/include/unistd.h \
  /usr/arm-none-eabi/include/sys/unistd.h \
  /usr/arm-none-eabi/include/_ansi.h /usr/arm-none-eabi/include/newlib.h \
  /usr/arm-none-eabi/include/sys/config.h \
  /usr/arm-none-eabi/include/machine/ieeefp.h \
  /usr/arm-none-eabi/include/sys/cdefs.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
  /usr/arm-none-eabi/include/sys/types.h \
  /usr/arm-none-eabi/include/machine/_types.h \
  /usr/arm-none-eabi/include/sys/_types.h \
@@ -26,16 +26,18 @@ configblockeeprom.o: src/utils/src/configblockeeprom.c \
  /usr/arm-none-eabi/include/sys/timespec.h \
  /usr/arm-none-eabi/include/sys/_timespec.h \
  /usr/arm-none-eabi/include/sys/_pthreadtypes.h \
+ /usr/arm-none-eabi/include/sys/sched.h \
  /usr/arm-none-eabi/include/machine/types.h \
  /usr/arm-none-eabi/include/string.h /usr/arm-none-eabi/include/_ansi.h \
  /usr/arm-none-eabi/include/sys/reent.h \
  /usr/arm-none-eabi/include/xlocale.h \
+ /usr/arm-none-eabi/include/strings.h \
  /usr/arm-none-eabi/include/sys/string.h src/config/config.h \
  src/drivers/interface/nrf24l01.h src/drivers/interface/nRF24L01reg.h \
  src/config/trace.h src/hal/interface/usec_time.h \
  src/utils/interface/debug.h src/modules/interface/console.h \
  src/utils/interface/eprintf.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h \
  src/drivers/interface/i2cdev.h src/drivers/interface/i2c_drv.h \
  src/lib/FreeRTOS/include/FreeRTOS.h src/config/FreeRTOSConfig.h \
  src/config/config.h src/utils/interface/cfassert.h \
@@ -82,7 +84,7 @@ configblockeeprom.o: src/utils/src/configblockeeprom.c \
  src/utils/interface/configblock.h src/drivers/interface/eeprom.h \
  src/drivers/interface/i2cdev.h
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 
@@ -96,7 +98,7 @@ configblockeeprom.o: src/utils/src/configblockeeprom.c \
 
 /usr/arm-none-eabi/include/sys/_stdint.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
 
 /usr/arm-none-eabi/include/unistd.h:
 
@@ -112,7 +114,7 @@ configblockeeprom.o: src/utils/src/configblockeeprom.c \
 
 /usr/arm-none-eabi/include/sys/cdefs.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
 
 /usr/arm-none-eabi/include/sys/types.h:
 
@@ -138,6 +140,8 @@ configblockeeprom.o: src/utils/src/configblockeeprom.c \
 
 /usr/arm-none-eabi/include/sys/_pthreadtypes.h:
 
+/usr/arm-none-eabi/include/sys/sched.h:
+
 /usr/arm-none-eabi/include/machine/types.h:
 
 /usr/arm-none-eabi/include/string.h:
@@ -147,6 +151,8 @@ configblockeeprom.o: src/utils/src/configblockeeprom.c \
 /usr/arm-none-eabi/include/sys/reent.h:
 
 /usr/arm-none-eabi/include/xlocale.h:
+
+/usr/arm-none-eabi/include/strings.h:
 
 /usr/arm-none-eabi/include/sys/string.h:
 
@@ -166,7 +172,7 @@ src/modules/interface/console.h:
 
 src/utils/interface/eprintf.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h:
 
 src/drivers/interface/i2cdev.h:
 

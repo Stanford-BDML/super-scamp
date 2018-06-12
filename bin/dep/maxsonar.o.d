@@ -1,10 +1,10 @@
 maxsonar.o: src/drivers/src/maxsonar.c \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h src/config/config.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h src/config/config.h \
  src/drivers/interface/nrf24l01.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
  src/drivers/interface/nRF24L01reg.h src/config/trace.h \
  src/hal/interface/usec_time.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/features.h \
@@ -59,15 +59,16 @@ maxsonar.o: src/drivers/src/maxsonar.c \
  /usr/arm-none-eabi/include/sys/lock.h \
  /usr/arm-none-eabi/include/sys/cdefs.h \
  /usr/arm-none-eabi/include/xlocale.h \
+ /usr/arm-none-eabi/include/strings.h \
  /usr/arm-none-eabi/include/sys/string.h
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
 
 src/config/config.h:
 
 src/drivers/interface/nrf24l01.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
 
 src/drivers/interface/nRF24L01reg.h:
 
@@ -75,7 +76,7 @@ src/config/trace.h:
 
 src/hal/interface/usec_time.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 
@@ -198,5 +199,7 @@ src/deck/interface/deck_spi.h:
 /usr/arm-none-eabi/include/sys/cdefs.h:
 
 /usr/arm-none-eabi/include/xlocale.h:
+
+/usr/arm-none-eabi/include/strings.h:
 
 /usr/arm-none-eabi/include/sys/string.h:

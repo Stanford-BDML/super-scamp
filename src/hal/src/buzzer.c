@@ -355,9 +355,19 @@ static void move_foot(uint32_t time, uint8_t start_angle, uint8_t start_stroke, 
 	}
 	ratio_inout = current_angle;
 	ratio_updown = current_stroke;
-	piezoSetRatio2(ratio_inout, ratio_updown);
+	piezoSetRatio2(ratio_inout, ratio_updown); // send PWM to both servos
 
 }
+
+
+// Command takeoff arm to go to specific angle by sending PWM to servo
+void move_takeoffarm(uint8_t position)
+{
+	piezoSetRatio(position);
+}
+
+
+
 
 static void move_fast_and_wait(uint32_t time, uint8_t start_angle, uint8_t start_stroke, uint8_t end_angle, uint8_t end_stroke, uint32_t ms_per_step)
 {

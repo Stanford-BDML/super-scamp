@@ -4,11 +4,11 @@ usb_core.o: src/lib/STM32_USB_OTG_Driver/src/usb_core.c \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/features.h \
  /usr/arm-none-eabi/include/_newlib_version.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
  src/lib/STM32_USB_OTG_Driver/inc/usb_regs.h \
  src/lib/CMSIS/STM32F4xx/Include/stm32f4xx.h \
  vendor/CMSIS/CMSIS/Include/core_cm4.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/sys/_intsup.h \
  /usr/arm-none-eabi/include/sys/_stdint.h \
@@ -60,7 +60,7 @@ src/hal/interface/usb_conf.h:
 
 /usr/arm-none-eabi/include/_newlib_version.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
 
 src/lib/STM32_USB_OTG_Driver/inc/usb_regs.h:
 
@@ -68,7 +68,7 @@ src/lib/CMSIS/STM32F4xx/Include/stm32f4xx.h:
 
 vendor/CMSIS/CMSIS/Include/core_cm4.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 

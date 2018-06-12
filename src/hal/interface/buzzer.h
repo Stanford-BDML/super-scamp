@@ -15,11 +15,11 @@ struct buzzerControl
 };
 
 
-
+// Public functions
 void buzzerOff();
 void buzzerOn(uint32_t freq);
 void buzzerSetControl(struct buzzerControl * bc);
-
+void move_takeoffarm(uint8_t position);
 
 #define STAYING_NEUTRAL (0)
 #define MOVING_HORIZONTALLY_IN (1)

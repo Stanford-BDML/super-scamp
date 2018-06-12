@@ -1,5 +1,5 @@
 worker.o: src/modules/src/worker.c src/modules/interface/worker.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
  /usr/arm-none-eabi/include/errno.h \
  /usr/arm-none-eabi/include/sys/errno.h \
  /usr/arm-none-eabi/include/sys/reent.h \
@@ -8,13 +8,13 @@ worker.o: src/modules/src/worker.c src/modules/interface/worker.h \
  /usr/arm-none-eabi/include/sys/config.h \
  /usr/arm-none-eabi/include/machine/ieeefp.h \
  /usr/arm-none-eabi/include/sys/features.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
  /usr/arm-none-eabi/include/sys/_types.h \
  /usr/arm-none-eabi/include/machine/_types.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
  /usr/arm-none-eabi/include/sys/lock.h \
  src/lib/FreeRTOS/include/FreeRTOS.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/sys/_intsup.h \
  /usr/arm-none-eabi/include/sys/_stdint.h src/config/FreeRTOSConfig.h \
@@ -22,7 +22,7 @@ worker.o: src/modules/src/worker.c src/modules/interface/worker.h \
  src/drivers/interface/nRF24L01reg.h src/config/trace.h \
  src/hal/interface/usec_time.h src/utils/interface/cfassert.h \
  src/modules/interface/console.h src/utils/interface/eprintf.h \
- /usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h \
+ /usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h \
  src/lib/FreeRTOS/include/projdefs.h src/lib/FreeRTOS/include/portable.h \
  src/lib/FreeRTOS/include/deprecated_definitions.h \
  src/lib/FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h \
@@ -32,7 +32,7 @@ worker.o: src/modules/src/worker.c src/modules/interface/worker.h \
 
 src/modules/interface/worker.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdbool.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
 
 /usr/arm-none-eabi/include/errno.h:
 
@@ -52,7 +52,7 @@ src/modules/interface/worker.h:
 
 /usr/arm-none-eabi/include/sys/features.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
 
 /usr/arm-none-eabi/include/sys/_types.h:
 
@@ -64,7 +64,7 @@ src/modules/interface/worker.h:
 
 src/lib/FreeRTOS/include/FreeRTOS.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdint.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /usr/arm-none-eabi/include/stdint.h:
 
@@ -90,7 +90,7 @@ src/modules/interface/console.h:
 
 src/utils/interface/eprintf.h:
 
-/usr/lib/gcc/arm-none-eabi/6.3.1/include/stdarg.h:
+/usr/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h:
 
 src/lib/FreeRTOS/include/projdefs.h:
 
