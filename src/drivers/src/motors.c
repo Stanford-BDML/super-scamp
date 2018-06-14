@@ -45,7 +45,7 @@ static uint16_t motorsBLConv16ToBits(uint16_t bits);
 static uint16_t motorsConvBitsTo16(uint16_t bits);
 static uint16_t motorsConv16ToBits(uint16_t bits);
 
-uint32_t motor_ratios[] = {0, 0, 0, 0};
+uint32_t motor_ratios[] = {0, 0, 0, 0, 0};
 
 void motorsPlayTone(uint16_t frequency, uint16_t duration_msec);
 void motorsPlayMelody(uint16_t *notes);
@@ -244,6 +244,18 @@ void motorsSetRatio(uint32_t id, uint16_t ithrust)
     }
   }
 }
+
+// Essentially same as above, but for M5
+void motor5SetRatio(uint16_t ratio)
+{
+  if (isInit) {
+	  // note index 4 is M5
+	  motor_ratios[4] = ratio;
+      motorMap[4]->setCompare(motorMap[4]->tim, motorsConv16ToBits(ratio));
+  }
+}
+
+
 
 int motorsGetRatio(uint32_t id)
 {

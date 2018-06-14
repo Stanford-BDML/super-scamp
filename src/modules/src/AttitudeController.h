@@ -365,6 +365,9 @@ void ActuateMotor(struct AttitudeController* AC,struct HeightController* HC,floa
 	motorsSetRatio(MOTOR_M2, motorPowerM2); // Good
 	motorsSetRatio(MOTOR_M3, motorPowerM1); //3 Connected with 1
 	motorsSetRatio(MOTOR_M4, motorPowerM4); // Good*/
+	// temp
+	motor5SetRatio(motorPowerM4);
+	//
 
 	// probably can be deleted
 	CONTROL->thrust= apptrust;
@@ -725,7 +728,6 @@ void perching_vel(float eulerRollActual,float eulerPitchActual,float eulerYawAct
    motorsSetRatio(MOTOR_M2, motorPowerM2);
    motorsSetRatio(MOTOR_M3, motorPowerM1);
    motorsSetRatio(MOTOR_M4, motorPowerM4);
-
 }
 
 

@@ -246,7 +246,8 @@ bool motorsTest(void);
 /**
  * Set the PWM ratio of the motor 'id'
  */
-void motorsSetRatio(uint32_t id, uint16_t ratio);
+void motorsSetRatio(uint32_t id, uint16_t ratio); // for M1-M4
+void motor5SetRatio(uint16_t ratio);				  // for M5
 
 /**
  * Get the PWM ratio of the motor 'id'. Return -1 if wrong ID.

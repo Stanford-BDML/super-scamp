@@ -204,7 +204,7 @@ static sensorData_t SENSORS;
 static control_t CONTROL;
 
 static uint8_t State_Joy;
-
+static uint16_t M5power = 0; // maps to some PWM to power M5
 
 
 // This function process the input provided by the joystick (State_Joy)
@@ -212,15 +212,36 @@ void processJoy()
 {
 	if (STATE_MACHINE==LANDED)
 	{
-		if (State_Joy & 16)
+		/*** TEMPORARY START ***/
+		if (State_Joy & 1) // L1 button
+		{
+			M5power += 1000; // 32767 is probably 100% d.c.
+			motor5SetRatio(M5power);
+			move_takeoffarm(170); // switched for debugging. should be 150
+		}
+		if (State_Joy & 2) // L2 button
+		{
+			M5power = 32767;
+			motor5SetRatio(M5power);
+			move_takeoffarm(150); // switched for debugging. should be 170
+		}
+		if (State_Joy & 64) // Circle button
+		{
+			// emergency stop motor
+			M5power = 0;
+			motor5SetRatio(M5power);
+		}
+		/*** TEMP END ***/
+
+		if (State_Joy & 16) // X button
 		{
 			STATE_MACHINE=FLYING;
 		}
-		if (State_Joy & 128)
+		if (State_Joy & 128) // Triangle button
 		{
 			STATE_MACHINE=DETACHING;
 		}
-		if (State_Joy & 32)
+		if (State_Joy & 32) // Square button
 		{
 			STATE_MACHINE=CLIMBING;
 		}
@@ -228,12 +249,14 @@ void processJoy()
 	
 	if (STATE_MACHINE==FLYING)
 	{
-		if (State_Joy & 1)
+		if (State_Joy & 1) // L1 button
 		{
+			// increase altitude
 			AltitudeDesired=AltitudeDesired+0.8f/RATE_MAIN_LOOP;
 		}
-		if (State_Joy & 2)
+		if (State_Joy & 2) // L2 button
 		{
+			// decrease altitude
 			AltitudeDesired=AltitudeDesired-0.8f/RATE_MAIN_LOOP;
 		}
 		if (AltitudeDesired>5)
@@ -245,18 +268,19 @@ void processJoy()
 			AltitudeDesired=-1;
 		}
 		yawRateDesired=0;
-		if (State_Joy & 4)
+		if (State_Joy & 4) // R1 button
 		{
+			// increase yaw
 			yawRateDesired=25;
 			eulerYawDesired=eulerYawActual;
 		}
-		if (State_Joy & 8)
+		if (State_Joy & 8) // R2 button
 		{
-			
+			// decrease yaw
 			yawRateDesired=-35;
 			eulerYawDesired=eulerYawActual;
 		}
-		if (State_Joy & 32)
+		if (State_Joy & 32) // Square button
 		{
 			STATE_MACHINE=TOWARDS_WALL;
 		}
@@ -367,7 +391,10 @@ static void stabilizerTask(void* param)
 			case LANDED:
 				Flying=false;
 				AltitudeDesired=0;
-
+				//
+				M5power = 0;
+				motor5SetRatio(M5power);
+				//
 				break;
 
 			case FLYING:
@@ -445,13 +472,21 @@ static void stabilizerTask(void* param)
 			case DEPLOY_ARM:
 				Flying=false;
 
-				move_takeoffarm(150);
+				move_takeoffarm(170); // temp: should be 150
+
+				// temp
+				M5power += 1000; // 32767 is probably 100% d.c.
+				motor5SetRatio(M5power);
+				//
 				break;
 			case RETRACT_ARM:
 				Flying=false;
 
-				move_takeoffarm(170);
-
+				move_takeoffarm(150); // temp: should be 170
+				// temp
+				M5power = 32767;
+				motor5SetRatio(M5power);
+				//
 
 			default:
 				break;

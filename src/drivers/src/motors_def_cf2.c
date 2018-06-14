@@ -444,9 +444,10 @@ static const MotorPerifDef DECK_IO3 =
 };
 
 // Deck SCK, PA5, TIM2_CH1
+// UP/DOWN DC BRUSHLESS MOTOR (POLOLU)
 static const MotorPerifDef DECK_CONN_M5 =
 {
-    .drvType       = BRUSHLESS,
+    .drvType       = BRUSHED,
     .gpioPerif     = RCC_AHB1Periph_GPIOA,
     .gpioPort      = GPIOA,
     .gpioPin       = GPIO_Pin_5,
@@ -459,8 +460,8 @@ static const MotorPerifDef DECK_CONN_M5 =
     .timDbgStop    = DBGMCU_TIM2_STOP,
     .timPeriod     = MOTORS_BL_PWM_PERIOD,
     .timPrescaler  = MOTORS_BL_PWM_PRESCALE,
-    .setCompare    = TIM_SetCompare1,
-    .getCompare    = TIM_GetCapture1,
+    .setCompare    = TIM_SetCompare3, 	// TRY USING CHANNEL 3??
+    .getCompare    = TIM_GetCapture3,   // TRY USING CHANNEL 3??
     .ocInit        = TIM_OC1Init,
     .preloadConfig = TIM_OC1PreloadConfig,
 };
